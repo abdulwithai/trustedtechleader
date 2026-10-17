@@ -8,7 +8,7 @@ How it works: every page loads `assets/js/tracking.js`. It sets Google Consent M
 3. Search Console: search.google.com/search-console, add the domain property and verify by DNS TXT record (works on GitHub Pages; no file or meta tag needed). Submit `https://trustedtechleader.com/sitemap.xml`.
 
 ## 2. Wire the site
-- In `public/assets/js/tracking.js` replace `GTM-XXXXXXX` with your container ID. Nothing loads until you do.
+- In `assets/js/tracking.js` replace `GTM-XXXXXXX` with your container ID. Nothing loads until you do.
 
 ## 3. Import the GTM container
 GTM > Admin > Import Container > choose `tracking/gtm-container.json` > pick "Merge" with "Rename conflicting". Then:
@@ -28,7 +28,7 @@ Tags created: Google tag (GA4) on all pages, plus GA4 events with their triggers
 In GA4 > Admin > Events, mark `generate_lead` (and optionally `audit_complete`) as key events.
 
 ## 4. Known limits
-- `public/_headers` (CSP with the Google domains allowed) is ignored by GitHub Pages. Nothing blocks GTM there. It takes effect on Cloudflare Pages or Netlify.
+- `_headers` (CSP with the Google domains allowed) is ignored by GitHub Pages. Nothing blocks GTM there. It takes effect on Cloudflare Pages or Netlify.
 - There is no privacy policy page yet. Add one and link it from the banner and footer before launch; the banner text is in `tracking.js`.
 - GTM's `<noscript>` iframe fallback is not included (the CSP has no `frame-src`).
 - Consent is stored in `localStorage` key `ttl_consent`. Clear it to see the banner again.
