@@ -1,0 +1,18 @@
+<!-- Paths are relative to the site root; prefix with ../ in pages one folder deep. -->
+<!-- HEADER (dark; used on /law-firms/ and /ai-visibility/). Put the page crumb in .brand-crumb ("/ For law firms" or "/ AI visibility").
+     Current page: aria-current="page" on the matching nav link.
+     On /ai-visibility/ change the CTA to: href="mailto:hello@trustedtechleader.com?subject=AI%20visibility%20diagnostic" text "Request a diagnostic".
+     The header sits on top of the page's dark hero: wrap header + hero in <div class="dark-top"> if the hero should share the navy background. -->
+<header class="site-header site-header--dark">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">T</span><span class="brand-name">Trusted Tech Leader</span><span class="brand-crumb">/ For law firms</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span class="nav-toggle__bars" aria-hidden="true"></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="law-firms/index.html" aria-current="page">For law firms</a>
+      <a href="ai-visibility/index.html">AI visibility</a>
+      <a href="case-studies/index.html">Case studies</a>
+      <a href="ai-audit/index.html">Free AI audit</a>
+      <a class="btn btn-light btn-sm" href="free-scan/index.html">Free AI Visibility Scan</a>
+    </nav>
+  </div>
+</header>
