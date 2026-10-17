@@ -4,7 +4,7 @@
   align-items: start; padding-block: clamp(40px, 7vw, 80px) clamp(56px, 8vw, 96px);
 }
 .page-audit .audit > * { min-width: 0; }
-.page-audit .audit-intro { position: sticky; top: 24px; }
+.page-audit .audit-intro { position: sticky; top: 100px; }
 .page-audit .audit-intro .eyebrow { margin-bottom: 24px; }
 .page-audit .audit-intro__lead { margin: 28px 0 40px; max-width: 480px; }
 .page-audit .audit-stages { display: flex; flex-direction: column; border-top: 1px solid var(--navy); max-width: 480px; }
