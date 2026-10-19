@@ -103,24 +103,54 @@
         <p class="hero__proof">26 case studies &middot; CRM, billing, inventory, reporting</p>
       </div>
       <div class="hero__card">
-        <div class="flow" role="img" aria-label="Animation: scattered spreadsheets, texts, emails, paper contracts and invoices flow into one system where leads, contracts, payments and commissions are all tracked.">
-          <p class="flow__k">Before</p>
-          <div class="mess" aria-hidden="true">
-          <span class="mess__chip" style="left:2%;top:4px;--r:-4deg;--dx:150px;animation-delay:0s,0.0s"><span>Spreadsheets</span></span>
-          <span class="mess__chip" style="left:50%;top:0px;--r:3deg;--dx:0px;animation-delay:0s,0.4s"><span>Text messages</span></span>
-          <span class="mess__chip" style="left:22%;top:48px;--r:2deg;--dx:90px;animation-delay:0s,0.8s"><span>Email threads</span></span>
-          <span class="mess__chip" style="left:60%;top:52px;--r:-3deg;--dx:-50px;animation-delay:0s,1.2s"><span>Paper contracts</span></span>
-          <span class="mess__chip" style="left:4%;top:92px;--r:-2deg;--dx:170px;animation-delay:0s,1.6s"><span>Invoices</span></span>
+        <div class="dash" role="img" aria-label="Illustration: a live operations dashboard for a founder-led business. Revenue, open deals and invoices due update as a client moves through one system, from lead captured to contract signed, invoice paid and commission calculated.">
+          <div class="dash__toast dash__toast--pay" aria-hidden="true">
+            <span class="dash__check"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7"/></svg></span>
+            <span class="dash__tt"><b>Payment received</b><small data-toast>$3,200 &middot; Bright Studio</small></span>
           </div>
-          <div class="sys" aria-hidden="true">
-            <div class="sys__head"><span class="sys__dot"></span>One system<em>After</em></div>
-            <ul class="sys__rows">
-            <li class="sys__row" style="--d:4.0s"><span class="sys__lbl">Lead captured</span><span class="sys__st"><i class="wait">Waiting</i><i class="ok">New</i></span></li>
-            <li class="sys__row" style="--d:4.8s"><span class="sys__lbl">Contract signed</span><span class="sys__st"><i class="wait">Waiting</i><i class="ok">Signed</i></span></li>
-            <li class="sys__row" style="--d:5.6s"><span class="sys__lbl">Payment received</span><span class="sys__st"><i class="wait">Waiting</i><i class="ok">Paid</i></span></li>
-            <li class="sys__row" style="--d:6.4s"><span class="sys__lbl">Commission calculated</span><span class="sys__st"><i class="wait">Waiting</i><i class="ok">Done</i></span></li>
-            </ul>
-            <div class="sys__bar"><span></span></div>
+          <div class="dash__win" aria-hidden="true">
+            <div class="dash__bar">
+              <span class="dash__dots"><i></i><i></i><i></i></span>
+              <span class="dash__title">Ops &middot; Overview</span>
+              <span class="dash__live"><i></i>Live</span>
+            </div>
+            <div class="dash__body">
+              <div class="dash__kpis">
+                <div class="kpi"><span class="kpi__l">Revenue (MTD)</span><span class="kpi__v" data-kpi="rev">$48,250</span><span class="kpi__d">+12%</span></div>
+                <div class="kpi"><span class="kpi__l">Open deals</span><span class="kpi__v" data-kpi="deals">23</span><span class="kpi__d">+3 this week</span></div>
+                <div class="kpi"><span class="kpi__l">Invoices due</span><span class="kpi__v" data-kpi="due">7</span><span class="kpi__d">&minus;2 this week</span></div>
+              </div>
+              <div class="dash__chart">
+                <div class="dash__ch"><span>Cash collected</span><b data-kpi="week">$9,600</b></div>
+                <svg class="dash__bars" viewBox="0 0 300 84" preserveAspectRatio="none">
+                  <line x1="0" y1="4.5" x2="300" y2="4.5"/><line x1="0" y1="31.5" x2="300" y2="31.5"/><line x1="0" y1="58.5" x2="300" y2="58.5"/>
+                  <rect x="6" y="4" width="25" height="80" style="--h:.44;--i:0"/>
+                  <rect x="43.5" y="4" width="25" height="80" style="--h:.55;--i:1"/>
+                  <rect x="81" y="4" width="25" height="80" style="--h:.5;--i:2"/>
+                  <rect x="118.5" y="4" width="25" height="80" style="--h:.64;--i:3"/>
+                  <rect x="156" y="4" width="25" height="80" style="--h:.58;--i:4"/>
+                  <rect x="193.5" y="4" width="25" height="80" style="--h:.72;--i:5"/>
+                  <rect x="231" y="4" width="25" height="80" style="--h:.8;--i:6"/>
+                  <rect class="is-now" x="268.5" y="4" width="25" height="80" style="--h:.66;--i:7" data-bar/>
+                </svg>
+                <div class="dash__ax"><span>8 weeks ago</span><span>This week</span></div>
+              </div>
+              <div class="feed">
+                <div class="feed__head"><span><i></i>Pipeline</span><em>CRM &middot; Billing &middot; Ops</em></div>
+                <div class="feed__view">
+                  <ul class="feed__rows" data-feed>
+                    <li class="feed__row"><span class="feed__ic"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"/><circle cx="5" cy="5" r="1.6"/><circle cx="11" cy="11" r="1.6"/></svg></span><span class="feed__tx"><b>Bright Studio</b><span>Commission $320 calculated</span></span><span class="feed__st is-ok">Done</span></li>
+                    <li class="feed__row"><span class="feed__ic"><svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="8.5" rx="1.5"/><path d="M2 7h12"/></svg></span><span class="feed__tx"><b>Bright Studio</b><span>Invoice #1041 paid &middot; $3,200</span></span><span class="feed__st is-ok">Paid</span></li>
+                    <li class="feed__row"><span class="feed__ic"><svg viewBox="0 0 16 16"><path d="M4 2.5h5.5L12 5v8.5H4z"/><path d="M6 8h4M6 10.5h3"/></svg></span><span class="feed__tx"><b>Bright Studio</b><span>Contract signed</span></span><span class="feed__st is-ok">Signed</span></li>
+                    <li class="feed__row"><span class="feed__ic"><svg viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5"/><path d="M3 13.5c.8-2.6 2.8-3.8 5-3.8s4.2 1.2 5 3.8"/></svg></span><span class="feed__tx"><b>Bright Studio</b><span>Lead captured</span></span><span class="feed__st is-ok">New</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dash__toast dash__toast--sync" aria-hidden="true">
+            <span class="dash__avs"><i>AM</i><i>JR</i><i>SK</i></span>
+            <span class="dash__tt"><b>Synced</b><small>QuickBooks &middot; Gmail &middot; Sheets</small></span>
           </div>
         </div>
       </div>

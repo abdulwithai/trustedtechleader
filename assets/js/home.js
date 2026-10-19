@@ -180,3 +180,139 @@
   }
   onMotion();
 })();
+
+/* Home page: hero operations dashboard. Static markup is a complete state; this cycles events through it. Paused off-screen, in background tabs and with reduced motion. */
+(function () {
+  var dash = document.querySelector('.dash');
+  var feed = dash && dash.querySelector('[data-feed]');
+  if (!feed) return;
+  var ICON = {
+    New: '<svg viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5"/><path d="M3 13.5c.8-2.6 2.8-3.8 5-3.8s4.2 1.2 5 3.8"/></svg>',
+    Signed: '<svg viewBox="0 0 16 16"><path d="M4 2.5h5.5L12 5v8.5H4z"/><path d="M6 8h4M6 10.5h3"/></svg>',
+    Paid: '<svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="8.5" rx="1.5"/><path d="M2 7h12"/></svg>',
+    Done: '<svg viewBox="0 0 16 16"><path d="M4 12L12 4"/><circle cx="5" cy="5" r="1.6"/><circle cx="11" cy="11" r="1.6"/></svg>'
+  };
+  // [client, invoice number, amount]. Each client moves lead -> contract -> payment -> commission.
+  var CLIENTS = [['Acme Travel', 1042, 4800], ['Northwind Dental', 1043, 6500], ['Harbor Logistics', 1044, 2750]];
+  var BASE = { rev: 48250, deals: 23, due: 7, week: 9600, bar: 0.66 };
+  var TICK = 3000, FIRST = 1600;
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var el = {};
+  Array.prototype.forEach.call(dash.querySelectorAll('[data-kpi]'), function (n) { el[n.getAttribute('data-kpi')] = n; });
+  var bar = dash.querySelector('[data-bar]');
+  var toast = dash.querySelector('[data-toast]');
+  var feed0 = feed.innerHTML, toast0 = toast.textContent;
+  var v = {}, n = 0, gen = 0, timer = null, left = FIRST, due = 0;
+  var enabled = false, inView = true, running = false;
+
+  function money(x) { return '$' + String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function fmt(k) { return k === 'rev' || k === 'week' ? money(v[k]) : String(v[k]); }
+  function reset() { for (var k in BASE) v[k] = BASE[k]; }
+
+  // Fade the old value up and out, then the new one in. Ignored if the animation was reset meanwhile.
+  function swap(node, fn) {
+    var g = gen;
+    node.classList.add('is-out');
+    setTimeout(function () {
+      if (g !== gen) return;
+      fn();
+      node.classList.remove('is-out');
+    }, 200);
+  }
+  function set(k, d) {
+    v[k] += d;
+    var t = fmt(k);
+    if (el[k]) swap(el[k], function () { el[k].textContent = t; });
+  }
+  function setBar(h) { bar.style.setProperty('--h', h); }
+
+  // New row slides in at the top with an outline pill, which turns solid shortly after; the bottom row falls off.
+  function land(name, text, st) {
+    var g = gen;
+    var li = document.createElement('li');
+    li.className = 'feed__row is-new';
+    li.innerHTML = '<span class="feed__ic">' + ICON[st] + '</span><span class="feed__tx"><b></b><span></span></span><span class="feed__st"></span>';
+    li.querySelector('b').textContent = name;
+    li.querySelector('.feed__tx span').textContent = text;
+    li.querySelector('.feed__st').textContent = st;
+    feed.insertBefore(li, feed.firstChild);
+    feed.classList.remove('is-push');
+    void feed.offsetWidth;
+    feed.classList.add('is-push');
+    var rows = feed.children;
+    if (rows.length > 4) rows[rows.length - 1].classList.add('is-gone');
+    setTimeout(function () {
+      if (g !== gen) return;
+      li.querySelector('.feed__st').classList.add('is-ok');
+      while (feed.children.length > 4) feed.removeChild(feed.lastChild);
+    }, 900);
+  }
+
+  function step() {
+    var c = CLIENTS[Math.floor(n / 4) % CLIENTS.length], s = n % 4;
+    if (n % (CLIENTS.length * 4) === 0 && v.rev !== BASE.rev) {
+      // Start of a new cycle: settle the numbers back so nothing grows forever.
+      reset();
+      for (var k in el) set(k, 0);
+      setBar(BASE.bar);
+    }
+    if (s === 0) { land(c[0], 'Lead captured', 'New'); set('deals', 1); }
+    else if (s === 1) { land(c[0], 'Contract signed', 'Signed'); }
+    else if (s === 2) {
+      land(c[0], 'Invoice #' + c[1] + ' paid · ' + money(c[2]), 'Paid');
+      set('rev', c[2]); set('week', c[2]); set('due', -1);
+      v.bar = Math.min(0.98, v.bar + 0.1); setBar(v.bar);
+      var t = money(c[2]) + ' · ' + c[0];
+      swap(toast, function () { toast.textContent = t; });
+    } else { land(c[0], 'Commission ' + money(Math.round(c[2] / 10)) + ' calculated', 'Done'); }
+    n = (n + 1) % (CLIENTS.length * 4);
+  }
+
+  function go(d) { due = Date.now() + d; timer = setTimeout(tick, d); }
+  function tick() { timer = null; step(); go(TICK); }
+  function update() {
+    var want = enabled && inView && !document.hidden;
+    dash.classList.toggle('is-paused', !want);
+    if (want && !running) {
+      running = true;
+      go(left);
+    } else if (!want && running) {
+      running = false;
+      if (timer) { clearTimeout(timer); timer = null; left = Math.max(0, due - Date.now()); }
+    }
+  }
+  function enable() {
+    if (enabled) return;
+    enabled = true;
+    dash.classList.add('is-live');
+    update();
+  }
+  function disable() {
+    enabled = false;
+    update();
+    gen++; n = 0; left = FIRST;
+    reset();
+    feed.innerHTML = feed0;
+    feed.classList.remove('is-push');
+    toast.textContent = toast0;
+    toast.classList.remove('is-out');
+    for (var k in el) { el[k].textContent = fmt(k); el[k].classList.remove('is-out'); }
+    setBar(BASE.bar);
+    dash.classList.remove('is-live');
+  }
+  function onMotion() { if (mq && mq.matches) disable(); else enable(); }
+
+  reset();
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) {
+      inView = e[e.length - 1].isIntersecting;
+      update();
+    }, { threshold: 0.2 }).observe(dash);
+  }
+  document.addEventListener('visibilitychange', update);
+  if (mq) {
+    if (mq.addEventListener) mq.addEventListener('change', onMotion);
+    else if (mq.addListener) mq.addListener(onMotion);
+  }
+  onMotion();
+})();
