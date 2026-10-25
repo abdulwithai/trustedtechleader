@@ -1,45 +1,49 @@
 # trustedtechleader site
 
-Plain static HTML, CSS and JavaScript. There is no backend, no build step and no server-side code.
+Next.js (App Router, TypeScript) site, built as a fully static export (`output: 'export'`). There is no backend and no server-side code, so the `out/` folder can go to any static host (GitHub Pages is wired up in `.github/workflows/static.yml`).
 
 ## Structure
 
-- Repo root - the whole site. Every file here is served as-is (HTML, CSS, JS, assets). Also holds `_headers` (security headers and cache rules, used by hosts that support them), `robots.txt` and `sitemap.xml`.
-- `_partials/` - shared header and footer fragments to paste into pages.
-- `case-studies/` - case studies; one folder per project (software builds are anonymized; the law-firm, WordPress and mobile-app case studies cover public sites and apps and link to them). Add new ones by copying an existing case-study page, then add its card to `case-studies/index.html`, its URL to `sitemap.xml`, and update the prev/next links of its neighbours.
+- `src/app/` - one `page.tsx` per route (`/`, `/case-studies/`, `/case-studies/<slug>/`, ...). `not-found.tsx` becomes `404.html`. `layout.tsx` holds the fonts, default icons and the tracking/consent component.
+- `src/components/` - `PageShell` (skip link, header, footer), `SiteHeader`, `SiteFooter`, `NavToggle`, `Tracking`, and `behaviors/*` (client components that add page interactivity).
+- `src/styles/` - `site.css` (global) and `pages/*.css` (imported by the page that uses them, scoped by the page class such as `.page-home`).
+- `public/` - served as-is: `assets/img`, case-study screenshots (`case-studies/<slug>/*.jpg`), `robots.txt`, `sitemap.xml`, `llms.txt`, `CNAME`, `_headers`, favicons.
+- `tracking/` - GTM container export and notes.
+- `scripts/convert.mjs` - the one-off script that converted the original static HTML to TSX. Kept for reference only.
 
-## View locally
+Adding a case study: copy an existing `src/app/case-studies/<slug>/page.tsx`, add its card to `src/app/case-studies/page.tsx`, its URL to `public/sitemap.xml`, put its screenshots in `public/case-studies/<slug>/`, and update the prev/next links of its neighbours.
 
-Double-click `index.html` to open it in your browser. All links and assets use relative paths, so the site works straight from the file system (`file://`).
+## Develop
+
+```
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static export to out/
+npm run lint     # type check
+```
 
 ## Deploy
 
-Upload the repo contents to any static host, for example:
-
-- Cloudflare Pages
-- Netlify Drop
-- GitHub Pages
-- cPanel (File Manager or FTP, into the web root)
-
-Upload the repo contents so that `index.html` sits at the top level of the web root.
+`npm run build` writes the site to `out/`. Upload that folder to any static host (GitHub Pages, Cloudflare Pages, Netlify, cPanel). `public/_headers` (security headers, cache rules) is copied into `out/` for hosts that support it.
 
 ## How the free audit works
 
-The free AI audit (`ai-audit/`) runs entirely in the browser. No request is sent to a server and no API key is needed.
+The free AI audit (`/ai-audit/`) runs entirely in the browser. No request is sent to a server and no API key is needed.
 
 ## Custom domain
 
-Point `trustedtechleader.com` at your host. For Cloudflare Pages, open the project, go to Custom domains and add `trustedtechleader.com`. Then either move the nameservers to Cloudflare, or add the DNS record Cloudflare shows you at the registrar. Until the DNS change propagates, the domain will not resolve to the site.
+Point `trustedtechleader.com` at your host (`public/CNAME` is set for GitHub Pages).
 
 ## Before launch
 
-- [ ] Replace the placeholder email `hello@trustedtechleader.com`. Search the site for `TODO: contact email`.
-- [ ] Replace the LinkedIn link. Search the site for `data-todo="linkedin"`.
-- [ ] The Free AI Visibility Scan form (free-scan/) opens the visitor's email app addressed to hello@trustedtechleader.com. Swap in a form service (e.g. Formspree) if you want submissions without email.
+- [ ] Replace the placeholder email `hello@trustedtechleader.com`. Search the source for `hello@trustedtechleader.com`.
+- [ ] Replace the LinkedIn link. Search the source for `data-todo="linkedin"`.
+- [ ] Set the GTM container ID in `src/components/Tracking.tsx` (`GTM_ID`).
+- [ ] The Free AI Visibility Scan form (`/free-scan/`) opens the visitor's email app addressed to hello@trustedtechleader.com. Swap in a form service (e.g. Formspree) if you want submissions without email.
 - [ ] Add the case study only with written client permission.
 
 ## SEO notes
 
-- Every page has a unique title (60 characters or fewer), a meta description (160 or fewer), a canonical URL, Open Graph and Twitter tags, and JSON-LD. Keep these in step when you add a page.
-- The share image is `assets/img/og-default.png` (1200x630). Replace it to change how links look when shared.
-- `404.html` is `noindex` and has no canonical on purpose.
+- Every page exports `metadata` with a unique title (60 characters or fewer), description (160 or fewer), canonical URL, Open Graph and Twitter tags, and renders its JSON-LD. Keep these in step when you add a page.
+- The share image is `public/assets/img/og-default.png` (1200x630).
+- `not-found.tsx` is `noindex` and has no canonical on purpose.

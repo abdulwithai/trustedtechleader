@@ -1,5 +1,9 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
 .DS_Store
 .claude/
 sales-channel-log.md
-UI mockups for agency/
-UI mockups for agency-v1/
+AGENTS.md
