@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-/** Shared footer; the page's disclaimer line (if any) is passed as children. */
+/** Shared footer; the page's disclaimer line (if any) is passed as children. */   
 export default function SiteFooter({ children, linkedin = true }: { children?: ReactNode; linkedin?: boolean }) {
   return (
     <footer className="site-footer">
