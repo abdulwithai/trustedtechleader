@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
+import { BOOKING_URL } from '@/lib/booking';
 
 export const metadata: Metadata = {
   "title": {
@@ -50,7 +51,7 @@ export default function Page() {
       <h1 id="hero-title" className="h1-md maxw-prose">AI that works inside the workflow you already have.</h1>
       <p className="lead mt-3 maxw-prose">We add AI to a specific step of your process, such as drafting, reading documents or mapping data, instead of selling a separate chatbot. A person reviews the output where it matters. </p>
       <div className="btn-row mt-4">
-      <a className="btn btn-primary" href="mailto:hello@trustedtechleader.com?subject=Project%20enquiry">Start a conversation</a>
+      <a className="btn btn-primary" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
       <a className="btn btn-outline" href="#related">See related case studies</a>
       </div>
       </section>
@@ -100,7 +101,7 @@ export default function Page() {
       <div className="container">
       <h2 id="cta-title" className="h2-lg">Show us a step that eats your team&#x27;s time.</h2>
       <div className="btn-row btn-row--center mt-4">
-      <a className="btn btn-light btn-lg" href="mailto:hello@trustedtechleader.com?subject=Project%20enquiry">Email hello@trustedtechleader.com</a>
+      <a className="btn btn-light btn-lg" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
       </div>
       </div>
       </section>

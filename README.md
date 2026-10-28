@@ -6,6 +6,7 @@ Next.js (App Router, TypeScript) site, built as a fully static export (`output: 
 
 - `src/app/` - one `page.tsx` per route (`/`, `/case-studies/`, `/case-studies/<slug>/`, ...). `not-found.tsx` becomes `404.html`. `layout.tsx` holds the fonts, default icons and the tracking/consent component.
 - `src/components/` - `PageShell` (skip link, header, footer), `SiteHeader`, `SiteFooter`, `NavToggle`, `Tracking`, and `behaviors/*` (client components that add page interactivity).
+- Funnels: niche flows with their own header nav. Pages live in route groups `src/app/(funnel-<id>)/` (the folder name is not part of the URL). The registry is `src/lib/funnels.ts`. A page opts in with `funnel="<id>"` on `PageShell`; without it the general nav is shown, which is niche-neutral.
 - `src/styles/` - `site.css` (global) and `pages/*.css` (imported by the page that uses them, scoped by the page class such as `.page-home`).
 - `public/` - served as-is: `assets/img`, case-study screenshots (`case-studies/<slug>/*.jpg`), `robots.txt`, `sitemap.xml`, `llms.txt`, `CNAME`, `_headers`, favicons.
 - `tracking/` - GTM container export and notes.
@@ -13,11 +14,13 @@ Next.js (App Router, TypeScript) site, built as a fully static export (`output: 
 
 Adding a case study: copy an existing `src/app/case-studies/<slug>/page.tsx`, add its card to `src/app/case-studies/page.tsx`, its URL to `public/sitemap.xml`, put its screenshots in `public/case-studies/<slug>/`, and update the prev/next links of its neighbours.
 
+Adding a niche funnel: write a `FunnelContent` in `src/lib/funnel-content/<id>.ts`, add a theme in `src/styles/pages/funnel-<id>.css` (override the `--f-*` vars from `funnel.css`), create `src/app/(funnel-<id>)/<path>/page.tsx` that renders `<FunnelPage>` (copy the travel or real-estate page), add an entry to `funnels` in `src/lib/funnels.ts`, and add the URL to `public/sitemap.xml` and `public/llms.txt`. Booking clicks are tagged with the funnel id for analytics (see `tracking/README.md`).
+
 ## Develop
 
 ```
 npm install
-npm run dev      # http://localhost:3000
+npm run dev      # http://localhost:9100
 npm run build    # static export to out/
 npm run lint     # type check
 ```
@@ -39,7 +42,7 @@ Point `trustedtechleader.com` at your host (`public/CNAME` is set for GitHub Pag
 - [ ] Replace the placeholder email `hello@trustedtechleader.com`. Search the source for `hello@trustedtechleader.com`.
 - [ ] Replace the LinkedIn link. Search the source for `data-todo="linkedin"`.
 - [ ] Set the GTM container ID in `src/components/Tracking.tsx` (`GTM_ID`).
-- [ ] The Free AI Visibility Scan form (`/free-scan/`) opens the visitor's email app addressed to hello@trustedtechleader.com. Swap in a form service (e.g. Formspree) if you want submissions without email.
+- [ ] The site has no submission forms. The Free AI Visibility Scan (`/free-scan/`) and other CTAs send visitors to Calendly via `BOOKING_URL` in `src/lib/booking.ts`.
 - [ ] Add the case study only with written client permission.
 
 ## SEO notes

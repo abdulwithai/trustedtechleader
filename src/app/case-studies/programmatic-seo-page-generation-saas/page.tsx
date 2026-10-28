@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 import '@/styles/pages/case-studies.css';
+import { BOOKING_URL } from '@/lib/booking';
 
 export const metadata: Metadata = {
   "title": {
@@ -444,7 +445,7 @@ export default function Page() {
       <h2 id="cta-title">Need a system like this built?</h2>
       <p className="body-sm">Tell us what it needs to do and we will scope it with you on a call.</p>
       </div>
-      <a className="btn btn-dark btn-lg" href="mailto:hello@trustedtechleader.com?subject=Project%20enquiry">Discuss a build</a> 
+      <a className="btn btn-dark btn-lg" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a> 
       </section>
       </main>
     </PageShell>

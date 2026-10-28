@@ -3,20 +3,21 @@ import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 import HomeBehavior from '@/components/behaviors/HomeBehavior';
 import '@/styles/pages/home.css';
+import { BOOKING_URL } from '@/lib/booking';
 
 export const metadata: Metadata = {
   "title": {
-    "absolute": "Trusted Tech Leader | Custom business systems for founder-led companies"
+    "absolute": "Trusted Tech Leader | AI consulting and automation"
   },
-  "description": "We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.",
+  "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
   "alternates": {
     "canonical": "/"
   },
   "openGraph": {
     "type": "website",
     "siteName": "Trusted Tech Leader",
-    "title": "Trusted Tech Leader | Custom business systems for founder-led companies",
-    "description": "We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.",
+    "title": "Trusted Tech Leader | AI consulting and automation",
+    "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
     "url": "https://trustedtechleader.com/",
     "locale": "en_US",
     "images": [
@@ -24,18 +25,18 @@ export const metadata: Metadata = {
         "url": "https://trustedtechleader.com/assets/img/og-default.png",
         "width": 1200,
         "height": 630,
-        "alt": "Trusted Tech Leader: AI lead systems for US law firms"
+        "alt": "Trusted Tech Leader: AI consulting, automation and custom software"
       }
     ]
   },
   "twitter": {
     "card": "summary_large_image",
-    "title": "Trusted Tech Leader | Custom business systems for founder-led companies",
-    "description": "We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.",
+    "title": "Trusted Tech Leader | AI consulting and automation",
+    "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
     "images": [
       {
         "url": "https://trustedtechleader.com/assets/img/og-default.png",
-        "alt": "Trusted Tech Leader: AI lead systems for US law firms"
+        "alt": "Trusted Tech Leader: AI consulting, automation and custom software"
       }
     ]
   }
@@ -44,21 +45,21 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <PageShell pageClass="page-home" home>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://trustedtechleader.com/#organization\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\",\"logo\":\"https://trustedtechleader.com/apple-touch-icon.png\",\"description\":\"We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.\"},{\"@type\":\"WebSite\",\"@id\":\"https://trustedtechleader.com/#website\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader\",\"publisher\":{\"@id\":\"https://trustedtechleader.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https://trustedtechleader.com/#webpage\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader | Custom business systems for founder-led companies\",\"description\":\"We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.\",\"isPartOf\":{\"@id\":\"https://trustedtechleader.com/#website\"},\"about\":{\"@id\":\"https://trustedtechleader.com/#organization\"}}]}" }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://trustedtechleader.com/#organization\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\",\"logo\":\"https://trustedtechleader.com/apple-touch-icon.png\",\"description\":\"AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.\"},{\"@type\":\"WebSite\",\"@id\":\"https://trustedtechleader.com/#website\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader\",\"publisher\":{\"@id\":\"https://trustedtechleader.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https://trustedtechleader.com/#webpage\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader | AI consulting and automation\",\"description\":\"AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.\",\"isPartOf\":{\"@id\":\"https://trustedtechleader.com/#website\"},\"about\":{\"@id\":\"https://trustedtechleader.com/#organization\"}}]}" }} />
       <main id="main">
       <section className="container hero grid grid-hero">
       <div className="hero__copy">
-      <p className="hero__badge"><span aria-hidden="true"></span>Business systems</p>
-      <h1>Custom software for <em>founder-led</em> businesses.</h1>
-      <p className="lead">CRM, billing and operations systems, built around how you work.</p>
+      <p className="hero__badge"><span aria-hidden="true"></span>AI consultant</p>
+      <h1>AI that does real work <em>inside</em> your business.</h1>
+      <p className="lead">AI strategy, automation and agents built into your existing workflows, plus the custom systems and apps they run on.</p>
       <div className="btn-row mt-3">
-      <Link className="btn btn-primary" href="/case-studies/">See our work</Link>
-      <a className="btn btn-outline" href="mailto:hello@trustedtechleader.com">Get in touch</a>
+      <a className="btn btn-primary" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
+      <Link className="btn btn-outline" href="/case-studies/">See our work</Link>
       </div>
-      <p className="hero__proof">26 case studies &middot; CRM, billing, inventory, reporting</p>
+      <p className="hero__proof">26 builds shipped &middot; AI automation, business systems, apps</p>
       </div>
       <div className="hero__card">
-      <div className="dash" role="img" aria-label="Illustration: a live operations dashboard for a founder-led business. Revenue, open deals and invoices due update as a client moves through one system, from lead captured to contract signed, invoice paid and commission calculated.">
+      <div className="dash" role="img" aria-label="Illustration: a live operations dashboard for an AI-automated business. Revenue, open deals and invoices due update as work moves through one system, from lead captured to contract signed, invoice paid and commission calculated, with no manual steps.">
       <div className="dash__toast dash__toast--pay" aria-hidden="true">
       <span className="dash__check"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7"></path></svg></span>
       <span className="dash__tt"><b>Payment received</b><small data-toast="">$3,200 &middot; Bright Studio</small></span>
@@ -91,7 +92,7 @@ export default function Page() {
       <div className="dash__ax"><span>8 weeks ago</span><span>This week</span></div>
       </div>
       <div className="feed">
-      <div className="feed__head"><span><i></i>Pipeline</span><em>CRM &middot; Billing &middot; Ops</em></div>
+      <div className="feed__head"><span><i></i>Pipeline</span><em>AI &middot; Automation &middot; Ops</em></div>
       <div className="feed__view">
       <ul className="feed__rows" data-feed="">
       <li className="feed__row"><span className="feed__ic"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><circle cx="5" cy="5" r="1.6"></circle><circle cx="11" cy="11" r="1.6"></circle></svg></span><span className="feed__tx"><b>Bright Studio</b><span>Commission $320 calculated</span></span><span className="feed__st is-ok">Done</span></li>
@@ -105,7 +106,7 @@ export default function Page() {
       </div>
       <div className="dash__toast dash__toast--sync" aria-hidden="true">
       <span className="dash__avs"><i>AM</i><i>JR</i><i>SK</i></span>
-      <span className="dash__tt"><b>Synced</b><small>QuickBooks &middot; Gmail &middot; Sheets</small></span>
+      <span className="dash__tt"><b>Synced</b><small>CRM &middot; Email &middot; Sheets</small></span>
       </div>
       </div>
       </div>
@@ -114,29 +115,29 @@ export default function Page() {
       <div className="grid grid-split">
       <div>
       <p className="eyebrow">Services</p>
-      <h2 id="services-h">What we build</h2>
+      <h2 id="services-h">How we help</h2>
       </div>
       <ol className="svc-list rule-top">
-      <li className="svc"><span className="svc__n">01</span><div><h3 className="svc__t"><Link href="/business-systems/">Business systems</Link></h3><p className="svc__d">CRM, billing, inventory, reporting.</p></div></li>
-      <li className="svc"><span className="svc__n">02</span><div><h3 className="svc__t"><Link href="/ai-automation/">AI automation</Link></h3><p className="svc__d">Added inside the workflow.</p></div></li>
-      <li className="svc"><span className="svc__n">03</span><div><h3 className="svc__t"><Link href="/web-and-mobile-apps/">Web and mobile apps</Link></h3><p className="svc__d">On the same system as your back office.</p></div></li>
-      <li className="svc"><span className="svc__n">04</span><div><h3 className="svc__t"><Link href="/law-firms/">Legal SEO reviews</Link></h3><p className="svc__d">For law-firm sites.</p></div></li>
+      <li className="svc"><span className="svc__n">01</span><div><h3 className="svc__t"><a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">AI strategy and consulting</a></h3><p className="svc__d">Find where AI pays off, and what to skip.</p></div></li>
+      <li className="svc"><span className="svc__n">02</span><div><h3 className="svc__t"><Link href="/ai-automation/">AI automation</Link></h3><p className="svc__d">Agents and automations added inside the workflow.</p></div></li>
+      <li className="svc"><span className="svc__n">03</span><div><h3 className="svc__t"><Link href="/business-systems/">Business systems</Link></h3><p className="svc__d">CRM, billing, inventory, reporting.</p></div></li>
+      <li className="svc"><span className="svc__n">04</span><div><h3 className="svc__t"><Link href="/web-and-mobile-apps/">Web and mobile apps</Link></h3><p className="svc__d">On the same system as your back office.</p></div></li>
       </ol>
       </div>
       </section>
-      <section className="container proof" aria-label="Case study">
+      <section className="container proof" aria-label="Our work">
       <div className="card-dashed">
       <div>
-      <p className="eyebrow">Case study</p>
-      <p className="proof__t">Travel membership CRM and payments.</p>
+      <p className="eyebrow">Our work</p>
+      <p className="proof__t">26 builds shipped. See the work.</p>
       </div>
-      <Link className="btn btn-outline" href="/case-studies/travel-membership-crm-tour-manifest-payments/">Read the case study</Link>
+      <Link className="btn btn-outline" href="/case-studies/">See case studies</Link>
       </div>
       </section>
       <section className="cta rule-bottom" aria-labelledby="cta-h">
       <div className="container text-center">
-      <h2 className="h2-lg mx-auto" id="cta-h">Have a workflow stuck in spreadsheets?</h2>
-      <div className="btn-row btn-row--center mt-4"><a className="btn btn-primary btn-lg" href="mailto:hello@trustedtechleader.com">Get in touch</a></div>
+      <h2 className="h2-lg mx-auto" id="cta-h">Have a process AI could take off your plate?</h2>
+      <div className="btn-row btn-row--center mt-4"><a className="btn btn-primary btn-lg" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a></div>
       </div>
       </section>
       </main>
