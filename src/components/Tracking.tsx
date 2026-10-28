@@ -4,6 +4,7 @@
    Set GTM_ID below. Everything else (GA4, Ads, etc.) is configured inside GTM. */
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { BOOKING_URL } from '@/lib/booking';
 
 const GTM_ID: string = 'GTM-XXXXXXX'; // TODO: replace with your GTM container ID
 const KEY = 'ttl_consent';
@@ -75,6 +76,8 @@ export default function Tracking() {
 
   // Consent defaults + GTM (once), banner visibility, global click tracking
   useEffect(() => {
+    // No analytics or consent banner on the private invoice admin.
+    if (location.pathname.startsWith('/admin')) return;
     init();
     if (!stored()) setShowBanner(true);
 
@@ -83,13 +86,13 @@ export default function Tracking() {
       const a = t && t.closest ? t.closest<HTMLAnchorElement>('a[href]') : null;
       if (!a) return;
       const href = a.getAttribute('href') || '';
-      if (a.closest('#scan-ok')) return;
-      if (href.indexOf('mailto:') === 0) {
-        push('generate_lead', { method: 'email', link_text: (a.textContent || '').trim().slice(0, 60), page_path: location.pathname });
+      const funnel = a.closest<HTMLElement>('[data-funnel]')?.dataset.funnel || 'none';
+      if (href.indexOf(BOOKING_URL) === 0) {
+        push('generate_lead', { method: 'calendly', link_text: (a.textContent || '').trim().slice(0, 60), page_path: location.pathname, funnel });
       } else if (/^https?:\/\//.test(href) && a.hostname !== location.hostname) {
         push('outbound_click', { link_url: href, page_path: location.pathname });
       } else if (a.classList.contains('btn')) {
-        push('cta_click', { link_text: (a.textContent || '').trim().slice(0, 60), link_url: href, page_path: location.pathname });
+        push('cta_click', { link_text: (a.textContent || '').trim().slice(0, 60), link_url: href, page_path: location.pathname, funnel });
       }
     };
     document.addEventListener('click', onClick);
@@ -98,15 +101,12 @@ export default function Tracking() {
 
   // Per-page watchers, re-attached on client navigation
   useEffect(() => {
-    // Lead: free-scan form produces the mailto and reveals #scan-ok
-    const scan = watch('scan-ok', 'hidden', (el) => !el.hidden, 'generate_lead');
     // Audit tool: result panel revealed
     const result = watch('audit-result', 'hidden', (el) => !el.hidden, 'audit_complete');
     const af = document.getElementById('audit-form');
     const onSubmit = () => push('audit_start', { page_path: location.pathname });
     if (af) af.addEventListener('submit', onSubmit);
     return () => {
-      if (scan) scan.disconnect();
       if (result) result.disconnect();
       if (af) af.removeEventListener('submit', onSubmit);
     };

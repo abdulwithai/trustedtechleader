@@ -1,0 +1,151 @@
+/* Shared funnel page styles. Themes override the --f-* vars (see src/styles/pages/funnel-*.css). */
+.page-funnel {
+  --f-hero-bg: var(--navy);
+  --f-hero-text: var(--on-dark);
+  --f-hero-kicker: var(--on-dark-muted);
+  --f-hero-lead: var(--on-dark-2);
+  --f-hero-outline: #4A5872;
+  --f-accent: var(--blue);
+  --f-accent-tint: var(--blue-tint);
+  --f-demo-bg: var(--paper);
+  --f-demo-ink: var(--navy);
+  --f-demo-line: var(--line);
+  --f-tab-active-bg: var(--navy);
+  --f-tab-active-text: var(--paper);
+  --f-badge-bg: var(--sand);
+  --f-dot: var(--navy);
+  --f-rule: var(--navy);
+  --f-hairline: #E4E0D7;
+  --f-fee-bg: var(--navy);
+  --f-fee-text: var(--paper);
+  --f-fee-sub: var(--on-dark-muted);
+  --f-faq-ink: var(--navy);
+  --f-band-bg: var(--sand);
+}
+.page-funnel .dark-top { background: var(--f-hero-bg); color: var(--f-hero-text); }
+
+.page-funnel .law-hero {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 540px); gap: 56px; align-items: center;
+  padding-block: 80px 88px;
+}
+.page-funnel .law-hero__practices { font-size: 13px; color: var(--f-hero-kicker); margin-bottom: 24px; }
+.page-funnel .law-hero .lead { color: var(--f-hero-lead); max-width: 500px; margin: 28px 0 36px; }
+.page-funnel .law-hero .btn-outline-dark { border-color: var(--f-hero-outline); }
+
+/* demo record card */
+.page-funnel .demo { background: var(--f-demo-bg); color: var(--f-demo-ink); border-radius: 16px; overflow: hidden; min-width: 0; }
+.page-funnel .demo__bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--f-demo-line); }
+.page-funnel .demo__tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.page-funnel .demo__tab {
+  padding: 7px 13px; border-radius: var(--r-pill); font: 500 13px/1.2 var(--font-sans);
+  background: transparent; color: var(--f-demo-ink); border: 1px solid var(--f-demo-line);
+}
+.page-funnel .demo__tab[aria-selected="true"] { background: var(--f-tab-active-bg); color: var(--f-tab-active-text); border-color: var(--f-tab-active-bg); }
+.page-funnel .demo__tab:focus-visible, .page-funnel #demo-panel:focus-visible { outline-color: var(--f-accent); }
+.page-funnel .demo__badge { font-size: 11.5px; color: var(--muted); background: var(--f-badge-bg); padding: 4px 8px; border-radius: 5px; white-space: nowrap; }
+.page-funnel .demo__head { padding: 20px 22px 8px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.page-funnel .demo__name { font: 400 24px/1.15 var(--font-serif); }
+.page-funnel .demo__matter { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+.page-funnel .demo__meta { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.5; }
+.page-funnel .demo__steps { padding: 8px 22px 20px; }
+.page-funnel .demo__steps li { display: grid; grid-template-columns: 22px 64px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-top: 1px solid var(--f-hairline); align-items: baseline; }
+.page-funnel .demo__steps .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--f-dot); margin-top: 4px; }
+.page-funnel .demo__steps .dot--last { background: var(--f-accent); }
+.page-funnel .demo__steps .t { font-size: 12px; color: var(--muted); }
+.page-funnel .demo__steps .l { font-size: 14px; font-weight: 500; }
+.page-funnel .demo__steps .d { font-size: 13px; color: var(--muted); margin-top: 2px; line-height: 1.45; }
+
+/* stages */
+.page-funnel .stages { padding-bottom: 72px; }
+.page-funnel .stages__head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 40px; }
+.page-funnel .stages__head h2 { max-width: 620px; }
+.page-funnel .stages__sub { font-size: 14px; color: var(--muted); max-width: 320px; line-height: 1.55; }
+.page-funnel .stage-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid var(--f-rule); }
+.page-funnel .stage-strip li { padding: 22px 18px 0; border-left: 1px solid var(--line); }
+.page-funnel .stage-strip li:first-child { padding-left: 0; border-left: 0; }
+.page-funnel .stage-strip li.is-next { background: var(--f-accent-tint); padding-right: 18px; padding-bottom: 22px; }
+.page-funnel .stage__n { font-size: 12.5px; color: var(--muted); }
+.page-funnel .is-next .stage__n { color: var(--f-accent); font-weight: 500; }
+.page-funnel .stage-strip h3 { font-size: 24px; line-height: 1.1; margin: 18px 0 10px; }
+.page-funnel .stage-strip p { font-size: 13.5px; line-height: 1.5; color: var(--text-2); }
+
+/* parts */
+.page-funnel .parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-top: 24px; padding-bottom: 96px; }
+.page-funnel .part { border-radius: 16px; padding: 40px; }
+.page-funnel .part__label { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+.page-funnel .part h3 { font-size: 34px; line-height: 1.1; margin-bottom: 14px; }
+.page-funnel .part__lead { font-size: 15px; line-height: 1.6; color: var(--text-2); margin-bottom: 28px; }
+.page-funnel .part__list { display: flex; flex-direction: column; gap: 12px; font-size: 14.5px; border-top: 1px solid var(--f-hairline); padding-top: 22px; }
+.page-funnel .part__list li { display: flex; gap: 12px; }
+.page-funnel .part__list li::before { content: "—"; color: var(--f-accent); }
+.page-funnel .fee-bar {
+  grid-column: 1 / -1; background: var(--f-fee-bg); color: var(--f-fee-text); border-radius: 16px; padding: 36px 40px;
+  display: flex; justify-content: space-between; align-items: center; gap: 32px;
+}
+.page-funnel .fee-bar__title { font: 400 30px/1.15 var(--font-serif); }
+.page-funnel .fee-bar__sub { font-size: 14.5px; color: var(--f-fee-sub); margin-top: 8px; }
+.page-funnel .fee-bar .btn { white-space: nowrap; }
+
+/* faq */
+.page-funnel .faq-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 64px; padding-bottom: 96px; }
+.page-funnel .faq { border-top: 1px solid var(--f-rule); }
+.page-funnel .faq__item { border-bottom: 1px solid var(--line); }
+.page-funnel .faq__q { font: inherit; }
+.page-funnel .faq__q button {
+  width: 100%; display: flex; justify-content: space-between; gap: 24px; align-items: baseline; text-align: left;
+  padding: 24px 0; background: none; border: 0; font: 400 23px/1.25 var(--font-serif); color: var(--f-faq-ink);
+}
+.page-funnel .faq__sign { font: 400 20px/1 var(--font-sans); color: var(--muted); flex: none; }
+.page-funnel .faq__sign::before { content: "+"; }
+.page-funnel .faq__q button[aria-expanded="true"] .faq__sign::before { content: "\2212"; }
+.page-funnel .faq__a { padding: 0 0 24px; }
+.page-funnel .faq__a p { font-size: 15px; line-height: 1.6; color: var(--text-2); max-width: 640px; }
+.page-funnel .faq__a[hidden] { display: none; }
+
+/* proof band (optional) */
+.page-funnel .proof { padding-bottom: 72px; }
+.page-funnel .proof__card {
+  border-radius: 16px; padding: 40px; border-left: 4px solid var(--f-accent);
+  display: flex; justify-content: space-between; align-items: center; gap: 32px;
+}
+.page-funnel .proof__copy h2 { max-width: 620px; }
+.page-funnel .proof__body { font-size: 15px; line-height: 1.6; color: var(--text-2); max-width: 620px; margin-top: 12px; }
+.page-funnel .proof .btn { white-space: nowrap; }
+
+/* closing band */
+.page-funnel .cta-band {
+  margin: 0 24px 24px; border-radius: 18px; background: var(--f-band-bg); padding: 80px 64px;
+  display: flex; justify-content: space-between; align-items: end; gap: 48px;
+}
+.page-funnel .cta-band h2 { max-width: 700px; font-size: clamp(34px, 4.2vw, 54px); }
+.page-funnel .cta-band .btn { white-space: nowrap; }
+
+@media (max-width: 1000px) {
+  .page-funnel .stage-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .page-funnel .stage-strip li { padding-bottom: 22px; border-top: 1px solid var(--line); }
+  .page-funnel .stage-strip li:nth-child(3n+1) { padding-left: 0; border-left: 0; }
+  .page-funnel .stage-strip li:nth-child(-n+3) { border-top: 0; }
+  .page-funnel .stage-strip li.is-next { padding-left: 18px; }
+}
+@media (max-width: 860px) {
+  .page-funnel .proof { padding-bottom: 48px; }
+  .page-funnel .proof__card { flex-direction: column; align-items: flex-start; padding: 28px; gap: 20px; }
+  .page-funnel .law-hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 48px 56px; }
+  .page-funnel .stages__head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .page-funnel .parts { grid-template-columns: minmax(0, 1fr); padding-bottom: 64px; }
+  .page-funnel .part { padding: 28px; }
+  .page-funnel .fee-bar { flex-direction: column; align-items: flex-start; padding: 28px; gap: 20px; }
+  .page-funnel .faq-section { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-bottom: 64px; }
+  .page-funnel .cta-band { flex-direction: column; align-items: flex-start; padding: 40px 24px; margin-inline: 12px; gap: 28px; }
+}
+@media (max-width: 600px) {
+  .page-funnel .stage-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .page-funnel .stage-strip li, .page-funnel .stage-strip li:nth-child(3n+1) { padding-left: 18px; border-left: 1px solid var(--line); border-top: 1px solid var(--line); }
+  .page-funnel .stage-strip li:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .page-funnel .stage-strip li:nth-child(-n+2) { border-top: 0; }
+  .page-funnel .demo__bar { flex-wrap: wrap; }
+  .page-funnel .demo__head { flex-direction: column; }
+  .page-funnel .demo__meta { text-align: left; }
+  .page-funnel .demo__steps li { grid-template-columns: 14px 56px minmax(0, 1fr); gap: 8px; }
+  .page-funnel .faq__q button { font-size: 20px; }
+}

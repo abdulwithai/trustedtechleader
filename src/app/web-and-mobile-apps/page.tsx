@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
+import { BOOKING_URL } from '@/lib/booking';
 
 export const metadata: Metadata = {
   "title": {
@@ -50,7 +51,7 @@ export default function Page() {
       <h1 id="hero-title" className="h1-md maxw-prose">Apps your customers use, on the system your team runs.</h1>
       <p className="lead mt-3 maxw-prose">We build web and mobile apps that share one API and admin dashboard with your back office. Orders and members show up in an admin your team uses.</p>
       <div className="btn-row mt-4">
-      <a className="btn btn-primary" href="mailto:hello@trustedtechleader.com?subject=Project%20enquiry">Start a conversation</a>
+      <a className="btn btn-primary" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
       <a className="btn btn-outline" href="#related">See related case studies</a>
       </div>
       </section>
@@ -100,7 +101,7 @@ export default function Page() {
       <div className="container">
       <h2 id="cta-title" className="h2-lg">Tell us what your customers should be able to do.</h2>
       <div className="btn-row btn-row--center mt-4">
-      <a className="btn btn-light btn-lg" href="mailto:hello@trustedtechleader.com?subject=Project%20enquiry">Email hello@trustedtechleader.com</a>
+      <a className="btn btn-light btn-lg" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
       </div>
       </div>
       </section>

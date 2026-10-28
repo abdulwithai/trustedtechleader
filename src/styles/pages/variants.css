@@ -1,4 +1,4 @@
-/* Variation visuals (used by /v/a, /v/b, /v/c only) */
+/* Variation visuals (used by /travel-membership/ only) */
 .page-home .vz { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 22px; box-shadow: 0 24px 48px -30px rgba(15,26,42,.45); }
 .page-home .vz__k { margin: 0 0 14px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .page-home .vz__pill { display: inline-block; padding: 3px 10px; font-size: 12px; border-radius: 999px; background: var(--blue-tint); color: var(--blue); }

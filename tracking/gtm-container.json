@@ -102,6 +102,21 @@
                     "value": "{{DLV - page_path}}"
                   }
                 ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "template",
+                    "key": "parameter",
+                    "value": "funnel"
+                  },
+                  {
+                    "type": "template",
+                    "key": "parameterValue",
+                    "value": "{{DLV - funnel}}"
+                  }
+                ]
               }
             ]
           }
@@ -265,6 +280,21 @@
                     "type": "template",
                     "key": "parameterValue",
                     "value": "{{DLV - page_path}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "template",
+                    "key": "parameter",
+                    "value": "funnel"
+                  },
+                  {
+                    "type": "template",
+                    "key": "parameterValue",
+                    "value": "{{DLV - funnel}}"
                   }
                 ]
               }
@@ -602,6 +632,31 @@
             "type": "template",
             "key": "name",
             "value": "consent"
+          }
+        ],
+        "fingerprint": "0"
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "variableId": "7",
+        "name": "DLV - funnel",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "integer",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "boolean",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "template",
+            "key": "name",
+            "value": "funnel"
           }
         ],
         "fingerprint": "0"

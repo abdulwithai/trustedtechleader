@@ -6,9 +6,11 @@
     "dev": "next dev -p 9100",
     "build": "next build",
     "start": "npx serve out -l 9100",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "admin:hash": "node scripts/hash-password.mjs"
   },
   "dependencies": {
+    "jspdf": "^4.2.1",
     "next": "^16.4.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
