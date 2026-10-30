@@ -1,0 +1,71 @@
+/* The Auditor: illustrated narrator character (inline SVG). */
+.acs-auditor {
+  display: block;
+  width: 220px;
+  height: auto;
+  overflow: visible;
+}
+
+.acs-auditor__upper {
+  animation: acs-aud-breathe 4s ease-in-out infinite;
+}
+
+.acs-auditor__eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: acs-aud-blink 5.2s infinite;
+}
+
+.acs-auditor__accent {
+  animation: acs-aud-bob 2.8s ease-in-out infinite;
+}
+
+.acs-auditor__spark {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: acs-aud-twinkle 2.2s ease-in-out infinite;
+}
+.acs-auditor__spark--2 { animation-delay: -.7s; }
+.acs-auditor__spark--3 { animation-delay: -1.4s; }
+
+.acs-auditor__burst {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: acs-aud-burst 1.8s ease-in-out infinite;
+}
+
+@keyframes acs-aud-breathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+
+@keyframes acs-aud-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(.12); }
+  96% { transform: scaleY(1); }
+}
+
+@keyframes acs-aud-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes acs-aud-twinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: scale(.65) rotate(20deg); opacity: .7; }
+}
+
+@keyframes acs-aud-burst {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.12); opacity: .75; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acs-auditor__upper,
+  .acs-auditor__eyes,
+  .acs-auditor__accent,
+  .acs-auditor__spark,
+  .acs-auditor__burst {
+    animation: none;
+  }
+}

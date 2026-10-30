@@ -1,4 +1,5 @@
-import { BOOKING_URL } from '@/lib/booking';
+import Cta from '@/components/brand/Cta';
+import Auditor from '@/components/brand/Auditor';
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 import AuditBehavior from '@/components/behaviors/AuditBehavior';
@@ -47,19 +48,22 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"WebPage\",\"@id\":\"https://trustedtechleader.com/ai-audit/#webpage\",\"url\":\"https://trustedtechleader.com/ai-audit/\",\"name\":\"Free AI audit for law-firm intake | Trusted Tech Leader\",\"description\":\"Answer six questions about your intake and get a preliminary audit against the six stages every lead goes through, with the first fix for each gap.\",\"isPartOf\":{\"@type\":\"WebSite\",\"@id\":\"https://trustedtechleader.com/#website\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\"},\"publisher\":{\"@type\":\"Organization\",\"@id\":\"https://trustedtechleader.com/#organization\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\",\"logo\":\"https://trustedtechleader.com/apple-touch-icon.png\"},\"inLanguage\":\"en-US\"}" }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://trustedtechleader.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI audit for law-firm intake\",\"item\":\"https://trustedtechleader.com/ai-audit/\"}]}" }} />
       <main id="main">
+      <div className="audit-page">
+      <div className="acs-glow" aria-hidden="true"></div>
       <div className="container audit">
       <div className="audit-intro">
-      <p className="eyebrow">Free · about two minutes</p>
-      <h1 className="h1-md">Where are your leads slipping through?</h1>
-      <p className="lead audit-intro__lead">Answer six questions about your intake. You get a preliminary audit against the six stages every lead goes through, with the first fix for each gap.</p>
+      <p className="acs-eyebrow">Free · about two minutes</p>
+      <h1>Where are your leads <em>slipping through?</em></h1>
+      <p className="acs-lead audit-intro__lead">Answer six questions about your intake. You get a preliminary audit against the six stages every lead goes through, with the first fix for each gap.</p>
       <ul className="audit-stages">
       <li><span>Capture · Read · Respond</span><span className="muted">Intake</span></li>
       <li><span>Book · Recover</span><span className="muted">Consultations</span></li>
       <li><span>Grow</span><span className="muted">Reviews and AI visibility</span></li>
       </ul>
       <p className="audit-note">No client data needed. Don't enter names or case details.</p>
+      <Auditor pose="think" facing="right" className="audit-intro__auditor" />
       </div>
-      <div className="audit-panel">
+      <div className="audit-panel acs-card acs-card--lg">
       <form id="audit-form" noValidate>
       <div className="audit-qs">
       <fieldset className="audit-q" data-key="practice">
@@ -118,8 +122,9 @@ export default function Page() {
       </fieldset>
       </div>
       <div className="audit-bar">
+      <div className="audit-meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <span className="audit-progress" id="audit-progress" aria-live="polite">0 of 6 answered</span>
-      <button type="submit" className="btn btn-primary" id="audit-run" disabled>Run my audit</button>
+      <button type="submit" className="btn btn-primary audit-run" id="audit-run" disabled>Run my audit</button>
       </div>
       </form>
       <section id="audit-result" className="audit-result" aria-labelledby="audit-headline" hidden>
@@ -132,14 +137,16 @@ export default function Page() {
       </div>
       <ol className="audit-findings" id="audit-findings"></ol>
       <div className="audit-cta">
-      <div>
+      <Auditor pose="thumbs" facing="left" className="audit-cta__auditor" />
+      <div className="audit-cta__copy">
       <p className="audit-cta__title">Confirm it on a call.</p>
       <p className="audit-cta__sub">Based only on your answers, not a measurement of your firm.</p>
       </div>
-      <a className="btn btn-primary" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
+      <Cta variant="light">Book a call</Cta>
       </div>
       <p className="audit-disclaimer">Preliminary audit generated from your answers. Not legal advice.</p>
       </section>
+      </div>
       </div>
       </div>
       </main>

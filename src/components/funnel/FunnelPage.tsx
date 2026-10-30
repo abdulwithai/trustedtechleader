@@ -42,8 +42,8 @@ export default function FunnelPage({ content }: { content: FunnelContent }) {
   return (
     <PageShell funnel={shell.funnel} pageClass={shell.pageClass} current={shell.current} crumb={shell.crumb} footerNote={shell.footerNote}>
       <FunnelJsonLd content={content} />
-      <FunnelHero content={content} />
       <main id="main">
+        <FunnelHero content={content} />
         <StageStrip stages={content.stages} />
         <OfferParts parts={content.parts} fee={content.fee} />
         <ProofBand proof={content.proof} />

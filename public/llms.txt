@@ -6,6 +6,7 @@
 - [AI automation](https://trustedtechleader.com/ai-automation/): AI added where it removes repetitive work: drafting, reading, matching and routing, with a person reviewing before it is published.
 - [Custom business systems](https://trustedtechleader.com/business-systems/): Custom CRM, billing, inventory and reporting built as one system around how your business runs, not around a template.
 - [Web and mobile apps](https://trustedtechleader.com/web-and-mobile-apps/): Customer-facing web and mobile apps that run on the same API and admin system as your back office.
+- [AI-generated code security audit](https://trustedtechleader.com/ai-code-security-audit/): security audit, penetration testing and production-readiness review for apps built with AI coding tools like Cursor, Bolt, Lovable, Replit, v0 and Claude Code; fixes included on request.
 
 ## For law firms
 - [For law firms](https://trustedtechleader.com/law-firms/): the six-stage lead system for immigration, personal injury and family law firms

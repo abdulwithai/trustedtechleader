@@ -7,14 +7,16 @@ import InvoiceEditor from './InvoiceEditor';
 import InvoiceList from './InvoiceList';
 import ServicesManager from './ServicesManager';
 import FunnelsList from './FunnelsList';
+import SocialPanel from './SocialPanel';
 import type { Invoice } from '@/lib/invoice/types';
 
-type Tab = 'new' | 'invoices' | 'services' | 'funnels';
+type Tab = 'new' | 'invoices' | 'services' | 'funnels' | 'social';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'new', label: 'New invoice' },
   { id: 'invoices', label: 'Invoices' },
   { id: 'services', label: 'Services' },
   { id: 'funnels', label: 'Funnels' },
+  { id: 'social', label: 'Social' },
 ];
 
 export default function AdminApp() {
@@ -67,6 +69,7 @@ export default function AdminApp() {
         {tab === 'invoices' && <InvoiceList onOpen={open} />}
         {tab === 'services' && <ServicesManager />}
         {tab === 'funnels' && <FunnelsList />}
+        {tab === 'social' && <SocialPanel />}
       </main>
     </div>
   );

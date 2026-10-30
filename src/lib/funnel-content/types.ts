@@ -38,6 +38,8 @@ export type FunnelContent = {
     h1: string;
     lead: string;
     primaryCta: string;
+    /** Optional phrase inside `h1` to render as the highlighted gradient phrase. */
+    highlight?: string;
     secondaryCta: { href: string; label: string };
   };
   demo: {
@@ -50,10 +52,15 @@ export type FunnelContent = {
   };
   stages: {
     title: string;
+    highlight?: string;
+    eyebrow?: string;
     sub: string;
     items: { n: string; title: string; body: string; next?: boolean }[];
   };
   parts: {
+    eyebrow?: string;
+    title?: string;
+    highlight?: string;
     items: { label: string; title: string; lead: string; list: string[] }[];
   };
   fee: { title: string; sub: string; cta: string };
@@ -62,7 +69,8 @@ export type FunnelContent = {
   faq: {
     eyebrow: string;
     title: string;
+    highlight?: string;
     items: { q: string; a: string }[];
   };
-  cta: { title: string; button: string };
+  cta: { title: string; highlight?: string; lead?: string; button: string };
 };

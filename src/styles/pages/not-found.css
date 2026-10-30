@@ -1,0 +1,18 @@
+/* 404 page. Scoped under .page-404 */
+.page-404 .nf { position: relative; overflow: hidden; min-height: min(720px, calc(100vh - 64px)); display: grid; align-items: center; }
+.page-404 .nf__inner {
+  position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 660px); gap: clamp(8px, 4vw, 48px);
+  align-items: end; justify-content: center; padding-block: clamp(40px, 7vw, 88px);
+}
+.page-404 .nf__char { display: flex; justify-content: center; }
+.page-404 .nf__auditor { width: clamp(170px, 24vw, 260px); }
+.page-404 .nf__card { display: grid; gap: 18px; justify-items: start; padding: clamp(26px, 4vw, 44px); }
+.page-404 .nf__card h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.04; }
+.page-404 .nf__card .acs-lead { margin: 0; }
+.page-404 .nf__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+@media (max-width: 800px) {
+  .page-404 .nf__inner { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .page-404 .nf__char { order: -1; margin-bottom: -18px; position: relative; z-index: 2; }
+  .page-404 .nf__auditor { width: 150px; }
+  .page-404 .nf__links .acs-btn { flex: 1 1 100%; justify-content: center; }
+}

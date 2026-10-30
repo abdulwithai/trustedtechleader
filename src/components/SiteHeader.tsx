@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import NavToggle from './NavToggle';
-import { BOOKING_URL } from '@/lib/booking';
+import BrandMark from './brand/BrandMark';
+import Cta from './brand/Cta';
 import { funnels, type FunnelId, type FunnelLink } from '@/lib/funnels';
 
 type Props = {
@@ -15,10 +16,16 @@ type Props = {
 };
 
 const links: FunnelLink[] = [
-  { href: '/case-studies/', label: 'Case studies' },
   { href: '/ai-automation/', label: 'AI automation' },
+  { href: '/ai-code-security-audit/', label: 'AI audit' },
+  { href: '/case-studies/', label: 'Case studies' },
 ];
 
+/**
+ * Sticky translucent bar: brand, nav, violet "Book a call" (BOOKING_URL via <Cta>).
+ * DOM order is brand, CTA, toggle, nav so that on mobile the menu follows its toggle in tab order;
+ * on desktop CSS `order` puts the nav right after the brand (left-aligned) and the CTA at the far right. Styles: site.css section 8.
+ */
 export default function SiteHeader({ current, crumb, home, funnel }: Props) {
   const navLinks: readonly FunnelLink[] = funnel ? funnels[funnel].nav : links;
   const cur = (href: string) => (current === href ? 'page' : undefined);
@@ -26,10 +33,11 @@ export default function SiteHeader({ current, crumb, home, funnel }: Props) {
     <header className="site-header">
       <div className="container site-header__inner">
         <Link className="brand" href="/">
-          <span className="brand-mark" aria-hidden="true">T</span>
+          <BrandMark className="brand-mark" />
           <span className="brand-name">Trusted Tech Leader</span>
           {crumb ? <span className="brand-crumb">/ {crumb}</span> : null}
         </Link>
+        <Cta className="site-header__cta">Book a call</Cta>
         <NavToggle />
         <nav className="site-nav" id="site-nav" aria-label="Main">
           {funnel ? null : home ? <a href="#services">Services</a> : <Link href="/#services">Services</Link>}
@@ -40,7 +48,6 @@ export default function SiteHeader({ current, crumb, home, funnel }: Props) {
               <Link key={l.href} href={l.href} aria-current={cur(l.href)}>{l.label}</Link>
             ),
           )}
-          <a className="btn btn-dark btn-sm" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
         </nav>
       </div>
     </header>

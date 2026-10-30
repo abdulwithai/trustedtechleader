@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
+import Reveal from './brand/Reveal';
 import type { FunnelId } from '@/lib/funnels';
 
 type Props = {
@@ -18,6 +19,7 @@ type Props = {
   children: ReactNode;
 };
 
+/** Page frame: skip link, header, content, footer, and the site-wide scroll reveal (`[data-reveal]`). */
 export default function PageShell({ pageClass, current, crumb, home, funnel, linkedin, footerNote, children }: Props) {
   return (
     <div className={pageClass} data-funnel={funnel}>
@@ -25,6 +27,7 @@ export default function PageShell({ pageClass, current, crumb, home, funnel, lin
       <SiteHeader current={current} crumb={crumb} home={home} funnel={funnel} />
       {children}
       <SiteFooter linkedin={linkedin}>{footerNote}</SiteFooter>
+      <Reveal />
     </div>
   );
 }

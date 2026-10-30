@@ -18,7 +18,8 @@ const travel: FunnelContent = {
   hero: {
     kicker: 'Tour operators · Group travel · Travel clubs',
     h1: 'Every trip inquiry quoted. Every deposit collected. Every seat on the manifest.',
-    lead: 'Inquiries from WhatsApp, Instagram, email and forms land in one record. Payment links go out and the manifest updates automatically.',
+    highlight: 'Every seat on the manifest.',
+    lead: 'Inquiries from WhatsApp, Instagram, email and forms land in one record. Payment links go out and the manifest updates on its own.',
     primaryCta: 'Book a call',
     secondaryCta: { href: '#stages', label: 'How it works' },
   },
@@ -38,6 +39,8 @@ const travel: FunnelContent = {
   },
   stages: {
     title: 'From first message to a full departure.',
+    highlight: 'a full departure.',
+    eyebrow: 'How it works',
     sub: 'Five stages run on one record per traveller. The sixth is where repeat bookings come from.',
     items: [
       { n: '01', title: 'Capture', body: 'WhatsApp, Instagram, email and forms land in one record.' },
@@ -49,6 +52,9 @@ const travel: FunnelContent = {
     ],
   },
   parts: {
+    eyebrow: 'What you get',
+    title: 'Two parts. One trip system.',
+    highlight: 'One trip system.',
     items: [
       { label: 'Part one', title: 'Inquiry-to-booking system', lead: 'Every inquiry in one record, quoted, paid and confirmed.',
         list: ['Messages and forms routed into one household or traveller record', 'Hosted payment links, with resend', 'SMS and email follow-up campaigns'] },
@@ -58,7 +64,7 @@ const travel: FunnelContent = {
   },
   fee: {
     title: 'Both parts, one fixed project fee.',
-    sub: 'Scoped on a walkthrough call. Your data and payment account stay yours.',
+    sub: 'We scope it on a walkthrough call. Your data and payment account stay yours.',
     cta: 'Book a call',
   },
   proof: {
@@ -71,6 +77,7 @@ const travel: FunnelContent = {
   faq: {
     eyebrow: 'Questions travel teams ask',
     title: 'Built around how trips are sold.',
+    highlight: 'how trips are sold.',
     items: [
       { q: 'Does this work with our existing booking tool and Stripe?', a: 'Payment links and dues reporting run from Stripe data. Whether it fits alongside your current booking tool is checked on the call, before anything is scoped.' },
       { q: 'What happens in peak season when inquiries spike?', a: 'Every message lands in a record and is queued for a quote, so volume does not depend on someone watching the inbox. Seat caps stop a departure being oversold.' },
@@ -80,6 +87,8 @@ const travel: FunnelContent = {
   },
   cta: {
     title: 'Watch a group-tour inquiry go from DM to a seat on the manifest.',
+    highlight: 'a seat on the manifest.',
+    lead: 'Book a walkthrough call and we will scope it with you.',
     button: 'Book a call',
   },
 };
