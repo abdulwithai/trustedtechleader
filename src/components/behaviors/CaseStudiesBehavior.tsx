@@ -24,6 +24,16 @@ export default function CaseStudiesBehavior() {
       if (!cards.some((card) => card.getAttribute('data-category') === f)) c.hidden = true;
     });
 
+    // Show how many case studies each filter holds.
+    chips.forEach((c) => {
+      const f = c.getAttribute('data-filter');
+      const n = f === 'all' ? cards.length : cards.filter((card) => card.getAttribute('data-category') === f).length;
+      const badge = document.createElement('span');
+      badge.className = 'cs-filter__n';
+      badge.textContent = String(n);
+      c.appendChild(badge);
+    });
+
     const apply = (filter: string | null) => {
       let shown = 0;
       cards.forEach((card) => {
@@ -53,7 +63,10 @@ export default function CaseStudiesBehavior() {
     apply(initial);
 
     return () => {
-      chips.forEach((c, i) => c.removeEventListener('click', handlers[i]));
+      chips.forEach((c, i) => {
+        c.removeEventListener('click', handlers[i]);
+        c.querySelector('.cs-filter__n')?.remove();
+      });
     };
   }, []);
 

@@ -1,0 +1,134 @@
+/* ==========================================================================
+   Brand primitives (global). Loaded by src/app/layout.tsx after site.css.
+   These were scoped under `.acs` on the AI code audit landing; they now work on
+   every page. Specificity is unchanged (single class, or `.acs-night .x`), so
+   the audit page renders exactly as before. See README-design.md.
+   ========================================================================== */
+
+/* --- Layout --- */
+.acs-wrap { width: 100%; max-width: calc(var(--acs-max) + 2 * var(--acs-gutter)); margin: 0 auto; padding: 0 var(--acs-gutter); }
+.acs-section { position: relative; padding: clamp(72px, 11vw, 140px) 0; }
+.acs-section[id] { scroll-margin-top: 72px; }
+.acs-head { max-width: 760px; display: grid; gap: 18px; margin-bottom: clamp(40px, 6vw, 72px); }
+.acs-head--center { margin-left: auto; margin-right: auto; text-align: center; justify-items: center; }
+.acs-lead { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.6; color: var(--acs-ink-2); max-width: 620px; }
+.acs-night .acs-lead { color: var(--acs-on-night-2); }
+
+/* highlighted phrase inside a headline (one per headline). `.hl` is a short alias. */
+.acs-hl, .hl {
+  background: linear-gradient(100deg, var(--acs-violet) 10%, var(--acs-violet-2) 90%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.acs-hl--ok, .hl--ok { background: linear-gradient(100deg, var(--acs-ok) 0%, #6CC04A 100%); -webkit-background-clip: text; background-clip: text; }
+.acs-night .acs-hl, .acs-night .hl,
+:is(.section-dark, .band-dark, .on-dark, .night) :is(.acs-hl, .hl) { background: linear-gradient(100deg, #B79BFF, #E2D6FF); -webkit-background-clip: text; background-clip: text; }
+.acs-night .acs-hl--ok, .acs-night .hl--ok,
+:is(.section-dark, .band-dark, .on-dark, .night) :is(.acs-hl--ok, .hl--ok) { background: linear-gradient(100deg, var(--acs-ok-bright), #C6F2A8); -webkit-background-clip: text; background-clip: text; }
+
+/* --- Eyebrow: tiny tracked mono label with a dot --- */
+.acs-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 600 11.5px/1 var(--acs-mono); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--acs-violet);
+}
+.acs-eyebrow::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: currentColor; box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent);
+}
+.acs-eyebrow--plain::before { display: none; }
+.acs-eyebrow--risk { color: var(--acs-risk); }
+.acs-eyebrow--ok { color: var(--acs-ok); }
+.acs-night .acs-eyebrow { color: #B79BFF; }
+.acs-night .acs-eyebrow--ok { color: var(--acs-ok-bright); }
+
+/* --- Floating card (white, soft violet shadow) --- */
+.acs-card {
+  background: var(--acs-surface); border: 1px solid var(--acs-line);
+  border-radius: var(--acs-r-lg); box-shadow: var(--acs-shadow);
+}
+.acs-card--lg { box-shadow: var(--acs-shadow-lg); }
+.acs-night .acs-card { background: var(--acs-night-card); border-color: var(--acs-night-line); box-shadow: none; backdrop-filter: blur(8px); }
+/* dashed empty slot that later fills with a card */
+.acs-slot { border: 1.5px dashed var(--acs-dash); border-radius: var(--acs-r-md); background: rgba(255, 255, 255, .35); }
+.acs-night .acs-slot { border-color: rgba(255, 255, 255, .18); background: transparent; }
+
+/* --- Chips / severity pills --- */
+.acs-chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px;
+  font: 600 11px/1.2 var(--acs-mono); letter-spacing: .06em; text-transform: uppercase;
+  background: var(--acs-violet-tint); color: var(--acs-violet-deep);
+}
+.acs-chip--risk { background: var(--acs-risk-tint); color: #B4262B; }
+.acs-chip--warn { background: var(--acs-warn-tint); color: #95600B; }
+.acs-chip--ok { background: var(--acs-ok-tint); color: #23752F; }
+
+/* --- Buttons (rendered by <Cta>; the legacy .btn family in site.css shares this look) --- */
+.acs-btn {
+  --b-bg: var(--acs-violet); --b-fg: #fff;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 22px; border-radius: 999px; border: 1px solid transparent;
+  background: var(--b-bg); color: var(--b-fg);
+  font: 600 15.5px/1 var(--acs-sans); text-decoration: none; white-space: nowrap;
+  transition: transform .25s var(--acs-ease), box-shadow .25s var(--acs-ease), background .2s;
+}
+.acs-btn--primary { box-shadow: 0 10px 24px -10px rgba(107, 59, 234, .8), inset 0 1px 0 rgba(255, 255, 255, .25); }
+.acs-btn--primary:hover { background: var(--acs-violet-deep); transform: translateY(-1px); box-shadow: 0 16px 32px -12px rgba(107, 59, 234, .9); }
+.acs-btn--ghost { --b-bg: transparent; --b-fg: var(--acs-ink); border-color: var(--acs-dash); }
+.acs-btn--ghost:hover { border-color: var(--acs-violet); color: var(--acs-violet); }
+.acs-btn--light { --b-bg: #fff; --b-fg: var(--acs-ink); }
+.acs-btn--light:hover { transform: translateY(-1px); }
+.acs-btn--sm { padding: 11px 16px; font-size: 14px; }
+.acs-btn--lg { padding: 18px 28px; font-size: 16.5px; }
+.acs-btn__arrow { transition: transform .25s var(--acs-ease); flex: none; }
+.acs-btn:hover .acs-btn__arrow { transform: translateX(3px); }
+.acs-night .acs-btn--ghost,
+:is(.section-dark, .band-dark, .on-dark, .night) .acs-btn--ghost { --b-fg: var(--acs-on-night); border-color: rgba(255, 255, 255, .25); }
+
+/* --- Ambient canvas: soft violet glow blobs. Put <div className="acs-glow" aria-hidden="true" />
+       as the first child of a position:relative section; content goes in .acs-wrap (z-index 1). --- */
+.acs-glow { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.acs-glow::before, .acs-glow::after {
+  content: ''; position: absolute; border-radius: 50%; filter: blur(60px);
+}
+.acs-glow::before { width: 46vw; height: 46vw; max-width: 640px; max-height: 640px; left: -8vw; top: -6vw; background: radial-gradient(circle, var(--acs-glow), transparent 65%); }
+.acs-glow::after { width: 40vw; height: 40vw; max-width: 560px; max-height: 560px; right: -6vw; bottom: -10vw; background: radial-gradient(circle, rgba(120, 140, 255, .16), transparent 65%); }
+.acs-section > .acs-wrap { position: relative; z-index: 1; }
+
+/* --- Dark act --- */
+.acs-night {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, #3A1A7A 0%, transparent 70%),
+    linear-gradient(180deg, var(--acs-night) 0%, var(--acs-night-2) 100%);
+  color: var(--acs-on-night);
+}
+.acs-night :focus-visible { outline-color: #fff; }
+/* Starfield layer: <div className="acs-stars" aria-hidden="true" /> inside a night section. */
+.acs-stars {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: var(--acs-stars); background-size: 340px 260px; opacity: .9;
+}
+
+/* --- Scroll reveal (Reveal.tsx adds `js` to <html>; content stays visible without JS) --- */
+/* An animation (fill: backwards) rather than a transition, so once revealed the element's own
+   transform/transition/hover styles apply again instead of being pinned by the reveal rule. */
+html.js [data-reveal]:not(.is-in) { opacity: 0; }
+html.js [data-reveal].is-in {
+  animation: brand-reveal-up .7s var(--acs-ease) backwards;
+  animation-delay: calc(var(--d, 0) * 90ms);
+}
+html.js [data-reveal='pop'].is-in { animation-name: brand-reveal-pop; }
+html.js [data-reveal='left'].is-in { animation-name: brand-reveal-left; }
+html.js [data-reveal='right'].is-in { animation-name: brand-reveal-right; }
+@keyframes brand-reveal-up { from { opacity: 0; transform: translateY(18px); } }
+@keyframes brand-reveal-pop { from { opacity: 0; transform: scale(.94) translateY(10px); } }
+@keyframes brand-reveal-left { from { opacity: 0; transform: translateX(-24px); } }
+@keyframes brand-reveal-right { from { opacity: 0; transform: translateX(24px); } }
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal]:not(.is-in) { opacity: 1; }
+  html.js [data-reveal].is-in { animation: none; }
+}
+@media print {
+  html.js [data-reveal]:not(.is-in) { opacity: 1; }
+}
+
+.acs-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

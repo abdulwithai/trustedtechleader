@@ -1,0 +1,28 @@
+/* Travel funnel: same brand, light teal secondary accent + a boarding-pass motif on the demo record card. */
+.page-travel {
+  --f-accent: #17A39F;
+  --f-accent-deep: #0C6E72;
+  --f-accent-tint: #DDF3F1;
+}
+
+/* boarding pass: ticket stub divider with notches, and a barcode on the record card */
+.page-travel .demo__head {
+  border-radius: var(--acs-r-md) var(--acs-r-md) 0 0; border-bottom: 0; padding-bottom: 22px;
+  background: linear-gradient(180deg, var(--f-accent-tint), var(--acs-bg) 70%);
+}
+.page-travel .demo__head::before {
+  content: ''; position: absolute; left: 14px; right: 14px; bottom: 0; border-top: 2px dashed #9DD8D4;
+}
+.page-travel .demo__head::after {
+  content: ''; position: absolute; left: -9px; right: -9px; bottom: -9px; height: 18px; pointer-events: none;
+  background:
+    radial-gradient(circle 9px at 0 50%, #fff 8px, transparent 9px) left / 18px 18px no-repeat,
+    radial-gradient(circle 9px at 100% 50%, #fff 8px, transparent 9px) right / 18px 18px no-repeat;
+}
+.page-travel .demo__name::after {
+  content: ''; display: block; width: 92px; height: 14px; margin-top: 10px; opacity: .55;
+  background: repeating-linear-gradient(90deg, var(--f-accent-deep) 0 2px, transparent 2px 4px, var(--f-accent-deep) 4px 5px, transparent 5px 8px, var(--f-accent-deep) 8px 11px, transparent 11px 13px);
+}
+.page-travel .demo__steps { padding-top: 22px; }
+.page-travel .demo__steps li { border-color: #D3ECEA; }
+.page-travel .demo__steps li:last-child { border-color: transparent; }

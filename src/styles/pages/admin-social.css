@@ -1,0 +1,22 @@
+/* /admin/ Social tab */
+.page-admin .adm-social-posts { display: grid; gap: var(--s-4); margin-top: var(--s-3); }
+.page-admin .adm-social-post { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--s-4); min-width: 0; }
+.page-admin .adm-social-post h3 { margin: 0 0 var(--s-1); font-size: 17px; overflow-wrap: anywhere; }
+.page-admin .adm-social-tabs { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-block: var(--s-3); }
+.page-admin .adm-social-tab { font: inherit; font-size: 13px; padding: var(--s-1) var(--s-3); border: 1px solid var(--line); border-radius: var(--r-pill); background: #fff; color: var(--text); cursor: pointer; }
+.page-admin .adm-social-tab[aria-pressed='true'] { background: var(--navy); color: var(--on-dark); border-color: var(--navy); }
+.page-admin .adm-social-text, .page-admin .adm-social-pre { white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; margin: 0 0 var(--s-3); font: inherit; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); padding: var(--s-3); max-width: 100%; }
+.page-admin .adm-social-pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; max-height: 320px; overflow: auto; }
+.page-admin .adm-social-mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+.page-admin .adm-social-add { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: flex-end; }
+.page-admin .adm-social-add .adm-field { flex: 1 1 240px; margin-bottom: 0; }
+.page-admin .adm-social details { margin-block: var(--s-3); }
+.page-admin .adm-social summary { cursor: pointer; font-weight: 600; padding-block: var(--s-1); }
+.page-admin .adm-social-images { margin-top: var(--s-3); }
+.page-admin .adm-social-images h4 { margin: 0 0 var(--s-2); font-size: 15px; }
+.page-admin .adm-social-imggrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr)); gap: var(--s-3); margin: 0; }
+.page-admin .adm-social-img { display: flex; flex-direction: column; gap: var(--s-1); min-width: 0; padding: var(--s-2); border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--paper); }
+.page-admin .adm-social-img--match { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
+.page-admin .adm-social-img img { display: block; width: 100%; height: auto; max-height: 220px; object-fit: contain; background: #fff; }
+.page-admin .adm-social-imguse { font-size: 13px; overflow-wrap: anywhere; }
+.page-admin .adm-social-dl { font-size: 13px; font-weight: 600; }

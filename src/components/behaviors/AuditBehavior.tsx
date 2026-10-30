@@ -6,7 +6,7 @@ type Stage = 'Capture' | 'Read' | 'Respond' | 'Book' | 'Recover' | 'Grow';
 type Severity = 'high' | 'medium' | 'low';
 type Answers = Record<string, string | string[] | undefined>;
 type Gap = { stage: Stage; level: string; sev: Severity };
-type Finding = { stage: Stage; gap: string; fix: string };
+type Finding = { stage: Stage; gap: string; fix: string; sev: Severity };
 type Audit = { headline: string; findings: Finding[] };
 
 const FIELDS = ['practice', 'channels', 'crm', 'reply', 'noshow', 'reviews'];
@@ -90,7 +90,7 @@ function buildAudit(a: Answers): Audit {
     headline: HEADLINES[Math.min(highs, 3)],
     findings: gaps.slice(0, 3).map((g) => {
       const t = TEXT[g.stage][g.level];
-      return { stage: g.stage, gap: t.gap.replace('{p}', p), fix: t.fix };
+      return { stage: g.stage, gap: t.gap.replace('{p}', p), fix: t.fix, sev: g.sev };
     }),
   };
 }
@@ -129,12 +129,14 @@ export default function AuditBehavior() {
       return Array.isArray(v) ? v.length > 0 : !!v;
     };
     const doneCount = () => FIELDS.filter(isDone).length;
+    const segs = Array.from(form.querySelectorAll<HTMLElement>('.audit-meter i'));
 
     const update = () => {
       const n = doneCount();
       progress.textContent = loading ? 'Reading your answers…' : n + ' of ' + FIELDS.length + ' answered';
       runBtn.textContent = loading ? 'Running audit…' : 'Run my audit';
       runBtn.disabled = loading || n < FIELDS.length;
+      segs.forEach((sg, i) => sg.classList.toggle('is-done', isDone(FIELDS[i])));
       if (loading) runBtn.setAttribute('aria-busy', 'true');
       else runBtn.removeAttribute('aria-busy');
     };
@@ -168,9 +170,9 @@ export default function AuditBehavior() {
       headline.textContent = audit.headline;
       while (list.firstChild) list.removeChild(list.firstChild);
       audit.findings.forEach((f) => {
-        const li = el('li', 'audit-finding');
+        const li = el('li', 'audit-finding audit-finding--' + f.sev);
         const tagWrap = el('div');
-        tagWrap.appendChild(el('span', 'audit-tag' + (f.stage === 'Grow' ? ' audit-tag--grow' : ''), f.stage));
+        tagWrap.appendChild(el('span', 'audit-tag audit-tag--' + f.sev, f.stage));
         const body = el('div');
         body.appendChild(el('p', 'audit-finding__gap', f.gap));
         const fix = el('p', 'audit-finding__fix');

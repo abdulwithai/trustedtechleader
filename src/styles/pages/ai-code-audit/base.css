@@ -1,0 +1,56 @@
+/* ==========================================================================
+   AI code security audit landing (/ai-code-security-audit/)
+   Tokens (`--acs-*`) live on :root in src/styles/tokens.css and the shared
+   primitives (.acs-wrap, .acs-section, .acs-head, .acs-lead, .acs-hl,
+   .acs-eyebrow, .acs-card, .acs-slot, .acs-chip, .acs-btn, .acs-glow,
+   .acs-night, reveal) are global in src/styles/brand.css.
+   This file only holds the page root and its type reset. Section styles live in
+   sibling files (hero.css, shipped.css, ...) imported by each section component.
+   Class prefix for sections: `.acs-<section>__<element>`.
+   ========================================================================== */
+
+.acs {
+  position: relative;
+  background: var(--acs-bg);
+  color: var(--acs-ink);
+  font-family: var(--acs-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+/* --- Reset the global site type inside the page --- */
+.acs h1, .acs h2, .acs h3, .acs h4 {
+  font-family: var(--acs-display);
+  font-weight: 650;
+  color: inherit;
+  letter-spacing: -.03em;
+  text-wrap: balance;
+}
+.acs h1 { font-size: clamp(40px, 6.4vw, 80px); line-height: .98; }
+.acs h2 { font-size: clamp(32px, 4.6vw, 56px); line-height: 1.02; }
+.acs h3 { font-size: clamp(20px, 2vw, 24px); line-height: 1.2; letter-spacing: -.015em; }
+.acs p { text-wrap: pretty; }
+.acs :focus-visible { outline: 2px solid var(--acs-violet); outline-offset: 3px; border-radius: 6px; }
+.acs-night :focus-visible { outline-color: #fff; }
+
+.acs-skip {
+  position: absolute; left: 16px; top: -100px; z-index: 100;
+  background: var(--acs-ink); color: #fff; padding: 10px 16px; border-radius: 999px; text-decoration: none;
+}
+.acs-skip:focus { top: 12px; }
+
+/* --- Scroll reveal: kept for the `.acs.js` hook (Reveal.tsx also sets html.js, see brand.css) --- */
+.acs.js [data-reveal] {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .7s var(--acs-ease), transform .7s var(--acs-ease);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+.acs.js [data-reveal='pop'] { transform: scale(.94) translateY(10px); }
+.acs.js [data-reveal='left'] { transform: translateX(-24px); }
+.acs.js [data-reveal='right'] { transform: translateX(24px); }
+.acs.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .acs.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+}

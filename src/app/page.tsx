@@ -1,22 +1,26 @@
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
-import HomeBehavior from '@/components/behaviors/HomeBehavior';
+import Auditor from '@/components/brand/Auditor';
+import Cta from '@/components/brand/Cta';
+import HeroStack from '@/components/home/HeroStack';
+import ServiceSelector from '@/components/home/ServiceSelector';
 import '@/styles/pages/home.css';
 
 export const metadata: Metadata = {
   "title": {
-    "absolute": "Trusted Tech Leader | Custom business systems for founder-led companies"
+    "absolute": "Trusted Tech Leader | AI consulting and automation"
   },
-  "description": "We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.",
+  "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
   "alternates": {
     "canonical": "/"
   },
   "openGraph": {
     "type": "website",
     "siteName": "Trusted Tech Leader",
-    "title": "Trusted Tech Leader | Custom business systems for founder-led companies",
-    "description": "We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.",
+    "title": "Trusted Tech Leader | AI consulting and automation",
+    "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
     "url": "https://trustedtechleader.com/",
     "locale": "en_US",
     "images": [
@@ -24,123 +28,169 @@ export const metadata: Metadata = {
         "url": "https://trustedtechleader.com/assets/img/og-default.png",
         "width": 1200,
         "height": 630,
-        "alt": "Trusted Tech Leader: AI lead systems for US law firms"
+        "alt": "Trusted Tech Leader: AI consulting, automation and custom software"
       }
     ]
   },
   "twitter": {
     "card": "summary_large_image",
-    "title": "Trusted Tech Leader | Custom business systems for founder-led companies",
-    "description": "We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.",
+    "title": "Trusted Tech Leader | AI consulting and automation",
+    "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
     "images": [
       {
         "url": "https://trustedtechleader.com/assets/img/og-default.png",
-        "alt": "Trusted Tech Leader: AI lead systems for US law firms"
+        "alt": "Trusted Tech Leader: AI consulting, automation and custom software"
       }
     ]
   }
 };
 
+const CASES = [
+  { href: '/case-studies/ai-textbook-study-reader/', tag: 'AI', t: 'AI textbook ingestion and study reader' },
+  { href: '/case-studies/ai-social-carousel-content-pipeline/', tag: 'AI', t: 'AI social carousel pipeline with approval dashboard' },
+  { href: '/case-studies/membership-sales-crm-and-billing/', tag: 'Business system', t: 'Membership sales CRM, contracts and billing platform' },
+  { href: '/case-studies/multi-tenant-pharmacy-erp-pos/', tag: 'Business system', t: 'Multi-tenant pharmacy ERP and POS' },
+  { href: '/case-studies/aghaz-halal-investing-mobile-app/', tag: 'Mobile app', t: 'Aghaz: halal goal-based investing mobile app for US investors' },
+  { href: '/case-studies/supplier-catalog-sync-platform/', tag: 'AI', t: 'AI-assisted supplier catalog sync platform' },
+];
+
+const STEPS = [
+  { t: 'Tell us', d: "Tell us what runs your business today, and what eats your team's time." },
+  { t: 'Pick one step', d: 'We map the process and start with one step, not everything at once.' },
+  { t: 'Build with review', d: 'We build in phases, and you review each one before we move on.' },
+  { t: 'Hand over', d: 'We hand it over, and we can extend it from there.' },
+];
+
+const TRUST = ['AI automation', 'Business systems', 'Web & mobile apps'];
+
+const STARS: [number, number, number][] = [
+  [8, 18, 3], [22, 70, 2], [38, 12, 2], [55, 82, 3], [68, 20, 2], [78, 64, 2], [90, 30, 3], [94, 78, 2], [46, 46, 2], [14, 48, 2],
+];
+
 export default function Page() {
   return (
     <PageShell pageClass="page-home" home>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://trustedtechleader.com/#organization\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\",\"logo\":\"https://trustedtechleader.com/apple-touch-icon.png\",\"description\":\"We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.\"},{\"@type\":\"WebSite\",\"@id\":\"https://trustedtechleader.com/#website\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader\",\"publisher\":{\"@id\":\"https://trustedtechleader.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https://trustedtechleader.com/#webpage\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader | Custom business systems for founder-led companies\",\"description\":\"We build the CRM, billing and operations platforms that founder-led businesses run on. See builds for travel membership, real estate, pharmacy and facilities teams.\",\"isPartOf\":{\"@id\":\"https://trustedtechleader.com/#website\"},\"about\":{\"@id\":\"https://trustedtechleader.com/#organization\"}}]}" }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://trustedtechleader.com/#organization\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\",\"logo\":\"https://trustedtechleader.com/apple-touch-icon.png\",\"description\":\"AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.\"},{\"@type\":\"WebSite\",\"@id\":\"https://trustedtechleader.com/#website\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader\",\"publisher\":{\"@id\":\"https://trustedtechleader.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https://trustedtechleader.com/#webpage\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader | AI consulting and automation\",\"description\":\"AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.\",\"isPartOf\":{\"@id\":\"https://trustedtechleader.com/#website\"},\"about\":{\"@id\":\"https://trustedtechleader.com/#organization\"}}]}" }} />
       <main id="main">
-      <section className="container hero grid grid-hero">
-      <div className="hero__copy">
-      <p className="hero__badge"><span aria-hidden="true"></span>Business systems</p>
-      <h1>Custom software for <em>founder-led</em> businesses.</h1>
-      <p className="lead">CRM, billing and operations systems, built around how you work.</p>
-      <div className="btn-row mt-3">
-      <Link className="btn btn-primary" href="/case-studies/">See our work</Link>
-      <a className="btn btn-outline" href="mailto:hello@trustedtechleader.com">Get in touch</a>
-      </div>
-      <p className="hero__proof">26 case studies &middot; CRM, billing, inventory, reporting</p>
-      </div>
-      <div className="hero__card">
-      <div className="dash" role="img" aria-label="Illustration: a live operations dashboard for a founder-led business. Revenue, open deals and invoices due update as a client moves through one system, from lead captured to contract signed, invoice paid and commission calculated.">
-      <div className="dash__toast dash__toast--pay" aria-hidden="true">
-      <span className="dash__check"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7"></path></svg></span>
-      <span className="dash__tt"><b>Payment received</b><small data-toast="">$3,200 &middot; Bright Studio</small></span>
-      </div>
-      <div className="dash__win" aria-hidden="true">
-      <div className="dash__bar">
-      <span className="dash__dots"><i></i><i></i><i></i></span>
-      <span className="dash__title">Ops &middot; Overview</span>
-      <span className="dash__live"><i></i>Live</span>
-      </div>
-      <div className="dash__body">
-      <div className="dash__kpis">
-      <div className="kpi"><span className="kpi__l">Revenue (MTD)</span><span className="kpi__v" data-kpi="rev">$48,250</span><span className="kpi__d">+12%</span></div>
-      <div className="kpi"><span className="kpi__l">Open deals</span><span className="kpi__v" data-kpi="deals">23</span><span className="kpi__d">+3 this week</span></div>
-      <div className="kpi"><span className="kpi__l">Invoices due</span><span className="kpi__v" data-kpi="due">7</span><span className="kpi__d">&minus;2 this week</span></div>
-      </div>
-      <div className="dash__chart">
-      <div className="dash__ch"><span>Cash collected</span><b data-kpi="week">$9,600</b></div>
-      <svg className="dash__bars" viewBox="0 0 300 84" preserveAspectRatio="none">
-      <line x1="0" y1="4.5" x2="300" y2="4.5"></line><line x1="0" y1="31.5" x2="300" y2="31.5"></line><line x1="0" y1="58.5" x2="300" y2="58.5"></line>
-      <rect x="6" y="4" width="25" height="80" style={{ "--h": ".44", "--i": "0" } as React.CSSProperties}></rect>
-      <rect x="43.5" y="4" width="25" height="80" style={{ "--h": ".55", "--i": "1" } as React.CSSProperties}></rect>
-      <rect x="81" y="4" width="25" height="80" style={{ "--h": ".5", "--i": "2" } as React.CSSProperties}></rect>
-      <rect x="118.5" y="4" width="25" height="80" style={{ "--h": ".64", "--i": "3" } as React.CSSProperties}></rect>
-      <rect x="156" y="4" width="25" height="80" style={{ "--h": ".58", "--i": "4" } as React.CSSProperties}></rect>
-      <rect x="193.5" y="4" width="25" height="80" style={{ "--h": ".72", "--i": "5" } as React.CSSProperties}></rect>
-      <rect x="231" y="4" width="25" height="80" style={{ "--h": ".8", "--i": "6" } as React.CSSProperties}></rect>
-      <rect className="is-now" x="268.5" y="4" width="25" height="80" style={{ "--h": ".66", "--i": "7" } as React.CSSProperties} data-bar=""></rect>
-      </svg>
-      <div className="dash__ax"><span>8 weeks ago</span><span>This week</span></div>
-      </div>
-      <div className="feed">
-      <div className="feed__head"><span><i></i>Pipeline</span><em>CRM &middot; Billing &middot; Ops</em></div>
-      <div className="feed__view">
-      <ul className="feed__rows" data-feed="">
-      <li className="feed__row"><span className="feed__ic"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><circle cx="5" cy="5" r="1.6"></circle><circle cx="11" cy="11" r="1.6"></circle></svg></span><span className="feed__tx"><b>Bright Studio</b><span>Commission $320 calculated</span></span><span className="feed__st is-ok">Done</span></li>
-      <li className="feed__row"><span className="feed__ic"><svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="8.5" rx="1.5"></rect><path d="M2 7h12"></path></svg></span><span className="feed__tx"><b>Bright Studio</b><span>Invoice #1041 paid &middot; $3,200</span></span><span className="feed__st is-ok">Paid</span></li>
-      <li className="feed__row"><span className="feed__ic"><svg viewBox="0 0 16 16"><path d="M4 2.5h5.5L12 5v8.5H4z"></path><path d="M6 8h4M6 10.5h3"></path></svg></span><span className="feed__tx"><b>Bright Studio</b><span>Contract signed</span></span><span className="feed__st is-ok">Signed</span></li>
-      <li className="feed__row"><span className="feed__ic"><svg viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5"></circle><path d="M3 13.5c.8-2.6 2.8-3.8 5-3.8s4.2 1.2 5 3.8"></path></svg></span><span className="feed__tx"><b>Bright Studio</b><span>Lead captured</span></span><span className="feed__st is-ok">New</span></li>
-      </ul>
-      </div>
-      </div>
-      </div>
-      </div>
-      <div className="dash__toast dash__toast--sync" aria-hidden="true">
-      <span className="dash__avs"><i>AM</i><i>JR</i><i>SK</i></span>
-      <span className="dash__tt"><b>Synced</b><small>QuickBooks &middot; Gmail &middot; Sheets</small></span>
-      </div>
-      </div>
-      </div>
-      </section>
-      <section className="container services" id="services" aria-labelledby="services-h">
-      <div className="grid grid-split">
-      <div>
-      <p className="eyebrow">Services</p>
-      <h2 id="services-h">What we build</h2>
-      </div>
-      <ol className="svc-list rule-top">
-      <li className="svc"><span className="svc__n">01</span><div><h3 className="svc__t"><Link href="/business-systems/">Business systems</Link></h3><p className="svc__d">CRM, billing, inventory, reporting.</p></div></li>
-      <li className="svc"><span className="svc__n">02</span><div><h3 className="svc__t"><Link href="/ai-automation/">AI automation</Link></h3><p className="svc__d">Added inside the workflow.</p></div></li>
-      <li className="svc"><span className="svc__n">03</span><div><h3 className="svc__t"><Link href="/web-and-mobile-apps/">Web and mobile apps</Link></h3><p className="svc__d">On the same system as your back office.</p></div></li>
-      <li className="svc"><span className="svc__n">04</span><div><h3 className="svc__t"><Link href="/law-firms/">Legal SEO reviews</Link></h3><p className="svc__d">For law-firm sites.</p></div></li>
-      </ol>
-      </div>
-      </section>
-      <section className="container proof" aria-label="Case study">
-      <div className="card-dashed">
-      <div>
-      <p className="eyebrow">Case study</p>
-      <p className="proof__t">Travel membership CRM and payments.</p>
-      </div>
-      <Link className="btn btn-outline" href="/case-studies/travel-membership-crm-tour-manifest-payments/">Read the case study</Link>
-      </div>
-      </section>
-      <section className="cta rule-bottom" aria-labelledby="cta-h">
-      <div className="container text-center">
-      <h2 className="h2-lg mx-auto" id="cta-h">Have a workflow stuck in spreadsheets?</h2>
-      <div className="btn-row btn-row--center mt-4"><a className="btn btn-primary btn-lg" href="mailto:hello@trustedtechleader.com">Get in touch</a></div>
-      </div>
-      </section>
+        <section className="acs-section hm-hero" aria-labelledby="hm-hero-title">
+          <div className="hm-hero__dots" aria-hidden="true" />
+          <div className="acs-glow" aria-hidden="true" />
+          <div className="acs-wrap hm-hero__grid">
+            <div className="hm-hero__copy">
+              <span className="acs-eyebrow">AI consultant</span>
+              <h1 id="hm-hero-title">
+                AI that does real work <span className="acs-hl">inside your business.</span>
+              </h1>
+              <p className="acs-lead">
+                We build AI strategy, automation and agents into the workflows you already have, plus the custom systems and apps they run on.
+              </p>
+              <div className="hm-hero__ctas">
+                <Cta size="lg">Book a call</Cta>
+                <Cta variant="ghost" size="lg" href="/case-studies/">See our work</Cta>
+              </div>
+              <ul className="hm-trust" aria-label="26 builds shipped across three areas">
+                <li className="hm-trust__lead"><strong>26</strong><span>builds shipped</span></li>
+                {TRUST.map((t) => (
+                  <li key={t} className="hm-trust__item"><i aria-hidden="true" />{t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="hm-hero__stage">
+              <div className="hm-hero__platform" aria-hidden="true">
+                <span className="hm-hero__ring hm-hero__ring--a" />
+                <span className="hm-hero__ring hm-hero__ring--b" />
+              </div>
+              <Auditor pose="present" facing="right" className="hm-hero__auditor" />
+              <svg className="hm-hero__connector" viewBox="0 0 120 70" preserveAspectRatio="none" aria-hidden="true">
+                <circle cx="3" cy="62" r="3.5" fill="#6B3BEA" />
+                <path d="M3 62 C 40 66, 60 10, 118 14" fill="none" stroke="#6B3BEA" strokeWidth="1.6" strokeDasharray="5 5" vectorEffect="non-scaling-stroke" />
+              </svg>
+              <HeroStack />
+            </div>
+          </div>
+        </section>
+
+        <section className="acs-section hm-services" id="services" aria-labelledby="hm-services-title">
+          <div className="acs-wrap">
+            <div className="acs-head" data-reveal>
+              <span className="acs-eyebrow">Services</span>
+              <h2 id="hm-services-title">Five ways we can <span className="acs-hl">help.</span></h2>
+              <p className="acs-lead">Pick the one closest to your problem. Each one leads to the full detail.</p>
+            </div>
+            <div data-reveal="pop">
+              <ServiceSelector />
+            </div>
+          </div>
+        </section>
+
+        <section className="acs-section acs-night hm-proof" aria-labelledby="hm-proof-title" style={{ overflow: 'hidden' }}>
+          <div className="acs-glow" aria-hidden="true" />
+          <div className="acs-stars" aria-hidden="true" />
+          <div className="acs-wrap">
+            <div className="hm-proof__top">
+              <div className="acs-head" data-reveal>
+                <span className="acs-eyebrow">Our work</span>
+                <h2 id="hm-proof-title"><span className="acs-hl">26 builds shipped.</span> See the work.</h2>
+                <p className="acs-lead">AI automation, business systems and apps, each described from the evidence. No invented numbers.</p>
+              </div>
+              <Cta variant="light" href="/case-studies/">See case studies</Cta>
+            </div>
+            <ul className="hm-proof__grid">
+              {CASES.map((c, i) => (
+                <li key={c.href} data-reveal style={{ '--d': i } as CSSProperties}>
+                  <Link className="acs-card hm-case" href={c.href}>
+                    <span className="acs-chip">{c.tag}</span>
+                    <span className="hm-case__t">{c.t}</span>
+                    <span className="hm-case__go" aria-hidden="true">&rarr;</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="acs-section hm-process" aria-labelledby="hm-process-title">
+          <div className="acs-glow" aria-hidden="true" />
+          <div className="acs-wrap">
+            <div className="acs-head acs-head--center" data-reveal>
+              <span className="acs-eyebrow">How we work</span>
+              <h2 id="hm-process-title">One step at a time, <span className="acs-hl">reviewed as we go.</span></h2>
+            </div>
+            <ol className="hm-steps" data-reveal>
+              {STEPS.map((s, i) => (
+                <li key={s.t} className="hm-step" data-reveal style={{ '--d': i } as CSSProperties}>
+                  <span className="hm-step__n">{String(i + 1).padStart(2, '0')}</span>
+                  <div className="hm-step__card">
+                    <h3>{s.t}</h3>
+                    <p>{s.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="acs-section hm-cta" aria-labelledby="hm-cta-title">
+          <div className="acs-wrap">
+            <div className="hm-cta__panel" data-reveal="pop">
+              <div className="hm-cta__dots" aria-hidden="true" />
+              <div className="hm-cta__stars" aria-hidden="true">
+                {STARS.map(([x, y, s], i) => (
+                  <span key={i} style={{ left: `${x}%`, top: `${y}%`, '--s': `${s}px`, '--i': i } as CSSProperties} />
+                ))}
+              </div>
+              <div className="hm-cta__char">
+                <Auditor pose="thumbs" facing="left" className="hm-cta__auditor" />
+              </div>
+              <div className="hm-cta__body">
+                <h2 id="hm-cta-title">Have a process <span className="hm-cta__hl">AI could take off your plate?</span></h2>
+                <p>Book a call and tell us about it.</p>
+                <Cta variant="light" size="lg">Book a call</Cta>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <HomeBehavior />
     </PageShell>
   );
 }

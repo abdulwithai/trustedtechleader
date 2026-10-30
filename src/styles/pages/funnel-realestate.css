@@ -1,0 +1,35 @@
+/* Real estate funnel: same brand, light brass secondary accent + a parcel / survey motif. */
+.page-realestate {
+  --f-accent: #B8892B;
+  --f-accent-deep: #7C5A12;
+  --f-accent-tint: #F7EBD0;
+}
+
+/* parcel plot behind the record header: survey lines, corner pins */
+.page-realestate .demo__head {
+  background-color: var(--acs-bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80' fill='none'%3E%3Cpath d='M118 14 L186 22 L176 66 L126 70 L110 44 Z' stroke='%23B8892B' stroke-opacity='.28' stroke-width='1.6' stroke-dasharray='5 4'/%3E%3Cg fill='%23B8892B' fill-opacity='.3'%3E%3Ccircle cx='118' cy='14' r='3'/%3E%3Ccircle cx='186' cy='22' r='3'/%3E%3Ccircle cx='176' cy='66' r='3'/%3E%3Ccircle cx='126' cy='70' r='3'/%3E%3Ccircle cx='110' cy='44' r='3'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(var(--f-accent-tint), var(--f-accent-tint));
+  background-repeat: no-repeat;
+  background-position: right 6px center, center;
+  background-size: 170px auto, 100% 100%;
+  border-color: #EBD9AE;
+}
+.page-realestate .demo__steps li { border-color: #EFE3C4; }
+.page-realestate .demo__steps li:last-child { border-color: transparent; }
+
+/* pipeline = survey chain: tick marks along the track */
+.page-realestate .fs__track {
+  background:
+    repeating-linear-gradient(180deg, #D9BE7E 0 2px, transparent 2px 14px) center / 12px 100% no-repeat,
+    repeating-linear-gradient(180deg, var(--acs-dash) 0 6px, transparent 6px 11px);
+}
+@media (min-width: 1000px) {
+  .page-realestate .fs__track {
+    background:
+      repeating-linear-gradient(90deg, #D9BE7E 0 2px, transparent 2px 14px) center / 100% 12px no-repeat,
+      repeating-linear-gradient(90deg, var(--acs-dash) 0 6px, transparent 6px 11px);
+  }
+}
+.page-realestate .part { border-top: 3px solid var(--f-accent); }

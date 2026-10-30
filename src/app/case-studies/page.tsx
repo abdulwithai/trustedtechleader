@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 import CaseStudiesBehavior from '@/components/behaviors/CaseStudiesBehavior';
 import '@/styles/pages/case-studies.css';
+import Cta from '@/components/brand/Cta';
+import Auditor from '@/components/brand/Auditor';
 
 export const metadata: Metadata = {
   "title": {
@@ -47,16 +49,36 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"@id\":\"https://trustedtechleader.com/case-studies/#webpage\",\"url\":\"https://trustedtechleader.com/case-studies/\",\"name\":\"Case studies: custom business systems | Trusted Tech Leader\",\"description\":\"Custom CRM, billing and operations systems for founder-led businesses, described from the code. Also law-firm SEO, WordPress and mobile apps. No invented metrics.\",\"isPartOf\":{\"@type\":\"WebSite\",\"@id\":\"https://trustedtechleader.com/#website\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\"},\"publisher\":{\"@type\":\"Organization\",\"@id\":\"https://trustedtechleader.com/#organization\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\",\"logo\":\"https://trustedtechleader.com/apple-touch-icon.png\"},\"inLanguage\":\"en-US\"}" }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://trustedtechleader.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Case studies: software and legal SEO\",\"item\":\"https://trustedtechleader.com/case-studies/\"}]}" }} />
       <main id="main">
-      <section className="container cs-hero" aria-labelledby="hero-title">
-      <p className="eyebrow eyebrow--dot">Case studies</p>
-      <h1 id="hero-title" className="h1-md">Systems we have built.</h1>
-      <p className="lead mt-3">Custom CRM, billing and operations platforms. Described from the evidence, with no invented metrics.</p>
+      <section className="acs-section cs-hero" aria-labelledby="hero-title">
+      <div className="acs-glow" aria-hidden="true" />
+      <div className="acs-wrap cs-hero__grid">
+      <div className="cs-hero__copy">
+      <span className="acs-eyebrow">Case studies</span>
+      <h1 id="hero-title">Systems we have built. <span className="acs-hl">Described from the evidence.</span></h1>
+      <p className="acs-lead">Custom CRM, billing and operations platforms, plus law-firm sites and mobile apps. Every one is written up from the code or the public site, with no invented numbers.</p>
+      <div className="cs-hero__ctas">
+      <Cta size="lg" href="#all">Browse the case studies</Cta>
+      <Cta size="lg" variant="ghost" href="#principles">How we write them</Cta>
+      </div>
+      </div>
+      <div className="cs-hero__stage" aria-hidden="true">
+      <Auditor pose="point" facing="right" className="cs-hero__auditor" />
+      <div className="cs-hero__fan">
+      <div className="cs-fan cs-fan--3 acs-card"><span className="acs-chip">Developer &amp; content tools</span><b>Local-first outreach CRM with self-describing API</b></div>
+      <div className="cs-fan cs-fan--2 acs-card"><span className="acs-chip">Business systems</span><b>Water-plant monitoring and reporting system</b></div>
+      <div className="cs-fan cs-fan--1 acs-card"><span className="acs-chip">Business systems</span><b>Multi-tenant pharmacy ERP and POS</b></div>
+      </div>
+      </div>
+      </div>
       </section>
-      <section className="container cs-list" id="all" aria-labelledby="list-title">
-      <h2 id="list-title" className="visually-hidden">All case studies</h2>
-      
+      <section className="acs-section cs-list" id="all" aria-labelledby="list-title">
+      <div className="acs-wrap">
+      <div className="acs-head" data-reveal>
+      <span className="acs-eyebrow acs-eyebrow--plain">All projects</span>
+      <h2 id="list-title">Pick a problem, <span className="acs-hl">see how we solved it</span>.</h2>
+      </div>
       <div className="cs-filter" data-cs-filter="" hidden>
-      <div className="cs-filter__chips" role="group" aria-label="Filter by category">
+      <div className="cs-filter__chips" role="group" aria-label="Filter case studies by category">
       <button className="chip" type="button" data-filter="all" aria-pressed="true">All</button>
       <button className="chip" type="button" data-filter="business-systems" aria-pressed="false">Business systems</button>
       <button className="chip" type="button" data-filter="ai-automation" aria-pressed="false">AI &amp; automation</button>
@@ -66,7 +88,7 @@ export default function Page() {
       <button className="chip" type="button" data-filter="law-firms" aria-pressed="false">Law firms</button>
       <button className="chip" type="button" data-filter="wordpress-sites" aria-pressed="false">WordPress sites</button>
       </div>
-      <p className="cs-filter__count" data-cs-count="" aria-live="polite"></p>
+      <p className="cs-filter__count" data-cs-count="" role="status" aria-live="polite"></p>
       </div>
       <ul className="cs-grid" data-cs-grid="">
       
@@ -589,24 +611,42 @@ export default function Page() {
       </li>
       
       </ul>
-      <p className="cs-empty" data-cs-empty="" hidden>No case studies in this category yet.</p>
-      </section>
-      <section className="section-sand cs-principles" aria-labelledby="principles-title">
-      <div className="container">
-      <h2 id="principles-title" className="visually-hidden">How these case studies are written</h2>
-      <div className="grid grid-3 gap-lg">
-      <div><p className="numeral">i.</p><h3 className="h3-md">Software builds are anonymized.</h3><p className="body-sm">Titles describe the system, not the business. The law-firm, WordPress and mobile-app case studies are the exception: they cover public sites and apps, so each links to its live site or store listing.</p></div>
-      <div><p className="numeral">ii.</p><h3 className="h3-md">Described from the evidence.</h3><p className="body-sm">Software builds are described from the repository. Law-firm sites are described from their public pages, page source and server responses.</p></div>
-      <div><p className="numeral">iii.</p><h3 className="h3-md">No invented metrics.</h3><p className="body-sm">Business value is what the system enables. We do not quote numbers the code cannot prove.</p></div>
-      </div>
+      <p className="cs-empty" data-cs-empty="" hidden>Nothing in this category yet. Try another one.</p>
       </div>
       </section>
-      <section className="cs-cta" aria-labelledby="cta-title">
-      <div>
-      <h2 id="cta-title">Have a system like one of these to build?</h2>
-      <p className="body-sm">Tell us what it needs to do and we will scope it with you on a call.</p>
+      <section className="acs-section cs-principles" id="principles" aria-labelledby="principles-title">
+      <div className="acs-glow" aria-hidden="true" />
+      <div className="acs-wrap cs-principles__layout">
+      <div className="cs-principles__intro" data-reveal>
+      <span className="acs-eyebrow">How these are written</span>
+      <h2 id="principles-title">Honest by <span className="acs-hl">construction</span>.</h2>
+      <p className="acs-lead">Case studies are where it is easiest to oversell. These three rules are why you can trust what you read here.</p>
       </div>
-      <a className="btn btn-dark btn-lg" href="mailto:hello@trustedtechleader.com?subject=Project%20enquiry">Discuss a build</a> 
+      <div className="cs-principles__wrap" data-reveal="pop">
+      <div className="cs-principles__back" aria-hidden="true" />
+      <article className="cs-principles__sheet acs-card acs-card--lg" aria-label="Our case study rules">
+      <header className="cs-principles__sheet-head"><span className="acs-eyebrow acs-eyebrow--plain">Case study rules</span></header>
+      <ol className="cs-principles__list">
+      <li><span className="cs-principles__tick" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" /></svg></span><div><strong>Software builds are anonymized.</strong><span>Titles describe the system, not the business. The law-firm, WordPress and mobile-app case studies are the exception: they cover public sites and apps, so each links to its live site or store listing.</span></div></li>
+      <li><span className="cs-principles__tick" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" /></svg></span><div><strong>Described from the evidence.</strong><span>Software builds are described from the repository. Law-firm sites are described from their public pages, page source and server responses.</span></div></li>
+      <li><span className="cs-principles__tick" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" /></svg></span><div><strong>No invented metrics.</strong><span>Business value is what the system makes possible. We do not quote numbers the code cannot prove.</span></div></li>
+      </ol>
+      <footer className="cs-principles__sign"><span className="cs-principles__sig">Trusted Tech Leader</span><span className="cs-principles__sig-label">How every case study is written</span></footer>
+      </article>
+      </div>
+      </div>
+      </section>
+      <section className="acs-section acs-night cs-final" aria-labelledby="cta-title" style={{ overflow: 'hidden' }}>
+      <div className="acs-stars" aria-hidden="true" />
+      <div className="acs-wrap cs-final__grid">
+      <div data-reveal>
+      <span className="acs-eyebrow">Next step</span>
+      <h2 id="cta-title">Have a system like one of these <span className="acs-hl">to build</span>?</h2>
+      <p className="acs-lead">Tell us what it needs to do and we will scope it with you on a call.</p>
+      <div className="cs-final__ctas"><Cta variant="light" size="lg">Book a call</Cta></div>
+      </div>
+      <Auditor pose="thumbs" facing="left" className="cs-final__auditor" />
+      </div>
       </section>
       </main>
       <CaseStudiesBehavior />

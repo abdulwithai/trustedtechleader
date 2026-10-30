@@ -19,9 +19,9 @@ Tags created: Google tag (GA4) on all pages, plus GA4 events with their triggers
 
 | Event | Fires when |
 |---|---|
-| `generate_lead` | a `mailto:` link is clicked, or the free-scan form builds its email |
+| `generate_lead` | a link to the Calendly booking page (`BOOKING_URL` in `src/lib/booking.ts`) is clicked; carries a `funnel` param |
 | `audit_start` / `audit_complete` | the free AI audit is run / its result appears |
-| `cta_click` | any `.btn` link is clicked |
+| `cta_click` | any `.btn` link is clicked; carries a `funnel` param |
 | `outbound_click` | a link to another domain is clicked |
 | `consent_choice` | the visitor accepts or declines cookies (not mapped to a GA4 tag) |
 

@@ -1,6 +1,8 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
+import Cta from '@/components/brand/Cta';
+import Auditor from '@/components/brand/Auditor';
+import '@/styles/pages/not-found.css';
 
 export const metadata: Metadata = {
   "title": {
@@ -27,13 +29,21 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <PageShell pageClass="page-404">
-      <main id="main">
-      <div className="container section page-center">
-      <div>
-      <p className="eyebrow eyebrow--dot">404</p>
-      <h1>Page not found</h1>
-      <p className="lead mt-3 maxw-prose">The page you were looking for is not here. It may have moved.</p>
-      <div className="btn-row mt-4"><Link className="btn btn-primary" href="/">Back to the home page</Link></div>
+      <main id="main" className="nf">
+      <div className="acs-glow" aria-hidden="true"></div>
+      <div className="container nf__inner">
+      <div className="nf__char">
+      <Auditor pose="think" facing="right" className="nf__auditor" />
+      </div>
+      <div className="acs-card acs-card--lg nf__card">
+      <span className="acs-chip acs-chip--warn">404 · Page not found</span>
+      <h1>This page <em>isn&apos;t here.</em></h1>
+      <p className="acs-lead">The page you were looking for is not here. It may have moved. Here are three good places to go next.</p>
+      <div className="nf__links">
+      <Cta href="/">Back to home</Cta>
+      <Cta variant="ghost" href="/case-studies/">Case studies</Cta>
+      <Cta variant="ghost">Book a call</Cta>
+      </div>
       </div>
       </div>
       </main>

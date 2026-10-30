@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import NavToggle from './NavToggle';
+import BrandMark from './brand/BrandMark';
+import Cta from './brand/Cta';
+import { funnels, type FunnelId, type FunnelLink } from '@/lib/funnels';
 
 type Props = {
   /** Route of the current page (e.g. "/law-firms/"); marks the matching nav link. */
@@ -8,43 +11,42 @@ type Props = {
   crumb?: string;
   /** Home page uses an in-page anchor for Services. */
   home?: boolean;
-  /** Reduced nav used by the ad landing variants (/v/*). */
-  landing?: boolean;
+  /** When set, the nav shows this funnel's links instead of the general nav. */
+  funnel?: FunnelId;
 };
 
-const links = [
+const links: FunnelLink[] = [
+  { href: '/ai-automation/', label: 'AI automation' },
+  { href: '/ai-code-security-audit/', label: 'AI audit' },
   { href: '/case-studies/', label: 'Case studies' },
-  { href: '/law-firms/', label: 'For law firms' },
-  { href: '/ai-visibility/', label: 'AI visibility' },
-  { href: '/ai-audit/', label: 'Free AI audit' },
 ];
 
-export default function SiteHeader({ current, crumb, home, landing }: Props) {
+/**
+ * Sticky translucent bar: brand, nav, violet "Book a call" (BOOKING_URL via <Cta>).
+ * DOM order is brand, CTA, toggle, nav so that on mobile the menu follows its toggle in tab order;
+ * on desktop CSS `order` puts the nav right after the brand (left-aligned) and the CTA at the far right. Styles: site.css section 8.
+ */
+export default function SiteHeader({ current, crumb, home, funnel }: Props) {
+  const navLinks: readonly FunnelLink[] = funnel ? funnels[funnel].nav : links;
   const cur = (href: string) => (current === href ? 'page' : undefined);
   return (
     <header className="site-header">
       <div className="container site-header__inner">
         <Link className="brand" href="/">
-          <span className="brand-mark" aria-hidden="true">T</span>
+          <BrandMark className="brand-mark" />
           <span className="brand-name">Trusted Tech Leader</span>
           {crumb ? <span className="brand-crumb">/ {crumb}</span> : null}
         </Link>
+        <Cta className="site-header__cta">Book a call</Cta>
         <NavToggle />
         <nav className="site-nav" id="site-nav" aria-label="Main">
-          {landing ? (
-            <>
-              <Link href="/case-studies/">Case studies</Link>
-              <a href="#services">Services</a>
-              <a className="btn btn-dark btn-sm" href="mailto:hello@trustedtechleader.com">Get in touch</a>
-            </>
-          ) : (
-            <>
-              {home ? <a href="#services">Services</a> : <Link href="/#services">Services</Link>}
-              {links.map((l) => (
-                <Link key={l.href} href={l.href} aria-current={cur(l.href)}>{l.label}</Link>
-              ))}
-              <Link className="btn btn-dark btn-sm" href="/free-scan/" aria-current={cur('/free-scan/')}>Free AI Visibility Scan</Link>
-            </>
+          {funnel ? null : home ? <a href="#services">Services</a> : <Link href="/#services">Services</Link>}
+          {navLinks.map((l) =>
+            l.anchor ? (
+              <a key={l.href} href={l.href}>{l.label}</a>
+            ) : (
+              <Link key={l.href} href={l.href} aria-current={cur(l.href)}>{l.label}</Link>
+            ),
           )}
         </nav>
       </div>

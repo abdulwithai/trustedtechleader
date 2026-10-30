@@ -1,7 +1,17 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import { Bricolage_Grotesque, Geist, JetBrains_Mono } from 'next/font/google';
 import Tracking from '@/components/Tracking';
+// Order matters: tokens -> legacy site classes (restyled) -> brand primitives. See src/styles/README-design.md.
+import '@/styles/tokens.css';
 import '@/styles/site.css';
+import '@/styles/brand.css';
+
+// Self-hosted by next/font. The CSS variables land on <html>; tokens.css builds the
+// --acs-display / --acs-sans / --acs-mono stacks (and site.css's --font-serif / --font-sans) from them.
+const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--acs-font-display', display: 'swap' });
+const sans = Geist({ subsets: ['latin'], variable: '--acs-font-sans', display: 'swap' });
+const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--acs-font-mono', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://trustedtechleader.com'),
@@ -11,19 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: '#0F1A2A' };
+export const viewport: Viewport = { themeColor: '#F6F4FB' };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
-        />
-      </head>
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>
         {children}
         <Tracking />
