@@ -1,116 +1,28 @@
-/* Travel funnel theme: deep teal hero, sand/cream surfaces, coral accent, boarding-pass demo card.
-   Overrides the --f-* hooks from funnel.css; markup is unchanged. */
+/* Travel funnel: same brand, light teal secondary accent + a boarding-pass motif on the demo record card. */
 .page-travel {
-  --tv-teal: #0E3B43;
-  --tv-teal-2: #0A2D34;
-  --tv-cream: #FBF3E4;
-  --tv-sand: #F3E4C8;
-  --tv-coral: #F28B6B;
-  --tv-coral-deep: #B3401F;
-  --tv-coral-tint: #FBE3D7;
-  --tv-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
-
-  --f-hero-bg: var(--tv-teal);
-  --f-hero-text: var(--tv-cream);
-  --f-hero-kicker: #E8C99B;
-  --f-hero-lead: #E6DCC8;
-  --f-hero-outline: #6E9296;
-  --f-accent: var(--tv-coral-deep);
-  --f-accent-tint: var(--tv-coral-tint);
-  --f-demo-bg: #FFF9EC;
-  --f-demo-ink: var(--tv-teal);
-  --f-demo-line: #D9C9A8;
-  --f-tab-active-bg: var(--tv-teal);
-  --f-tab-active-text: var(--tv-cream);
-  --f-badge-bg: var(--tv-sand);
-  --f-dot: var(--tv-teal);
-  --f-rule: var(--tv-teal);
-  --f-hairline: #E8DCC2;
-  --f-fee-bg: var(--tv-teal);
-  --f-fee-text: var(--tv-cream);
-  --f-fee-sub: #E6DCC8;
-  --f-faq-ink: var(--tv-teal);
-  --f-band-bg: var(--tv-sand);
+  --f-accent: #17A39F;
+  --f-accent-deep: #0C6E72;
+  --f-accent-tint: #DDF3F1;
 }
 
-/* hero: teal with a dotted flight path behind the copy */
-.page-travel .dark-top {
-  background-color: var(--tv-teal);
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 420' fill='none'%3E%3Cpath d='M-20 380 C 260 60, 760 20, 1220 250' stroke='%23FBF3E4' stroke-opacity='.28' stroke-width='2' stroke-linecap='round' stroke-dasharray='1 12'/%3E%3Ccircle cx='60' cy='338' r='6' stroke='%23F28B6B' stroke-width='2'/%3E%3Ccircle cx='1140' cy='217' r='6' fill='%23F28B6B'/%3E%3Cpath d='M702 85 l-18 -3 l-6 -13 l5 -1 l9 9 l12 -3 l-6 -15 l6 -1 l11 16 l14 -4 c4 -1 6 3 2 5 l-14 8 l-4 14 l-6 2 z' fill='%23F28B6B' fill-opacity='.85' transform='rotate(8 700 85)'/%3E%3C/svg%3E"),
-    radial-gradient(120% 90% at 100% 0%, #14515A 0%, rgba(20, 81, 90, 0) 60%);
-  background-repeat: no-repeat, no-repeat;
-  background-position: center top, 0 0;
-  background-size: min(1400px, 140%) auto, auto;
+/* boarding pass: ticket stub divider with notches, and a barcode on the record card */
+.page-travel .demo__head {
+  border-radius: var(--acs-r-md) var(--acs-r-md) 0 0; border-bottom: 0; padding-bottom: 22px;
+  background: linear-gradient(180deg, var(--f-accent-tint), var(--acs-bg) 70%);
 }
-.page-travel .law-hero__practices { letter-spacing: .04em; font-weight: 500; }
-.page-travel .law-hero h1 { color: var(--tv-cream); }
-.page-travel .btn-primary { background: var(--tv-coral); color: var(--tv-teal-2); }
-.page-travel .btn-primary:hover { background: #F6A187; }
-.page-travel .btn-outline-dark { color: var(--tv-cream); }
-.page-travel .btn-outline-dark:hover { background: rgba(251, 243, 228, .12); border-color: var(--tv-cream); }
-.page-travel .fee-bar .btn-primary { background: var(--tv-coral); color: var(--tv-teal-2); }
-
-/* demo card as a boarding pass */
-.page-travel .demo {
-  border-radius: 14px;
-  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .55), 0 0 0 1px rgba(251, 243, 228, .12);
-  position: relative;
+.page-travel .demo__head::before {
+  content: ''; position: absolute; left: 14px; right: 14px; bottom: 0; border-top: 2px dashed #9DD8D4;
 }
-.page-travel .demo__bar {
-  position: relative;
-  border-bottom: 2px dashed #C9B58B;
-  padding-bottom: 20px;
+.page-travel .demo__head::after {
+  content: ''; position: absolute; left: -9px; right: -9px; bottom: -9px; height: 18px; pointer-events: none;
+  background:
+    radial-gradient(circle 9px at 0 50%, #fff 8px, transparent 9px) left / 18px 18px no-repeat,
+    radial-gradient(circle 9px at 100% 50%, #fff 8px, transparent 9px) right / 18px 18px no-repeat;
 }
-/* ticket notches where the stub tears off */
-.page-travel .demo__bar::before,
-.page-travel .demo__bar::after {
-  content: ""; position: absolute; bottom: -12px; width: 22px; height: 22px; border-radius: 50%;
-  background: var(--f-hero-bg);
+.page-travel .demo__name::after {
+  content: ''; display: block; width: 92px; height: 14px; margin-top: 10px; opacity: .55;
+  background: repeating-linear-gradient(90deg, var(--f-accent-deep) 0 2px, transparent 2px 4px, var(--f-accent-deep) 4px 5px, transparent 5px 8px, var(--f-accent-deep) 8px 11px, transparent 11px 13px);
 }
-.page-travel .demo__bar::before { left: -11px; }
-.page-travel .demo__bar::after { right: -11px; }
-.page-travel .demo__tab { border-radius: 6px; letter-spacing: .02em; }
-.page-travel .demo__badge { font-family: var(--tv-mono); text-transform: uppercase; letter-spacing: .08em; font-size: 10.5px; color: #4A5560; }
-.page-travel .demo__head { padding-top: 22px; }
-.page-travel .demo__name { font-family: var(--font-serif); letter-spacing: .01em; }
-.page-travel .demo__meta { font-family: var(--tv-mono); font-size: 11.5px; letter-spacing: .02em; }
-.page-travel .demo__steps .t {
-  font-family: var(--tv-mono); font-variant-numeric: tabular-nums; font-size: 11.5px; letter-spacing: 0;
-  color: #4A5560; overflow-wrap: anywhere;
-}
-.page-travel .demo__steps li { border-top: 1px dotted #CDBB94; }
-.page-travel .demo__steps .dot { border-radius: 2px; transform: rotate(45deg); width: 8px; height: 8px; margin-top: 5px; }
-.page-travel .demo__steps .dot--last { background: var(--tv-coral-deep); }
-.page-travel .demo__steps li:last-child .l { color: var(--tv-coral-deep); }
-
-/* stages: gate / seat labels */
-.page-travel .stage__n {
-  display: inline-block; font-family: var(--tv-mono); font-size: 12px; letter-spacing: .1em; font-weight: 600;
-  color: var(--tv-teal); border: 1.5px solid var(--tv-teal); border-radius: 4px; padding: 3px 9px;
-  background: var(--tv-cream);
-}
-.page-travel .is-next .stage__n { color: #fff; background: var(--tv-coral-deep); border-color: var(--tv-coral-deep); }
-.page-travel .stage-strip li { border-left-style: dashed; border-left-color: #C9B58B; }
-.page-travel .stage-strip li:first-child { border-left: 0; }
-
-/* parts */
-.page-travel .part { background: var(--tv-sand); }
-.page-travel .part:nth-of-type(2) { background: var(--tv-cream); box-shadow: inset 0 0 0 1.5px var(--tv-sand); }
-.page-travel .part__label { font-family: var(--tv-mono); text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: #4A5560; }
-.page-travel .part__list li::before { content: "\2192"; }
-.page-travel .fee-bar { background: var(--tv-teal); }
-
-/* proof + closing band */
-.page-travel .proof__card { background: var(--tv-sand); border-left-color: var(--tv-coral-deep); }
-.page-travel .cta-band { background: var(--tv-sand); }
-
-@media (max-width: 860px) {
-  .page-travel .dark-top { background-size: 1000px auto, auto; background-position: 40% 0, 0 0; }
-  .page-travel .demo__bar::before { left: -11px; }
-}
-@media (max-width: 600px) {
-  .page-travel .demo__steps .t { font-size: 11px; }
-  .page-travel .stage-strip li, .page-travel .stage-strip li:nth-child(3n+1) { border-left-color: #C9B58B; }
-  .page-travel .stage-strip li:nth-child(odd) { border-left: 0; }
-}
+.page-travel .demo__steps { padding-top: 22px; }
+.page-travel .demo__steps li { border-color: #D3ECEA; }
+.page-travel .demo__steps li:last-child { border-color: transparent; }

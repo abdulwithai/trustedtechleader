@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Design tokens (global). Loaded first by src/app/layout.tsx.
+   The `--acs-*` set is the source of truth for the whole site; site.css maps the
+   legacy tokens (--navy, --paper, --blue, ...) onto it. See README-design.md.
+   Font families come from next/font in layout.tsx, which sets
+   --acs-font-display / --acs-font-sans / --acs-font-mono on <html>.
+   ========================================================================== */
+:root {
+  /* light canvas */
+  --acs-bg: #F6F4FB;
+  --acs-bg-2: #EEEAF8;
+  --acs-surface: #FFFFFF;
+  --acs-ink: #17112B;
+  --acs-ink-2: #463F5E;      /* body copy */
+  --acs-muted: #6E6787;
+  --acs-line: #E4DFF1;
+  --acs-dash: #C9C0E2;       /* dashed placeholder slots */
+
+  /* brand */
+  --acs-violet: #6B3BEA;
+  --acs-violet-2: #8B5CF6;
+  --acs-violet-deep: #4A22B8;
+  --acs-violet-tint: #EDE6FE;
+  --acs-glow: rgba(139, 92, 246, .28);
+
+  /* status: vulnerable -> warning -> fixed */
+  --acs-risk: #E5484D;
+  --acs-risk-tint: #FDE8E8;
+  --acs-warn: #E59A22;
+  --acs-warn-tint: #FCF0DA;
+  --acs-ok: #3FA34D;
+  --acs-ok-bright: #8BD46A;  /* on dark */
+  --acs-ok-tint: #E4F5E0;
+
+  /* dark act ("night") */
+  --acs-night: #130A2A;
+  --acs-night-2: #1D1140;
+  --acs-night-card: rgba(255, 255, 255, .06);
+  --acs-night-line: rgba(255, 255, 255, .12);
+  --acs-on-night: #F3EFFF;
+  --acs-on-night-2: #BDB3DA;
+
+  --acs-display: var(--acs-font-display), 'Bricolage Grotesque', system-ui, sans-serif;
+  --acs-sans: var(--acs-font-sans), 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --acs-mono: var(--acs-font-mono), 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --acs-r-sm: 10px;
+  --acs-r-md: 16px;
+  --acs-r-lg: 22px;
+  --acs-r-xl: 28px;
+  --acs-shadow: 0 1px 2px rgba(23, 17, 43, .05), 0 12px 32px -12px rgba(74, 34, 184, .22);
+  --acs-shadow-lg: 0 2px 4px rgba(23, 17, 43, .05), 0 30px 60px -20px rgba(74, 34, 184, .32);
+  --acs-ease: cubic-bezier(.2, .8, .2, 1);
+  --acs-gutter: clamp(16px, 5vw, 56px);
+  --acs-max: 1200px;
+
+  /* starfield layers for night sections (used as a background-image list) */
+  --acs-stars:
+    radial-gradient(1.2px 1.2px at 20px 30px, rgba(255,255,255,.55), transparent),
+    radial-gradient(1px 1px at 90px 120px, rgba(255,255,255,.4), transparent),
+    radial-gradient(1.4px 1.4px at 170px 60px, rgba(220,200,255,.5), transparent),
+    radial-gradient(1px 1px at 240px 190px, rgba(255,255,255,.35), transparent),
+    radial-gradient(1.2px 1.2px at 310px 90px, rgba(255,255,255,.45), transparent),
+    radial-gradient(1px 1px at 60px 230px, rgba(200,180,255,.45), transparent);
+}

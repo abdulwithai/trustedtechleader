@@ -1,0 +1,142 @@
+/* FAQ section (.acs-faq__*). Native <details>, so it works without JS. */
+
+.acs-faq__grid {
+  display: grid;
+  gap: 40px;
+}
+
+.acs-faq__intro {
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+}
+
+.acs-faq__intro h2 {
+  margin: 0;
+}
+
+.acs-faq__intro .acs-lead {
+  margin: 0 0 8px;
+}
+
+.acs-faq__list {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* .acs-card.acs-faq__item: higher specificity so the 16px radius beats .acs-card's 22px regardless of CSS order */
+.acs-card.acs-faq__item {
+  border-radius: var(--acs-r-md);
+  transition: box-shadow .3s var(--acs-ease), border-color .3s;
+}
+
+.acs-faq__item:hover {
+  border-color: rgba(107, 59, 234, .35);
+  box-shadow: 0 2px 4px rgba(23, 17, 43, .05), 0 18px 36px -16px rgba(74, 34, 184, .32);
+}
+
+.acs-faq__item[open] {
+  border-color: rgba(107, 59, 234, .3);
+}
+
+.acs-faq__q {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 22px;
+  cursor: pointer;
+  list-style: none;
+  font: 600 17px/1.35 var(--acs-sans);
+  color: var(--acs-ink);
+  border-radius: var(--acs-r-md);
+}
+
+/* hide the native disclosure marker in all engines */
+.acs-faq__q::-webkit-details-marker {
+  display: none;
+}
+
+.acs-faq__q::marker {
+  content: '';
+}
+
+.acs-faq__icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--acs-violet-tint);
+  transition: background .25s var(--acs-ease);
+}
+
+.acs-faq__icon::before,
+.acs-faq__icon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  margin: -1px 0 0 -6px;
+  border-radius: 2px;
+  background: var(--acs-violet-deep);
+  transition: transform .35s var(--acs-ease);
+}
+
+/* vertical bar: the plus becomes a minus when open */
+.acs-faq__icon::after {
+  transform: rotate(90deg);
+}
+
+.acs-faq__item[open] .acs-faq__icon {
+  background: var(--acs-violet);
+}
+
+.acs-faq__item[open] .acs-faq__icon::before {
+  background: #fff;
+}
+
+.acs-faq__item[open] .acs-faq__icon::after {
+  transform: rotate(0deg);
+  background: #fff;
+}
+
+.acs-faq__a {
+  margin: 0;
+  padding: 0 22px 22px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--acs-ink-2);
+  max-width: 62ch;
+}
+
+.acs-faq__q:focus-visible {
+  outline-offset: -2px;
+}
+
+@media (min-width: 900px) {
+  .acs-faq__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+  }
+
+  .acs-faq__intro {
+    position: sticky;
+    top: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acs-faq__item,
+  .acs-faq__icon,
+  .acs-faq__icon::before,
+  .acs-faq__icon::after {
+    transition: none;
+  }
+
+}

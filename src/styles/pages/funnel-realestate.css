@@ -1,134 +1,35 @@
-/* Real estate investor funnel theme. Scoped under .page-realestate; overrides the --f-* hooks in funnel.css. */
-.page-realestate.page-funnel {
-  --re-forest: #17312A;
-  --re-forest-2: #214236;
-  --re-stone: #EFEBE0;
-  --re-card: #FBF9F3;
-  --re-brass: #D6A94B;      /* on forest */
-  --re-brass-hi: #E4BE69;
-  --re-brass-ink: #7A5712;  /* brass text on stone / card */
-  --re-brass-mark: #A87A1B; /* non-text marks on light */
-
-  --muted: #55604F;
-  --text-2: #38433B;
-  --line: #D4CDB9;
-
-  --f-hero-bg: var(--re-forest);
-  --f-hero-text: #F4F1E6;
-  --f-hero-kicker: #C2CFC4;
-  --f-hero-lead: #D3DCD2;
-  --f-hero-outline: #7C9486;
-  --f-accent: var(--re-brass-ink);
-  --f-accent-tint: #EDE3C8;
-  --f-demo-bg: var(--re-card);
-  --f-demo-ink: var(--re-forest);
-  --f-demo-line: #CFC8B4;
-  --f-tab-active-bg: var(--re-forest);
-  --f-tab-active-text: #F4F1E6;
-  --f-badge-bg: #EDE6D2;
-  --f-dot: var(--re-forest);
-  --f-rule: var(--re-forest);
-  --f-hairline: #E1DAC6;
-  --f-fee-bg: var(--re-forest);
-  --f-fee-text: #F4F1E6;
-  --f-fee-sub: #C2CFC4;
-  --f-faq-ink: var(--re-forest);
-  --f-band-bg: #E3DCC6;
-
-  background: var(--re-stone);
-  color: var(--re-forest);
+/* Real estate funnel: same brand, light brass secondary accent + a parcel / survey motif. */
+.page-realestate {
+  --f-accent: #B8892B;
+  --f-accent-deep: #7C5A12;
+  --f-accent-tint: #F7EBD0;
 }
-.page-realestate.page-funnel :focus-visible { outline-color: var(--re-brass-ink); }
-.page-realestate.page-funnel .dark-top :focus-visible,
-.page-realestate.page-funnel .fee-bar :focus-visible { outline-color: var(--re-brass); }
 
-/* buttons: brass on forest, forest on stone */
-.page-realestate.page-funnel .btn-primary { background: var(--re-brass); color: var(--re-forest); }
-.page-realestate.page-funnel .btn-primary:hover { background: var(--re-brass-hi); }
-.page-realestate.page-funnel .btn-dark { background: var(--re-forest); color: #F4F1E6; }
-.page-realestate.page-funnel .btn-dark:hover { background: var(--re-forest-2); }
-
-/* hero: faint survey grid plus lot lines */
-.page-realestate.page-funnel .dark-top {
-  background-color: var(--re-forest);
+/* parcel plot behind the record header: survey lines, corner pins */
+.page-realestate .demo__head {
+  background-color: var(--acs-bg);
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480' viewBox='0 0 640 480' fill='none' stroke='%23D6A94B' stroke-opacity='.22' stroke-width='1.2'%3E%3Cpath d='M300 30 L610 70 L585 250 L520 235 L505 330 L330 300 Z'/%3E%3Cpath d='M450 50 L430 285 M330 300 L360 450 L505 330 M585 250 L630 420 L505 330' stroke-dasharray='6 5'/%3E%3Ccircle cx='300' cy='30' r='4'/%3E%3Ccircle cx='610' cy='70' r='4'/%3E%3Ccircle cx='585' cy='250' r='4'/%3E%3Ccircle cx='330' cy='300' r='4'/%3E%3C/svg%3E"),
-    linear-gradient(rgba(244, 241, 230, .05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244, 241, 230, .05) 1px, transparent 1px);
-  background-size: 640px 480px, 40px 40px, 40px 40px;
-  background-position: right top, 0 0, 0 0;
-  background-repeat: no-repeat, repeat, repeat;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80' fill='none'%3E%3Cpath d='M118 14 L186 22 L176 66 L126 70 L110 44 Z' stroke='%23B8892B' stroke-opacity='.28' stroke-width='1.6' stroke-dasharray='5 4'/%3E%3Cg fill='%23B8892B' fill-opacity='.3'%3E%3Ccircle cx='118' cy='14' r='3'/%3E%3Ccircle cx='186' cy='22' r='3'/%3E%3Ccircle cx='176' cy='66' r='3'/%3E%3Ccircle cx='126' cy='70' r='3'/%3E%3Ccircle cx='110' cy='44' r='3'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(var(--f-accent-tint), var(--f-accent-tint));
+  background-repeat: no-repeat;
+  background-position: right 6px center, center;
+  background-size: 170px auto, 100% 100%;
+  border-color: #EBD9AE;
 }
-.page-realestate.page-funnel .law-hero__practices {
-  letter-spacing: .08em; text-transform: uppercase; font-size: 12px; color: var(--re-brass);
-}
+.page-realestate .demo__steps li { border-color: #EFE3C4; }
+.page-realestate .demo__steps li:last-child { border-color: transparent; }
 
-/* demo card as a plat / parcel record */
-.page-realestate.page-funnel .demo {
-  border-radius: 6px; border: 1px solid #CFC8B4; box-shadow: 0 0 0 4px rgba(244, 241, 230, .08), 0 18px 40px rgba(0, 0, 0, .28);
+/* pipeline = survey chain: tick marks along the track */
+.page-realestate .fs__track {
+  background:
+    repeating-linear-gradient(180deg, #D9BE7E 0 2px, transparent 2px 14px) center / 12px 100% no-repeat,
+    repeating-linear-gradient(180deg, var(--acs-dash) 0 6px, transparent 6px 11px);
 }
-.page-realestate.page-funnel .demo__bar { background: #F2EDDC; border-bottom: 1px solid #CFC8B4; }
-.page-realestate.page-funnel .demo__tab { border-radius: 4px; }
-.page-realestate.page-funnel .demo__badge {
-  border-radius: 2px; border: 1px solid #A8A08A; letter-spacing: .08em; text-transform: uppercase; font-size: 10.5px; color: var(--muted);
+@media (min-width: 1000px) {
+  .page-realestate .fs__track {
+    background:
+      repeating-linear-gradient(90deg, #D9BE7E 0 2px, transparent 2px 14px) center / 100% 12px no-repeat,
+      repeating-linear-gradient(90deg, var(--acs-dash) 0 6px, transparent 6px 11px);
+  }
 }
-.page-realestate.page-funnel .demo__head {
-  margin: 14px 22px 0; padding: 4px 0 14px; border-bottom: 4px double var(--re-forest);
-}
-.page-realestate.page-funnel .demo__name { font-size: 22px; letter-spacing: -.005em; }
-.page-realestate.page-funnel .demo__matter { font-variant-numeric: tabular-nums; }
-.page-realestate.page-funnel .demo__meta { font-variant-numeric: tabular-nums; }
-.page-realestate.page-funnel .demo__steps { padding: 6px 22px 20px; }
-.page-realestate.page-funnel .demo__steps li { position: relative; grid-template-columns: 22px 92px minmax(0, 1fr); border-top: 1px dotted #CFC8B4; }
-.page-realestate.page-funnel .demo__steps li:first-child { border-top: 0; }
-.page-realestate.page-funnel .demo__steps li::before {
-  content: ""; position: absolute; left: 4px; top: 0; bottom: 0; width: 1px; background: #B9B198;
-}
-.page-realestate.page-funnel .demo__steps li:first-child::before { top: 18px; }
-.page-realestate.page-funnel .demo__steps li:last-child::before { bottom: auto; height: 18px; }
-.page-realestate.page-funnel .demo__steps .dot { position: relative; z-index: 1; border-radius: 2px; transform: rotate(45deg) scale(.9); }
-.page-realestate.page-funnel .demo__steps .dot--last { background: var(--re-brass-mark); box-shadow: 0 0 0 3px #F3E7C6; }
-.page-realestate.page-funnel .demo__steps .t {
-  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; font-size: 11.5px; line-height: 1.5; font-variant-numeric: tabular-nums; color: var(--muted); white-space: pre-line;
-}
-
-/* stage strip as a deal pipeline */
-.page-realestate.page-funnel .stage-strip { border-top: 3px solid var(--re-forest); }
-.page-realestate.page-funnel .stage-strip li { position: relative; border-left: 1px dashed #B9B198; }
-.page-realestate.page-funnel .stage-strip li::before {
-  content: ""; position: absolute; top: -8px; left: -6px; width: 11px; height: 11px; border-radius: 50%;
-  background: var(--re-stone); border: 2px solid var(--re-forest);
-}
-.page-realestate.page-funnel .stage-strip li:first-child::before { left: 0; }
-.page-realestate.page-funnel .stage-strip li.is-next::before { background: var(--re-brass-mark); border-color: var(--re-brass-ink); box-shadow: 0 0 0 4px #EDE3C8; }
-.page-realestate.page-funnel .stage-strip li.is-next { background: linear-gradient(180deg, #EDE3C8, rgba(237, 227, 200, .45)); }
-.page-realestate.page-funnel .stage__n { font-variant-numeric: tabular-nums; letter-spacing: .04em; }
-.page-realestate.page-funnel .stage-strip h3 { margin-top: 14px; }
-
-/* surfaces */
-.page-realestate.page-funnel .part { background: var(--re-card); border: 1px solid #D4CDB9; border-radius: 6px; border-top: 4px double var(--re-forest); }
-.page-realestate.page-funnel .part__list li::before { color: var(--re-brass-ink); }
-.page-realestate.page-funnel .fee-bar { border-radius: 6px; border-bottom: 4px solid var(--re-brass); }
-.page-realestate.page-funnel .proof__card { background: var(--re-card); border: 1px solid #D4CDB9; border-left: 4px solid var(--re-brass-mark); border-radius: 6px; }
-.page-realestate.page-funnel .faq__item { border-bottom-color: #CFC8B4; }
-.page-realestate.page-funnel .cta-band { border-radius: 6px; }
-.page-realestate.page-funnel .eyebrow { color: var(--re-brass-ink); letter-spacing: .06em; text-transform: uppercase; font-size: 12px; }
-
-@media (max-width: 1000px) {
-  .page-realestate.page-funnel .stage-strip li:nth-child(3n+1)::before { left: 0; }
-  .page-realestate.page-funnel .stage-strip li:nth-child(-n+3)::before { top: -8px; }
-  .page-realestate.page-funnel .stage-strip li:nth-child(n+4)::before { top: -6px; }
-}
-@media (max-width: 860px) {
-  .page-realestate.page-funnel .dark-top { background-size: 480px 360px, 40px 40px, 40px 40px; background-position: right -80px top, 0 0, 0 0; }
-}
-@media (max-width: 600px) {
-  .page-realestate.page-funnel .stage-strip li:nth-child(3n+1)::before { left: -6px; }
-  .page-realestate.page-funnel .stage-strip li:nth-child(odd)::before { left: 0; }
-  .page-realestate.page-funnel .stage-strip li:nth-child(n+3)::before { top: -6px; }
-  .page-realestate.page-funnel .demo__head { margin-inline: 16px; }
-  .page-realestate.page-funnel .demo__steps { padding-inline: 16px; }
-  .page-realestate.page-funnel .demo__steps li { grid-template-columns: 14px 74px minmax(0, 1fr); }
-  .page-realestate.page-funnel .demo__steps .t { font-size: 11px; }
-  .page-realestate.page-funnel .demo__steps li::before { left: 3px; }
-}
+.page-realestate .part { border-top: 3px solid var(--f-accent); }

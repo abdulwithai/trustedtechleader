@@ -22,7 +22,7 @@ export default function NavToggle() {
     const onNav = (e: Event) => {
       if ((e.target as Element).closest('a')) setOpen(false);
     };
-    const mq = window.matchMedia('(min-width: 1001px)');
+    const mq = window.matchMedia('(min-width: 1101px)');
     const onMq = (m: MediaQueryListEvent) => {
       if (m.matches) setOpen(false);
     };

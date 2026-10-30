@@ -18,7 +18,8 @@ const lawFirms: FunnelContent = {
   hero: {
     kicker: 'Immigration · Personal injury · Family law',
     h1: 'Every inquiry answered. Every missed consult followed up.',
-    lead: 'Intake documents are read before the lawyer picks up the phone. A missed consultation triggers a call and a text, so the conversation picks up where it stopped.',
+    highlight: 'Every missed consult followed up.',
+    lead: 'We read intake documents before the lawyer picks up the phone. When a consultation is missed, a call and a text go out, so the conversation picks up where it stopped.',
     primaryCta: 'Book your free scan',
     secondaryCta: { href: '#stages', label: 'How it works' },
   },
@@ -38,6 +39,8 @@ const lawFirms: FunnelContent = {
   },
   stages: {
     title: 'From first message to kept consultation.',
+    highlight: 'kept consultation.',
+    eyebrow: 'How it works',
     sub: 'Five stages run inside your existing CRM and calendar. The sixth is where the firm grows.',
     items: [
       { n: '01', title: 'Capture', body: 'Forms, WhatsApp and ad leads land in one CRM record.' },
@@ -49,6 +52,9 @@ const lawFirms: FunnelContent = {
     ],
   },
   parts: {
+    eyebrow: 'What you get',
+    title: 'Two parts. One lead system.',
+    highlight: 'One lead system.',
     items: [
       { label: 'Part one · Stages 1–4', title: 'Unified lead system', lead: 'Every inquiry in one record, read, answered and booked.',
         list: ['Website, WhatsApp and ad leads routed to your CRM', 'Attachments read and summarised for the lawyer', 'Routing by practice area, booking to calendar'] },
@@ -58,12 +64,13 @@ const lawFirms: FunnelContent = {
   },
   fee: {
     title: 'Both parts, one fixed project fee.',
-    sub: 'Scoped on a walkthrough call. Your CRM and calendar stay yours.',
+    sub: 'We scope it on a walkthrough call. Your CRM and calendar stay yours.',
     cta: 'Book your free scan',
   },
   faq: {
     eyebrow: 'Questions firms ask',
     title: 'Built around how firms work.',
+    highlight: 'how firms work.',
     items: [
       { q: 'Do you need access to our client files?', a: 'Demos run on fictional data. In your build, documents stay inside the CRM and systems you already use.' },
       { q: 'Are the automated calls and texts allowed in our state?', a: 'Consent, disclosure and recording rules differ by state. We check yours before the follow-up agent goes live and only contact people who reached out to you. This is not legal advice.' },
@@ -73,6 +80,8 @@ const lawFirms: FunnelContent = {
   },
   cta: {
     title: 'Watch an immigration, injury or family lead move through all six stages.',
+    highlight: 'all six stages.',
+    lead: 'Book a walkthrough call and we will scope it with you.',
     button: 'Book your free scan',
   },
 };

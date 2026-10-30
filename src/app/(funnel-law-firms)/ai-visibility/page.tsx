@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
+import Cta from '@/components/brand/Cta';
+import Auditor from '@/components/brand/Auditor';
 import VisibilityBehavior from '@/components/behaviors/VisibilityBehavior';
 import '@/styles/pages/visibility.css';
-import { BOOKING_URL } from '@/lib/booking';
 
 export const metadata: Metadata = {
   "title": {
@@ -49,16 +50,16 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"What is an AI visibility diagnostic?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"We ask real buying questions for your practice areas and city on ChatGPT, Gemini, Claude and Perplexity, then record whether your firm is named, how it is described, which firms appear instead, and which sources the answers cite.\"}},{\"@type\":\"Question\",\"name\":\"Why would a law firm need to know what AI assistants say?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"People now ask full questions and an assistant answers with a few names instead of a page of links. There is no ranking report for AI answers, so unless someone asks the questions you cannot know whether you are named, missing or described wrongly.\"}},{\"@type\":\"Question\",\"name\":\"What do I receive?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"A report you can read in one sitting: the full question grid by assistant, every wrong detail with where it came from, the firms named in your place, and an ordered fix list that is yours to keep.\"}},{\"@type\":\"Question\",\"name\":\"Do you guarantee that AI assistants will mention my firm?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. AI answers change from run to run. We report what we saw and never promise mentions, citations or rankings.\"}}]}" }} />
       <main id="main">
       <section className="vis-hero" aria-labelledby="hero-title">
-      <div className="vis-hero__glow" aria-hidden="true"></div>
+      <div className="acs-glow" aria-hidden="true"></div>
       <div className="container vis-hero__inner">
-      <div className="vis-hero__copy on-dark">
-      <p className="eyebrow">AI visibility diagnostic for law firms</p>
-      <h1 id="hero-title" className="h1-md">Your next client may ask an AI before they ask Google.</h1>
-      <p className="lead vis-hero__lead">We find out what ChatGPT, Gemini, Claude and Perplexity say when someone asks for a firm like yours, and what to fix so the answer includes you.</p>
-      <div className="btn-row vis-hero__btns">
-      <a className="btn btn-primary" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
-      <a className="btn btn-outline-dark" href="#sample-grid">See a sample grid</a>
-      <a className="btn btn-outline-dark" href="#how-it-works">How it works</a>
+      <div className="vis-hero__copy">
+      <p className="acs-eyebrow">AI visibility diagnostic for law firms</p>
+      <h1 id="hero-title">Your next client may ask an AI <em>before they ask Google.</em></h1>
+      <p className="acs-lead vis-hero__lead">We find out what ChatGPT, Gemini, Claude and Perplexity say when someone asks for a firm like yours, and what to fix so the answer includes you.</p>
+      <div className="vis-hero__btns">
+      <Cta size="lg">Book a call</Cta>
+      <Cta variant="ghost" size="lg" href="#sample-grid">See a sample grid</Cta>
+      <Cta variant="ghost" size="lg" href="#how-it-works">How it works</Cta>
       </div>
       <div className="checked-on">
       <span className="checked-on__label">Checked on</span>
@@ -71,7 +72,7 @@ export default function Page() {
       </div>
       </div>
       <figure className="hero-art" aria-label="Illustrative AI answer">
-      <div className="hero-art__grid" aria-hidden="true"></div>
+      <Auditor pose="point" facing="left" className="hero-art__auditor" />
       <div className="hero-art__stage">
       <div className="hero-art__back" aria-hidden="true"><span>Run 3 of 3 · Perplexity</span></div>
       <div className="ai-card">
@@ -108,10 +109,15 @@ export default function Page() {
       </figure>
       </div>
       </section>
-      <section className="vgrid" id="sample-grid" aria-labelledby="grid-title">
-      <div className="container">
-      <p className="eyebrow vgrid__eyebrow">Sample grid</p>
-      <div className="vgrid-card">
+      <section className="vgrid acs-night" id="sample-grid" aria-labelledby="grid-title">
+      <div className="acs-glow" aria-hidden="true"></div>
+      <div className="acs-stars" aria-hidden="true"></div>
+      <div className="container vgrid__inner">
+      <div className="vgrid__head" data-reveal>
+      <p className="acs-eyebrow">Sample grid</p>
+      <p className="vgrid__lead">Pick a practice area. Every cell is one question asked on one assistant.</p>
+      </div>
+      <div className="vgrid-card" data-reveal="pop">
       <div className="vgrid-head">
       <div className="vgrid-head__left">
       <h2 className="vgrid-title" id="grid-title">Question grid</h2>
@@ -157,25 +163,27 @@ export default function Page() {
       </div>
       </div>
       </section>
-      <section className="section" id="why-it-matters" aria-labelledby="why-title">
+      <section className="section why-sec" id="why-it-matters" aria-labelledby="why-title">
+      <div className="acs-glow" aria-hidden="true"></div>
       <div className="container grid grid-split why">
       <div>
-      <p className="eyebrow">Why you need this</p>
-      <h2 id="why-title">The shortlist is being written without you.</h2>
+      <p className="acs-eyebrow">Why you need this</p>
+      <h2 id="why-title">The shortlist is being written <em>without you.</em></h2>
       </div>
       <ol className="why-list">
-      <li className="why-item"><span className="numeral">i.</span><div><h3 className="h3">People ask full questions now.</h3><p className="why-item__body">“Who can help my family with a green card in Houston?” An assistant answers with a few names, not a page of links.</p></div></li>
-      <li className="why-item"><span className="numeral">ii.</span><div><h3 className="h3">You can't see the answer from your desk.</h3><p className="why-item__body">There is no ranking report for AI answers. Unless someone asks the questions, you don't know if you're named, missing or described wrongly.</p></div></li>
-      <li className="why-item"><span className="numeral">iii.</span><div><h3 className="h3">Wrong details cost calls.</h3><p className="why-item__body">An old address, a practice area you dropped, a language you don't offer: assistants repeat what they find on directories and reviews.</p></div></li>
+      <li className="why-item" data-reveal><span className="why-item__n">01</span><div><h3 className="h3">People ask full questions now.</h3><p className="why-item__body">“Who can help my family with a green card in Houston?” An assistant answers with a few names, not a page of links.</p></div></li>
+      <li className="why-item" data-reveal><span className="why-item__n">02</span><div><h3 className="h3">You can't see the answer from your desk.</h3><p className="why-item__body">There is no ranking report for AI answers. Unless someone asks the questions, you don't know if you're named, missing or described wrongly.</p></div></li>
+      <li className="why-item" data-reveal><span className="why-item__n">03</span><div><h3 className="h3">Wrong details cost calls.</h3><p className="why-item__body">An old address, a practice area you dropped, a language you don't offer: assistants repeat what they find on directories and reviews.</p></div></li>
       </ol>
       </div>
       </section>
       <section className="how" id="how-it-works" aria-labelledby="how-title">
+      <div className="acs-glow" aria-hidden="true"></div>
       <div className="container">
       <div className="how__head">
       <div>
-      <p className="eyebrow">How it works</p>
-      <h2 id="how-title" className="how__title">How an AI answer gets made, and where we step in.</h2>
+      <p className="acs-eyebrow">How it works</p>
+      <h2 id="how-title" className="how__title">How an AI answer gets made, and <em>where we step in.</em></h2>
       </div>
       <p className="how__aside">Assistants don't invent firms. They read what's published about you. We fix what they read.</p>
       </div>
@@ -251,23 +259,23 @@ export default function Page() {
       <div className="container">
       <div className="do-head">
       <div>
-      <p className="eyebrow">What we do</p>
-      <h2 id="do-title">Ask, record, fix.</h2>
+      <p className="acs-eyebrow">What we do</p>
+      <h2 id="do-title">Ask. Record. <em>Fix.</em></h2>
       </div>
       <p className="do-head__aside">One fixed-fee diagnostic, then optional monthly work on the fix list.</p>
       </div>
       <div className="do-steps">
-      <article className="do-step">
+      <article className="do-step" data-reveal>
       <p className="do-step__tag">01 · Ask</p>
       <h3 className="h3 do-step__title">Your clients' questions</h3>
       <p className="do-step__body">Real buying questions for your practice areas and city, agreed with you, asked on four assistants and repeated.</p>
       </article>
-      <article className="do-step">
+      <article className="do-step" data-reveal>
       <p className="do-step__tag">02 · Record</p>
       <h3 className="h3 do-step__title">What they say about you</h3>
       <p className="do-step__body">Whether you're named, how you're described, which firms appear instead, and the sources behind each answer.</p>
       </article>
-      <article className="do-step do-step--fix">
+      <article className="do-step do-step--fix" data-reveal>
       <p className="do-step__tag">03 · Fix</p>
       <h3 className="h3 do-step__title">A plan, in order</h3>
       <p className="do-step__body">Profiles, directories, reviews and site pages to correct first, ordered by effort. You approve every change.</p>
@@ -278,7 +286,7 @@ export default function Page() {
       </section>
       <section className="section report" id="the-report" aria-labelledby="report-title">
       <div className="container grid grid-2 report__inner">
-      <div className="report-art" role="img" aria-label="Sample report pages for a fictional firm">
+      <div className="report-art" data-reveal="pop" role="img" aria-label="Sample report pages for a fictional firm">
       <div className="report-sheet report-sheet--back"></div>
       <div className="report-sheet report-sheet--front">
       <div className="rs-top"><span>Trusted Tech Leader</span><span>Example Firm · Houston</span></div>
@@ -300,8 +308,8 @@ export default function Page() {
       <p className="report-art__note">Sample pages, fictional firm</p>
       </div>
       <div>
-      <p className="eyebrow">What you receive</p>
-      <h2 id="report-title" className="h2-sm report__title">A report you can read in one sitting.</h2>
+      <p className="acs-eyebrow">What you receive</p>
+      <h2 id="report-title" className="report__title">A report you can read <em>in one sitting.</em></h2>
       <ul className="dash-list">
       <li>The full question grid, assistant by assistant</li>
       <li>Every wrong detail, with where it came from</li>
@@ -320,9 +328,13 @@ export default function Page() {
       <details><summary>Do you guarantee that AI assistants will mention my firm?</summary><p>No. AI answers change from run to run. We report what we saw and never promise mentions, citations or rankings.</p></details>
       </section>
       <section className="closing" aria-labelledby="closing-title">
-      <div className="closing__band">
-      <h2 id="closing-title" className="h2-lg closing__title">Find out what AI assistants tell your next client.</h2>
-      <a className="btn btn-dark btn-lg" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
+      <div className="closing__band acs-card acs-card--lg" data-reveal="pop">
+      <Auditor pose="thumbs" facing="left" className="closing__auditor" />
+      <div className="closing__copy">
+      <p className="acs-eyebrow">Next step</p>
+      <h2 id="closing-title" className="closing__title">Find out what AI assistants tell <em>your next client.</em></h2>
+      </div>
+      <Cta size="lg">Book a call</Cta>
       </div>
       </section>
       </main>

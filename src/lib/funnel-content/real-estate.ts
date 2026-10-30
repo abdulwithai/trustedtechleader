@@ -18,7 +18,8 @@ const realEstate: FunnelContent = {
   hero: {
     kicker: 'Land investors · Wholesalers · Property teams',
     h1: 'Every seller lead answered. Every deal tracked from letter to closing.',
-    lead: 'Offer letters go out at a steady pace, replies land in one record, and each deal moves through due diligence, closing and accounting without re-keying.',
+    highlight: 'Every deal tracked from letter to closing.',
+    lead: 'Offer letters go out at a steady pace and replies land in one record. Each deal then moves through due diligence, closing and accounting without re-keying.',
     primaryCta: 'Book a call',
     secondaryCta: { href: '#stages', label: 'How it works' },
   },
@@ -38,6 +39,8 @@ const realEstate: FunnelContent = {
   },
   stages: {
     title: 'From offer letter to recorded deed.',
+    highlight: 'recorded deed.',
+    eyebrow: 'How it works',
     sub: 'Five stages run from the list you already own. The sixth keeps old leads working.',
     items: [
       { n: '01', title: 'Reach', body: 'An owner list is imported and letters go out at a steady daily pace.' },
@@ -49,6 +52,9 @@ const realEstate: FunnelContent = {
     ],
   },
   parts: {
+    eyebrow: 'What you get',
+    title: 'Two parts. One deal pipeline.',
+    highlight: 'One deal pipeline.',
     items: [
       { label: 'Part one · Stages 1–3', title: 'Outreach engine', lead: 'Letters out at a pace you set, every reply in one place.',
         list: ['CSV import of owner lists into a mailing queue', 'Letters dripped on a schedule within daily limits and pause settings', 'Replies captured in one record per property'] },
@@ -58,7 +64,7 @@ const realEstate: FunnelContent = {
   },
   fee: {
     title: 'Both parts, one fixed project fee.',
-    sub: 'Scoped on a walkthrough call. Your data stays yours.',
+    sub: 'We scope it on a walkthrough call. Your data stays yours.',
     cta: 'Book a call',
   },
   proof: {
@@ -71,6 +77,7 @@ const realEstate: FunnelContent = {
   faq: {
     eyebrow: 'Questions investors ask',
     title: 'Built around how deals actually move.',
+    highlight: 'how deals actually move.',
     items: [
       { q: 'Are automated texts and calls allowed?', a: 'Consent and do-not-call rules vary by state and by how a number was collected. We check yours before anything goes live and only contact people who replied to you. This is not legal advice.' },
       { q: 'Can we keep our current CRM or spreadsheets?', a: 'Yes. We start from the lists and tools you already use, and scope any import or sync on the call. Your data stays yours.' },
@@ -80,6 +87,8 @@ const realEstate: FunnelContent = {
   },
   cta: {
     title: 'Watch a mail reply become a closed deal in your accounts.',
+    highlight: 'a closed deal',
+    lead: 'Book a walkthrough call and we will scope it with you.',
     button: 'Book a call',
   },
 };
