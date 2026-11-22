@@ -1,0 +1,22 @@
+.about-hero__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+.about-hero__actions { margin-top: 24px; }
+.photo-ph { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; padding: 20px; background: var(--ttl-tint); border: 2px dashed var(--ttl-stone); border-radius: var(--radius); color: var(--ttl-stone-text); }
+.photo-ph__tag { font-family: var(--font-mono); font-size: var(--fs-caption); text-transform: uppercase; letter-spacing: 0.08em; background: var(--ttl-charcoal); color: #fff; padding: 3px 8px; border-radius: var(--radius); }
+.photo-ph__label { font-weight: 600; color: var(--ttl-charcoal); }
+.photo-ph__note { font-size: var(--fs-small); }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 32px; }
+.team-card h3 { margin: 16px 0 4px; font-size: 1.375rem; }
+.team-card p { margin: 0; }
+.steps { list-style: none; counter-reset: step; padding: 0; margin: 32px 0 0; display: grid; gap: 16px; max-width: 760px; }
+.steps li { counter-increment: step; position: relative; padding: 20px 20px 20px 72px; background: var(--ttl-white); border: 1px solid var(--ttl-border); border-radius: var(--radius); }
+.steps li::before { content: counter(step); position: absolute; left: 20px; top: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--ttl-forest); color: #fff; display: grid; place-items: center; font-family: var(--font-mono); }
+.beliefs { list-style: none; counter-reset: b; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 48px; }
+.beliefs li { counter-increment: b; }
+.beliefs li::before { content: '0' counter(b); font-family: var(--font-mono); color: var(--ttl-terracotta-dark); }
+.beliefs h3 { font-size: 1.375rem; margin: 4px 0 8px; }
+.beliefs p { margin: 0; }
+.karachi-list { padding-left: 1.2em; display: grid; gap: 12px; margin-bottom: 1.5em; max-width: var(--measure); }
+@media (max-width: 900px) {
+  .about-hero__grid, .team-grid, .beliefs { grid-template-columns: 1fr; }
+  .about-hero__grid { gap: 32px; }
+}
