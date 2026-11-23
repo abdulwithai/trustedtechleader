@@ -9,7 +9,14 @@ import { NAV, SITE } from '@/lib/site';
 export function Logo() {
   return (
     <Link href="/" className="logo" aria-label="Trusted Tech Leader, home">
-      Trusted Tech <span>Leader</span>
+      <svg className="logo__mark" viewBox="0 0 64 64" width="36" height="36" aria-hidden="true" focusable="false">
+        <rect width="64" height="64" rx="14" fill="#2D4A3E" />
+        <path fill="#FAF8F5" d="M8 12h40v9H8z" />
+        <path fill="#FAF8F5" d="M13 21h9v31h-9z" />
+        <path fill="#FAF8F5" d="M33 21h9v31h-9z" />
+        <path fill="#C5603A" d="M33 43h23v9H33z" />
+      </svg>
+      <span className="logo__text">Trusted Tech <span>Leader</span></span>
     </Link>
   );
 }
