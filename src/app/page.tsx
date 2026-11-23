@@ -1,196 +1,160 @@
-import Link from 'next/link';
-import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import PageShell from '@/components/PageShell';
-import Auditor from '@/components/brand/Auditor';
-import Cta from '@/components/brand/Cta';
-import HeroStack from '@/components/home/HeroStack';
-import ServiceSelector from '@/components/home/ServiceSelector';
-import '@/styles/pages/home.css';
+import { Section } from '@/components/Container';
+import FAQ from '@/components/FAQ';
+import CTABand from '@/components/CTABand';
+import Hero from '@/components/home/Hero';
+import { TIERS, CONCEPTS, STEPS, PILLARS, WHY, FAQS } from '@/components/home/data';
+import { SITE } from '@/lib/site';
+import '@/styles/home.css';
 
 export const metadata: Metadata = {
-  "title": {
-    "absolute": "Trusted Tech Leader | AI consulting and automation"
-  },
-  "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
-  "alternates": {
-    "canonical": "/"
-  },
-  "openGraph": {
-    "type": "website",
-    "siteName": "Trusted Tech Leader",
-    "title": "Trusted Tech Leader | AI consulting and automation",
-    "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
-    "url": "https://trustedtechleader.com/",
-    "locale": "en_US",
-    "images": [
-      {
-        "url": "https://trustedtechleader.com/assets/img/og-default.png",
-        "width": 1200,
-        "height": 630,
-        "alt": "Trusted Tech Leader: AI consulting, automation and custom software"
-      }
-    ]
-  },
-  "twitter": {
-    "card": "summary_large_image",
-    "title": "Trusted Tech Leader | AI consulting and automation",
-    "description": "AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.",
-    "images": [
-      {
-        "url": "https://trustedtechleader.com/assets/img/og-default.png",
-        "alt": "Trusted Tech Leader: AI consulting, automation and custom software"
-      }
-    ]
-  }
+  title: { absolute: SITE.defaultTitle },
+  description: SITE.defaultDescription,
+  alternates: { canonical: '/' },
 };
 
-const CASES = [
-  { href: '/case-studies/ai-textbook-study-reader/', tag: 'AI', t: 'AI textbook ingestion and study reader' },
-  { href: '/case-studies/ai-social-carousel-content-pipeline/', tag: 'AI', t: 'AI social carousel pipeline with approval dashboard' },
-  { href: '/case-studies/membership-sales-crm-and-billing/', tag: 'Business system', t: 'Membership sales CRM, contracts and billing platform' },
-  { href: '/case-studies/multi-tenant-pharmacy-erp-pos/', tag: 'Business system', t: 'Multi-tenant pharmacy ERP and POS' },
-  { href: '/case-studies/aghaz-halal-investing-mobile-app/', tag: 'Mobile app', t: 'Aghaz: halal goal-based investing mobile app for US investors' },
-  { href: '/case-studies/supplier-catalog-sync-platform/', tag: 'AI', t: 'AI-assisted supplier catalog sync platform' },
-];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  email: SITE.email,
+  slogan: SITE.tagline,
+  description: SITE.defaultDescription,
+  areaServed: { '@type': 'City', name: 'Charlotte, NC' },
+  knowsAbout: ['Lead generation', 'Content', 'CRM', 'AI automation'],
+};
 
-const STEPS = [
-  { t: 'Tell us', d: "Tell us what runs your business today, and what eats your team's time." },
-  { t: 'Pick one step', d: 'We map the process and start with one step, not everything at once.' },
-  { t: 'Build with review', d: 'We build in phases, and you review each one before we move on.' },
-  { t: 'Hand over', d: 'We hand it over, and we can extend it from there.' },
-];
+const FOR = ['Coffee shops', 'Studios & gyms', 'Salons', 'Restaurants', 'Home-service pros', 'Clinics'];
 
-const TRUST = ['AI automation', 'Business systems', 'Web & mobile apps'];
-
-const STARS: [number, number, number][] = [
-  [8, 18, 3], [22, 70, 2], [38, 12, 2], [55, 82, 3], [68, 20, 2], [78, 64, 2], [90, 30, 3], [94, 78, 2], [46, 46, 2], [14, 48, 2],
-];
-
-export default function Page() {
+export default function Home() {
   return (
-    <PageShell pageClass="page-home" home>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://trustedtechleader.com/#organization\",\"name\":\"Trusted Tech Leader\",\"url\":\"https://trustedtechleader.com/\",\"logo\":\"https://trustedtechleader.com/apple-touch-icon.png\",\"description\":\"AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.\"},{\"@type\":\"WebSite\",\"@id\":\"https://trustedtechleader.com/#website\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader\",\"publisher\":{\"@id\":\"https://trustedtechleader.com/#organization\"},\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https://trustedtechleader.com/#webpage\",\"url\":\"https://trustedtechleader.com/\",\"name\":\"Trusted Tech Leader | AI consulting and automation\",\"description\":\"AI consulting for businesses that want results. We plan, build and ship AI automation, custom business systems, and web and mobile apps.\",\"isPartOf\":{\"@id\":\"https://trustedtechleader.com/#website\"},\"about\":{\"@id\":\"https://trustedtechleader.com/#organization\"}}]}" }} />
-      <main id="main">
-        <section className="acs-section hm-hero" aria-labelledby="hm-hero-title">
-          <div className="hm-hero__dots" aria-hidden="true" />
-          <div className="acs-glow" aria-hidden="true" />
-          <div className="acs-wrap hm-hero__grid">
-            <div className="hm-hero__copy">
-              <span className="acs-eyebrow">AI consultant</span>
-              <h1 id="hm-hero-title">
-                AI that does real work <span className="acs-hl">inside your business.</span>
-              </h1>
-              <p className="acs-lead">
-                We build AI strategy, automation and agents into the workflows you already have, plus the custom systems and apps they run on.
-              </p>
-              <div className="hm-hero__ctas">
-                <Cta size="lg">Book a call</Cta>
-                <Cta variant="ghost" size="lg" href="/case-studies/">See our work</Cta>
-              </div>
-              <ul className="hm-trust" aria-label="26 builds shipped across three areas">
-                <li className="hm-trust__lead"><strong>26</strong><span>builds shipped</span></li>
-                {TRUST.map((t) => (
-                  <li key={t} className="hm-trust__item"><i aria-hidden="true" />{t}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="hm-hero__stage">
-              <div className="hm-hero__platform" aria-hidden="true">
-                <span className="hm-hero__ring hm-hero__ring--a" />
-                <span className="hm-hero__ring hm-hero__ring--b" />
-              </div>
-              <Auditor pose="present" facing="right" className="hm-hero__auditor" />
-              <svg className="hm-hero__connector" viewBox="0 0 120 70" preserveAspectRatio="none" aria-hidden="true">
-                <circle cx="3" cy="62" r="3.5" fill="#6B3BEA" />
-                <path d="M3 62 C 40 66, 60 10, 118 14" fill="none" stroke="#6B3BEA" strokeWidth="1.6" strokeDasharray="5 5" vectorEffect="non-scaling-stroke" />
-              </svg>
-              <HeroStack />
-            </div>
-          </div>
-        </section>
+    <PageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Hero />
 
-        <section className="acs-section hm-services" id="services" aria-labelledby="hm-services-title">
-          <div className="acs-wrap">
-            <div className="acs-head" data-reveal>
-              <span className="acs-eyebrow">Services</span>
-              <h2 id="hm-services-title">Five ways we can <span className="acs-hl">help.</span></h2>
-              <p className="acs-lead">Pick the one closest to your problem. Each one leads to the full detail.</p>
-            </div>
-            <div data-reveal="pop">
-              <ServiceSelector />
-            </div>
-          </div>
-        </section>
+      <section className="for" aria-label="Who we work with">
+        <div className="container for__inner">
+          <p className="for__label">Built for Charlotte independents</p>
+          <ul className="for__list">{FOR.map((f) => <li key={f}>{f}</li>)}</ul>
+        </div>
+      </section>
 
-        <section className="acs-section acs-night hm-proof" aria-labelledby="hm-proof-title" style={{ overflow: 'hidden' }}>
-          <div className="acs-glow" aria-hidden="true" />
-          <div className="acs-stars" aria-hidden="true" />
-          <div className="acs-wrap">
-            <div className="hm-proof__top">
-              <div className="acs-head" data-reveal>
-                <span className="acs-eyebrow">Our work</span>
-                <h2 id="hm-proof-title"><span className="acs-hl">26 builds shipped.</span> See the work.</h2>
-                <p className="acs-lead">AI automation, business systems and apps, each described from the evidence. No invented numbers.</p>
-              </div>
-              <Cta variant="light" href="/case-studies/">See case studies</Cta>
-            </div>
-            <ul className="hm-proof__grid">
-              {CASES.map((c, i) => (
-                <li key={c.href} data-reveal style={{ '--d': i } as CSSProperties}>
-                  <Link className="acs-card hm-case" href={c.href}>
-                    <span className="acs-chip">{c.tag}</span>
-                    <span className="hm-case__t">{c.t}</span>
-                    <span className="hm-case__go" aria-hidden="true">&rarr;</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+      <Section id="problem" aria-labelledby="problem-title" className="split">
+        <div className="split__grid">
+          <div className="split__col">
+            <p className="eyebrow">The problem</p>
+            <h2 id="problem-title">Leads slip through the cracks when you&rsquo;re busy.</h2>
+            <p>Missed calls. Slow replies. A quiet feed. No follow-up after the first message. Between customers, staff and invoices, good leads go cold before anyone answers.</p>
           </div>
-        </section>
+          <div className="split__col split__col--solve">
+            <p className="eyebrow">What we do</p>
+            <h2>One team runs the whole pipeline.</h2>
+            <p>We bring in the leads, make the content, run your CRM and automate the follow-up. You see every lead in one place and approve what goes out.</p>
+          </div>
+        </div>
+      </Section>
 
-        <section className="acs-section hm-process" aria-labelledby="hm-process-title">
-          <div className="acs-glow" aria-hidden="true" />
-          <div className="acs-wrap">
-            <div className="acs-head acs-head--center" data-reveal>
-              <span className="acs-eyebrow">How we work</span>
-              <h2 id="hm-process-title">One step at a time, <span className="acs-hl">reviewed as we go.</span></h2>
-            </div>
-            <ol className="hm-steps" data-reveal>
-              {STEPS.map((s, i) => (
-                <li key={s.t} className="hm-step" data-reveal style={{ '--d': i } as CSSProperties}>
-                  <span className="hm-step__n">{String(i + 1).padStart(2, '0')}</span>
-                  <div className="hm-step__card">
-                    <h3>{s.t}</h3>
-                    <p>{s.d}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+      <Section tone="tint" id="run" aria-labelledby="run-title">
+        <p className="eyebrow">What we run for you</p>
+        <h2 id="run-title">Four pillars. One pipeline.</h2>
+        <ol className="run">
+          {PILLARS.map((p) => (
+            <li key={p.title}>
+              <span className="run__n">{p.n}</span>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
 
-        <section className="acs-section hm-cta" aria-labelledby="hm-cta-title">
-          <div className="acs-wrap">
-            <div className="hm-cta__panel" data-reveal="pop">
-              <div className="hm-cta__dots" aria-hidden="true" />
-              <div className="hm-cta__stars" aria-hidden="true">
-                {STARS.map(([x, y, s], i) => (
-                  <span key={i} style={{ left: `${x}%`, top: `${y}%`, '--s': `${s}px`, '--i': i } as CSSProperties} />
-                ))}
+      <Section id="offer" aria-labelledby="offer-title">
+        <p className="eyebrow">Pricing</p>
+        <h2 id="offer-title">Pick a monthly plan. That&rsquo;s the whole decision.</h2>
+        <div className="tiers">
+          {TIERS.map((t) => (
+            <article key={t.name} className={`tier${t.popular ? ' tier--popular' : ''}`}>
+              {t.popular ? <span className="tier__flag">Most popular</span> : null}
+              <h3>{t.name}</h3>
+              <p className="tier__price">{t.price}<span>/month</span></p>
+              <ul>{t.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
+              <Link className={`btn ${t.popular ? 'btn--primary' : 'btn--secondary'}`} href={SITE.bookHref}>{SITE.bookLabel}</Link>
+            </article>
+          ))}
+        </div>
+        <p className="note">Month-to-month. Cancel anytime. Ad spend is paid to Meta and Google separately. CRM and lead capture live in 14 days, first post in 10. <Link href="/services">Full breakdown and add-ons &rarr;</Link></p>
+      </Section>
+
+      <Section id="process" aria-labelledby="process-title">
+        <p className="eyebrow">How it works</p>
+        <h2 id="process-title">Three steps from first call to leads on autopilot.</h2>
+        <ol className="steps">
+          {STEPS.map((s, i) => (
+            <li key={s.title}>
+              <span className="steps__n" aria-hidden="true">{i + 1}</span>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section tone="forest" id="different" aria-labelledby="different-title">
+        <p className="eyebrow eyebrow--light">Why us</p>
+        <h2 id="different-title">Why Charlotte businesses pick us.</h2>
+        <ul className="why">
+          {WHY.map((p) => (
+            <li key={p.title}>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section id="work" aria-labelledby="work-title">
+        <p className="eyebrow">Work</p>
+        <h2 id="work-title">What it looks like for a Charlotte business.</h2>
+        <div className="cards-3">
+          {CONCEPTS.map((c) => (
+            <Link key={c.slug} href={`/work/${c.slug}`} className="card card--lift work">
+              <div className="work__thumb" role="img" aria-label={`Placeholder cover for ${c.name}, a concept ${c.kind.toLowerCase()} in ${c.hood}`}>
+                <span className="badge">Concept piece</span>
               </div>
-              <div className="hm-cta__char">
-                <Auditor pose="thumbs" facing="left" className="hm-cta__auditor" />
-              </div>
-              <div className="hm-cta__body">
-                <h2 id="hm-cta-title">Have a process <span className="hm-cta__hl">AI could take off your plate?</span></h2>
-                <p>Book a call and tell us about it.</p>
-                <Cta variant="light" size="lg">Book a call</Cta>
-              </div>
-            </div>
+              <p className="work__hood">{c.hood} &middot; {c.kind}</p>
+              <h3>{c.name}</h3>
+              <p>{c.line}</p>
+            </Link>
+          ))}
+        </div>
+        <p className="note">Concept pieces: fictional Charlotte businesses, created as portfolio samples. Not real clients. <Link href="/work">See all work &rarr;</Link></p>
+      </Section>
+
+      <Section tone="tint" id="about" aria-labelledby="about-title">
+        <div className="about">
+          <h2 id="about-title">A remote-first team. A camera crew in Charlotte.</h2>
+          <div>
+            <p>Our strategists, editors, designers and automation builders work remotely and run your full pipeline: leads, content, CRM and AI follow-up. Our Charlotte production partner shoots on location. One Slack channel per client. No handoffs between agencies.</p>
+            <p><Link href="/about">Read our story &rarr;</Link></p>
           </div>
-        </section>
-      </main>
+        </div>
+      </Section>
+
+      <Section id="faq" aria-labelledby="faq-title">
+        <p className="eyebrow">FAQ</p>
+        <h2 id="faq-title">Questions, answered.</h2>
+        <FAQ items={FAQS} />
+      </Section>
+
+      <CTABand
+        title="Ready to stop losing leads?"
+        primaryHref={SITE.bookHref}
+        primaryLabel="Book a 20-min call"
+        body={<>Or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a></>}
+      />
     </PageShell>
   );
 }

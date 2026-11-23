@@ -1,133 +1,45 @@
 'use client';
 
-/* Google Tag Manager loader with Consent Mode v2, a consent banner and click/lead events.
-   Set GTM_ID below. Everything else (GA4, Ads, etc.) is configured inside GTM. */
-import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
-import { BOOKING_URL } from '@/lib/booking';
+/* GA4 + Microsoft Clarity. No-ops unless the env IDs are set at build time:
+   NEXT_PUBLIC_GA4_ID (G-XXXXXXX) and NEXT_PUBLIC_CLARITY_ID. No consent banner (US-only launch, plan §9). */
+import { useEffect } from 'react';
 
-const GTM_ID: string = 'GTM-XXXXXXX'; // TODO: replace with your GTM container ID
-const KEY = 'ttl_consent';
+const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || '';
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || '';
 
-type TrackingWindow = Window & { dataLayer?: unknown[]; __ttlTrackingInit?: boolean };
-type Params = Record<string, unknown>;
+type W = Window & { dataLayer?: unknown[]; gtag?: (...a: unknown[]) => void; clarity?: (...a: unknown[]) => void; __ttlInit?: boolean };
 
-function w(): TrackingWindow {
-  return window as TrackingWindow;
+/** Fire a GA4 event from anywhere (e.g. trackEvent('booking_submit')). Safe when GA4 is not configured. */
+export function trackEvent(name: string, params?: Record<string, unknown>) {
+  if (typeof window === 'undefined') return;
+  const w = window as W;
+  if (w.gtag) w.gtag('event', name, params || {});
 }
 
-function gtag(..._args: unknown[]) {
-  // GTM expects the raw `arguments` object, not an array
-  // eslint-disable-next-line prefer-rest-params
-  (w().dataLayer = w().dataLayer || []).push(arguments);
-}
-
-function push(name: string, params?: Params) {
-  (w().dataLayer = w().dataLayer || []).push({ event: name, ...params });
-}
-
-function stored(): string | null {
-  try { return localStorage.getItem(KEY); } catch { return null; }
-}
-
-function store(v: string) {
-  try { localStorage.setItem(KEY, v); } catch { /* ignore */ }
-}
-
-function update(granted: boolean) {
-  const s = granted ? 'granted' : 'denied';
-  gtag('consent', 'update', { ad_storage: s, ad_user_data: s, ad_personalization: s, analytics_storage: s });
-}
-
-// Runs once per page load (not per mount / navigation / strict-mode re-run)
-function init() {
-  const win = w();
-  if (win.__ttlTrackingInit) return;
-  win.__ttlTrackingInit = true;
-  win.dataLayer = win.dataLayer || [];
-
-  gtag('consent', 'default', {
-    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
-    analytics_storage: 'denied', wait_for_update: 500,
-  });
-  const saved = stored();
-  if (saved) update(saved === 'granted');
-
-  if (GTM_ID && GTM_ID.indexOf('XXXX') === -1) {
-    win.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(GTM_ID);
-    document.head.appendChild(s);
-  }
-}
-
-function watch(id: string, attr: string, test: (el: HTMLElement) => boolean, name: string): MutationObserver | null {
-  const el = document.getElementById(id);
-  if (!el) return null;
-  const mo = new MutationObserver(() => { if (test(el)) push(name, { page_path: location.pathname }); });
-  mo.observe(el, { attributes: true, attributeFilter: [attr] });
-  return mo;
+function addScript(src: string) {
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = src;
+  document.head.appendChild(s);
 }
 
 export default function Tracking() {
-  const pathname = usePathname();
-  const [showBanner, setShowBanner] = useState(false);
-
-  // Consent defaults + GTM (once), banner visibility, global click tracking
   useEffect(() => {
-    // No analytics or consent banner on the private invoice admin.
-    if (location.pathname.startsWith('/admin')) return;
-    init();
-    if (!stored()) setShowBanner(true);
-
-    const onClick = (e: MouseEvent) => {
-      const t = e.target as Element | null;
-      const a = t && t.closest ? t.closest<HTMLAnchorElement>('a[href]') : null;
-      if (!a) return;
-      const href = a.getAttribute('href') || '';
-      const funnel = a.closest<HTMLElement>('[data-funnel]')?.dataset.funnel || 'none';
-      if (href.indexOf(BOOKING_URL) === 0) {
-        push('generate_lead', { method: 'calendly', link_text: (a.textContent || '').trim().slice(0, 60), page_path: location.pathname, funnel });
-      } else if (/^https?:\/\//.test(href) && a.hostname !== location.hostname) {
-        push('outbound_click', { link_url: href, page_path: location.pathname });
-      } else if (a.classList.contains('btn')) {
-        push('cta_click', { link_text: (a.textContent || '').trim().slice(0, 60), link_url: href, page_path: location.pathname, funnel });
-      }
-    };
-    document.addEventListener('click', onClick);
-    return () => document.removeEventListener('click', onClick);
+    const w = window as W;
+    if (w.__ttlInit) return;
+    w.__ttlInit = true;
+    if (GA4_ID) {
+      w.dataLayer = w.dataLayer || [];
+      w.gtag = function () { (w.dataLayer as unknown[]).push(arguments); };
+      w.gtag('js', new Date());
+      w.gtag('config', GA4_ID);
+      addScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA4_ID));
+    }
+    if (CLARITY_ID) {
+      const c = function (...a: unknown[]) { ((w.clarity as unknown as { q?: unknown[] }).q = (w.clarity as unknown as { q?: unknown[] }).q || []).push(a); };
+      w.clarity = w.clarity || (c as (...a: unknown[]) => void);
+      addScript('https://www.clarity.ms/tag/' + encodeURIComponent(CLARITY_ID));
+    }
   }, []);
-
-  // Per-page watchers, re-attached on client navigation
-  useEffect(() => {
-    // Audit tool: result panel revealed
-    const result = watch('audit-result', 'hidden', (el) => !el.hidden, 'audit_complete');
-    const af = document.getElementById('audit-form');
-    const onSubmit = () => push('audit_start', { page_path: location.pathname });
-    if (af) af.addEventListener('submit', onSubmit);
-    return () => {
-      if (result) result.disconnect();
-      if (af) af.removeEventListener('submit', onSubmit);
-    };
-  }, [pathname]);
-
-  if (!showBanner) return null;
-
-  const choose = (granted: boolean) => {
-    store(granted ? 'granted' : 'denied');
-    update(granted);
-    push('consent_choice', { consent: granted ? 'granted' : 'denied' });
-    setShowBanner(false);
-  };
-
-  return (
-    <div className="consent-banner" role="dialog" aria-label="Cookie consent">
-      <p>We use cookies for analytics to understand how the site is used. You can accept or decline.</p>
-      <div className="consent-actions">
-        <button type="button" className="btn btn-sm btn-light" data-consent="denied" onClick={() => choose(false)}>Decline</button>
-        <button type="button" className="btn btn-sm btn-primary" data-consent="granted" onClick={() => choose(true)}>Accept</button>
-      </div>
-    </div>
-  );
+  return null;
 }
