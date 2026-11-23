@@ -27,7 +27,7 @@ const sections: LegalBlockGroup[] = [
     heading: 'Our services',
     blocks: [
       {
-        p: 'We provide social media management and content production for businesses, including short-form video (Reels), on-location photography, posting and reporting. The current plans and add-ons, with their published prices and what each includes, are listed on our Services page. Where this page and a signed order differ, the signed order controls.',
+        p: 'We provide lead generation, content production, CRM and AI automation services for businesses, including short-form video, on-location photography, posting, follow-up automation and reporting. The current plans and add-ons, with their published prices and what each includes, are listed on our Services page. Where this page and a signed order differ, the signed order controls.',
       },
       {
         p: 'We perform the services with reasonable care and skill. We do not guarantee specific business results, such as sales, follower counts, reach or engagement. Social platforms change their rules and algorithms without notice, and those changes are outside our control.',

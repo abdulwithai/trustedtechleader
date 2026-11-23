@@ -53,7 +53,7 @@ export default async function CaseStudyPage({ params }: Props) {
           {c.isConcept ? <span className="badge">Concept</span> : null}
         </p>
         <p className="lead">{c.summary}</p>
-        <div className="case-hero__cover">Cover photo placeholder<br />Real photography will go here. No stock or AI images.</div>
+        <div className="case-hero__cover">Cover placeholder<br />Real photography and screenshots will go here. No stock or AI images.</div>
       </Section>
 
       <Section>
@@ -66,16 +66,18 @@ export default async function CaseStudyPage({ params }: Props) {
       </Section>
 
       <Section narrow>
-        <h2>The problem</h2>
+        <h2>The challenge</h2>
         <p>{c.problem}</p>
-        <h2>What we would do in month one</h2>
+        <h2>What we would build</h2>
         <ul>{c.deliverables.map((d) => <li key={d}>{d}</li>)}</ul>
-        <p className="small muted">Voice: {c.voice}. Planned volume: {c.mediaPlan.reels} Reels, {c.mediaPlan.posts} feed posts.</p>
+        <p className="small muted">Voice: {c.voice}. Planned content volume: {c.mediaPlan.reels} Reels, {c.mediaPlan.posts} feed posts.</p>
+        <h2>How it fits together</h2>
+        <p>{c.approach}</p>
       </Section>
 
       <Section tone="tint">
-        <h2>Media</h2>
-        <p className="muted">Placeholders only. No media has been produced for this concept yet.</p>
+        <h2>Planned assets</h2>
+        <p className="muted">Placeholders only. Nothing has been produced or built for this concept yet.</p>
         <ul className="media-grid">
           {c.mediaLabels.map((m, i) => <li key={`${m}-${i}`}><div>{m}<span>Placeholder</span></div></li>)}
         </ul>
@@ -100,9 +102,9 @@ export default async function CaseStudyPage({ params }: Props) {
         <h2>Behind the scenes</h2>
         <p>{c.behindTheScenes}</p>
         <div className="case-actions">
-          <a className="btn btn--secondary" href="/work/">See more Charlotte work →</a>
+          <a className="btn btn--secondary" href="/work/">See more growth work →</a>
         </div>
-        <p className="caption muted case-credit">Photo credits: none yet. Real case studies credit the Charlotte stringer who shot each photo.</p>
+        <p className="caption muted case-credit">Photo credits: none yet. Real case studies credit our Charlotte production partner for each photo.</p>
       </Section>
 
       <CTABand

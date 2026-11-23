@@ -1,4 +1,4 @@
-.about-hero__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+.about-hero__grid { display: grid; grid-template-columns: minmax(0, 760px); gap: 56px; align-items: center; }
 .about-hero__actions { margin-top: 24px; }
 .photo-ph { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; padding: 20px; background: var(--ttl-tint); border: 2px dashed var(--ttl-stone); border-radius: var(--radius); color: var(--ttl-stone-text); }
 .photo-ph__tag { font-family: var(--font-mono); font-size: var(--fs-caption); text-transform: uppercase; letter-spacing: 0.08em; background: var(--ttl-charcoal); color: #fff; padding: 3px 8px; border-radius: var(--radius); }
@@ -15,7 +15,7 @@
 .beliefs li::before { content: '0' counter(b); font-family: var(--font-mono); color: var(--ttl-terracotta-dark); }
 .beliefs h3 { font-size: 1.375rem; margin: 4px 0 8px; }
 .beliefs p { margin: 0; }
-.karachi-list { padding-left: 1.2em; display: grid; gap: 12px; margin-bottom: 1.5em; max-width: var(--measure); }
+.remote-list { padding-left: 1.2em; display: grid; gap: 12px; margin-bottom: 1.5em; max-width: var(--measure); }
 @media (max-width: 900px) {
   .about-hero__grid, .team-grid, .beliefs { grid-template-columns: 1fr; }
   .about-hero__grid { gap: 32px; }

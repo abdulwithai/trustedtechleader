@@ -89,12 +89,12 @@ export default function SiteHeader() {
         </nav>
         <div className="mobile-menu__foot">
           <Button href={SITE.bookHref}>{SITE.bookLabel}</Button>
-          <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a>
+          {SITE.phone ? <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a> : null}
         </div>
       </div>
 
       <Link href={SITE.bookHref} className={`btn btn--primary float-cta${floatVisible && !open ? ' is-visible' : ''}`} tabIndex={floatVisible ? 0 : -1} aria-hidden={!floatVisible}>
-        Book a call
+        {SITE.bookLabel}
       </Link>
     </>
   );

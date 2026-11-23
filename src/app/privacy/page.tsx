@@ -19,7 +19,7 @@ const sections: LegalBlockGroup[] = [
     heading: 'Who we are',
     blocks: [
       {
-        p: `${SITE.name} is a social media and content studio serving businesses in Charlotte, North Carolina. We are a US company registered in Wyoming. This policy explains what information we collect through ${SITE.url} and how we use it.`,
+        p: `${SITE.name} is a growth agency providing lead generation, content, CRM and AI automation services to businesses in Charlotte, North Carolina. We are a US company registered in Wyoming. This policy explains what information we collect through ${SITE.url} and how we use it.`,
       },
       { p: `Questions about this policy? Email us at ${SITE.email}.` },
     ],

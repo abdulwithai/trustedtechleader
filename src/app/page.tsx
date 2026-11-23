@@ -5,7 +5,7 @@ import { Section } from '@/components/Container';
 import FAQ from '@/components/FAQ';
 import CTABand from '@/components/CTABand';
 import Hero from '@/components/home/Hero';
-import { TIERS, CONCEPTS, STEPS, PILLARS, FAQS } from '@/components/home/data';
+import { TIERS, CONCEPTS, STEPS, PILLARS, WHY, FAQS } from '@/components/home/data';
 import { SITE } from '@/lib/site';
 import '@/styles/home.css';
 
@@ -24,9 +24,10 @@ const jsonLd = {
   slogan: SITE.tagline,
   description: SITE.defaultDescription,
   areaServed: { '@type': 'City', name: 'Charlotte, NC' },
+  knowsAbout: ['Lead generation', 'Content', 'CRM', 'AI automation'],
 };
 
-const FOR = ['Coffee shops', 'Studios & gyms', 'Salons', 'Restaurants', 'Home-service pros'];
+const FOR = ['Coffee shops', 'Studios & gyms', 'Salons', 'Restaurants', 'Home-service pros', 'Clinics'];
 
 export default function Home() {
   return (
@@ -45,18 +46,32 @@ export default function Home() {
         <div className="split__grid">
           <div className="split__col">
             <p className="eyebrow">The problem</p>
-            <h2 id="problem-title">Posting is the first thing to slip when you&rsquo;re busy.</h2>
-            <p>You know your business needs fresh content. But between customers, staff and invoices, the Reels never get made, and the feed goes quiet.</p>
+            <h2 id="problem-title">Leads slip through the cracks when you&rsquo;re busy.</h2>
+            <p>Missed calls. Slow replies. A quiet feed. No follow-up after the first message. Between customers, staff and invoices, good leads go cold before anyone answers.</p>
           </div>
           <div className="split__col split__col--solve">
             <p className="eyebrow">What we do</p>
-            <h2>We plan, shoot, edit, write and post it for you.</h2>
-            <p>A Charlotte camera operator comes to your location. Our editors and writers turn it into a month of content. You approve everything in one portal.</p>
+            <h2>One team runs the whole pipeline.</h2>
+            <p>We bring in the leads, make the content, run your CRM and automate the follow-up. You see every lead in one place and approve what goes out.</p>
           </div>
         </div>
       </Section>
 
-      <Section tone="tint" id="offer" aria-labelledby="offer-title">
+      <Section tone="tint" id="run" aria-labelledby="run-title">
+        <p className="eyebrow">What we run for you</p>
+        <h2 id="run-title">Four pillars. One pipeline.</h2>
+        <ol className="run">
+          {PILLARS.map((p) => (
+            <li key={p.title}>
+              <span className="run__n">{p.n}</span>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section id="offer" aria-labelledby="offer-title">
         <p className="eyebrow">Pricing</p>
         <h2 id="offer-title">Pick a monthly plan. That&rsquo;s the whole decision.</h2>
         <div className="tiers">
@@ -66,16 +81,16 @@ export default function Home() {
               <h3>{t.name}</h3>
               <p className="tier__price">{t.price}<span>/month</span></p>
               <ul>{t.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
-              <Link className={`btn ${t.popular ? 'btn--primary' : 'btn--secondary'}`} href="/contact#book">Book a call</Link>
+              <Link className={`btn ${t.popular ? 'btn--primary' : 'btn--secondary'}`} href={SITE.bookHref}>{SITE.bookLabel}</Link>
             </article>
           ))}
         </div>
-        <p className="note">Month-to-month. Cancel anytime. First post live within 10 days. <Link href="/services">Full breakdown and add-ons &rarr;</Link></p>
+        <p className="note">Month-to-month. Cancel anytime. Ad spend is paid to Meta and Google separately. CRM and lead capture live in 14 days, first post in 10. <Link href="/services">Full breakdown and add-ons &rarr;</Link></p>
       </Section>
 
       <Section id="process" aria-labelledby="process-title">
         <p className="eyebrow">How it works</p>
-        <h2 id="process-title">Three steps to a feed that stays active.</h2>
+        <h2 id="process-title">Three steps from first call to leads on autopilot.</h2>
         <ol className="steps">
           {STEPS.map((s, i) => (
             <li key={s.title}>
@@ -91,7 +106,7 @@ export default function Home() {
         <p className="eyebrow eyebrow--light">Why us</p>
         <h2 id="different-title">Why Charlotte businesses pick us.</h2>
         <ul className="why">
-          {PILLARS.map((p) => (
+          {WHY.map((p) => (
             <li key={p.title}>
               <h3>{p.title}</h3>
               <p>{p.body}</p>
@@ -120,9 +135,9 @@ export default function Home() {
 
       <Section tone="tint" id="about" aria-labelledby="about-title">
         <div className="about">
-          <h2 id="about-title">A small team in Karachi. A camera in Charlotte.</h2>
+          <h2 id="about-title">A remote-first team. A camera crew in Charlotte.</h2>
           <div>
-            <p>Our editors, strategists and designers have spent years on client work, and our trusted camera crew shoots on location in Charlotte. One Slack channel per client. No handoffs between agencies.</p>
+            <p>Our strategists, editors, designers and automation builders work remotely and run your full pipeline: leads, content, CRM and AI follow-up. Our Charlotte production partner shoots on location. One Slack channel per client. No handoffs between agencies.</p>
             <p><Link href="/about">Read our story &rarr;</Link></p>
           </div>
         </div>
@@ -135,7 +150,7 @@ export default function Home() {
       </Section>
 
       <CTABand
-        title="Ready to stop worrying about what to post?"
+        title="Ready to stop losing leads?"
         primaryHref={SITE.bookHref}
         primaryLabel="Book a 20-min call"
         body={<>Or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a></>}

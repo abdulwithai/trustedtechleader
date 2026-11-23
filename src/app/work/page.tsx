@@ -3,11 +3,12 @@ import PageShell from '@/components/PageShell';
 import { Section } from '@/components/Container';
 import CTABand from '@/components/CTABand';
 import WorkGallery from '@/components/work/WorkGallery';
+import ConceptBanner from '@/components/work/ConceptBanner';
 import { SITE } from '@/lib/site';
 
-const title = 'Charlotte Social Media Work by Neighborhood';
+const title = 'Charlotte Growth Work by Neighborhood';
 const description =
-  'Concept samples of Reels and feed content for Charlotte neighborhoods: NoDa, South End and Ballantyne. Real client work will replace them as it is signed off.';
+  'Concept growth plans for Charlotte neighborhoods (NoDa, South End, Ballantyne) showing lead generation, content, CRM and AI automation. Fictional businesses, not real clients.';
 
 export const metadata: Metadata = {
   title,
@@ -28,13 +29,15 @@ const breadcrumb = {
 export default function WorkPage() {
   return (
     <PageShell>
+      <ConceptBanner />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <Section>
         <p className="eyebrow">Work</p>
-        <h1>Charlotte, one neighborhood at a time.</h1>
+        <h1>Growth plans, one Charlotte neighborhood at a time.</h1>
         <p className="lead">
-          We are new, so we have no client results to show yet. Instead, here are three concept samples that show how we would plan and shoot for
-          a business in each neighborhood. Each one is labeled as a concept and none is a real client. Real case studies replace them as clients sign off.
+          We are new, so we have no client results to show yet. Instead, here are three concept plans that show how we would connect lead
+          generation, content, CRM and AI automation for a business in each neighborhood. Each one is labeled as a concept and none is a real
+          client. Real case studies replace them as clients sign off.
         </p>
       </Section>
       <Section tone="tint">

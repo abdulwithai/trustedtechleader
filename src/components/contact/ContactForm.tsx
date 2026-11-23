@@ -32,12 +32,12 @@ export default function ContactForm() {
 
   if (!FORMSPREE_ID) {
     return (
-      <p>The form isn&rsquo;t live yet. Please email <a href={`mailto:${SITE.email}`} onClick={() => trackEvent('contact_email_click', { location: 'form_fallback' })}>{SITE.email}</a> and we&rsquo;ll reply within 12 hours.</p>
+      <p>Email us at <a href={`mailto:${SITE.email}`} onClick={() => trackEvent('contact_email_click', { location: 'form_fallback' })}>{SITE.email}</a> and we&rsquo;ll reply within 12 hours.</p>
     );
   }
 
   if (status === 'ok') {
-    return <p role="status" className="form-ok">Got it. I&rsquo;ll reply within 12 hours &mdash; I&rsquo;m in Karachi so expect it overnight your time.</p>;
+    return <p role="status" className="form-ok">Got it. I&rsquo;ll reply within 12 hours.</p>;
   }
 
   return (

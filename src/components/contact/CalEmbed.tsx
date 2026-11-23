@@ -36,8 +36,8 @@ export default function CalEmbed() {
   if (!CAL_LINK) {
     return (
       <div className="card book-fallback">
-        <h3>Online booking opens soon</h3>
-        <p>In the meantime, email <a href={`mailto:${SITE.email}`} onClick={() => trackEvent('contact_email_click', { location: 'booking_fallback' })}>{SITE.email}</a> or use the form below and we&rsquo;ll find a time.</p>
+        <h3>Book your 20-minute call by email</h3>
+        <p>Email <a href={`mailto:${SITE.email}`} onClick={() => trackEvent('contact_email_click', { location: 'booking_fallback' })}>{SITE.email}</a> with two or three times that work (Monday to Friday, 7:30&ndash;10:30 AM Eastern) and we&rsquo;ll confirm within 12 hours.</p>
       </div>
     );
   }

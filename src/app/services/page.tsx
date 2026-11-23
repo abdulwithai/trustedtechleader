@@ -4,13 +4,13 @@ import { Section } from '@/components/Container';
 import FAQ from '@/components/FAQ';
 import CTABand from '@/components/CTABand';
 import TierCard from '@/components/services/TierCard';
-import { TIERS, ADDONS, GUARANTEES, FAQS } from '@/components/services/data';
+import { PILLARS, TIERS, ADDONS, GUARANTEES, FAQS } from '@/components/services/data';
 import { SITE } from '@/lib/site';
 import '@/styles/services.css';
 
-const title = 'Services & Pricing: Charlotte Social Media Packages';
+const title = 'Services & Pricing: Lead Gen, Content, CRM & AI Automation in Charlotte';
 const description =
-  'Published prices for Charlotte social media and content: Starter $1,497, Growth $2,497, Signature $3,997 per month. Month-to-month, no contracts.';
+  'Published prices for done-for-you lead generation, content, CRM and AI automation in Charlotte: Starter $1,497, Growth $2,497, Signature $3,997 per month. Ad spend separate. Month-to-month.';
 
 export const metadata: Metadata = {
   title,
@@ -34,10 +34,11 @@ export default function ServicesPage() {
     <PageShell>
       <Section className="services-hero">
         <p className="eyebrow">Services</p>
-        <h1>Published prices. No contracts. Charlotte-native content.</h1>
-        <p className="lead">One of three tiers covers most Charlotte independent businesses. À la carte for anything else.</p>
+        <h1>Lead gen, content, CRM and AI automation. One team, published prices.</h1>
+        <p className="lead">We bring you leads, make the content, run your CRM and automate the follow-up. Pick one of three monthly tiers, no contracts. Ad spend is paid separately.</p>
         <nav aria-label="On this page">
           <ul className="services-nav">
+            <li><a href="#pillars">What we run</a></li>
             <li><a href="#starter">Starter</a></li>
             <li><a href="#growth">Growth</a></li>
             <li><a href="#signature">Signature</a></li>
@@ -46,6 +47,26 @@ export default function ServicesPage() {
             <li><a href="#faq">FAQ</a></li>
           </ul>
         </nav>
+      </Section>
+
+      <Section id="pillars" aria-labelledby="pillars-heading">
+        <div className="services-head">
+          <h2 id="pillars-heading">What we run for you</h2>
+          <p className="lead">Four pillars, one team. AI for speed, humans for craft.</p>
+        </div>
+        <ul className="pillars">
+          {PILLARS.map((p) => (
+            <li key={p.id}>
+              <article className="card card--lift pillar">
+                <h3 className="pillar__title">{p.title}</h3>
+                <p>{p.summary}</p>
+                <ul className="tier__list tier__list--check">
+                  {p.items.map((i) => <li key={i}>{i}</li>)}
+                </ul>
+              </article>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section aria-labelledby="tiers-heading" className="services-tiers">

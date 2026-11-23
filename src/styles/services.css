@@ -46,3 +46,12 @@
 .guarantee { height: 100%; }
 .guarantee h3 { font-size: 1.375rem; margin-bottom: 8px; color: var(--ttl-forest); }
 .guarantee p { margin: 0; }
+
+.pillars { display: grid; gap: var(--gutter); grid-template-columns: repeat(4, 1fr); list-style: none; padding: 0; margin: 0; }
+@media (max-width: 1200px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .pillars { grid-template-columns: 1fr; } }
+.pillars > li { display: flex; }
+.pillar { width: 100%; padding: 28px 24px; }
+.pillar__title { font-size: 1.375rem; margin-bottom: 8px; color: var(--ttl-forest); }
+.pillar > p { margin: 0 0 16px; }
+#pillars { scroll-margin-top: calc(var(--header-h) + 16px); }

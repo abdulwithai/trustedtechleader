@@ -17,18 +17,15 @@ export default function WorkGallery() {
         <li>
           <button type="button" className="work-filter__btn" aria-pressed={active === 'All'} onClick={() => setActive('All')}>All</button>
         </li>
-        {NEIGHBORHOODS.map((n) => (
+        {NEIGHBORHOODS.filter(hasWork).map((n) => (
           <li key={n}>
             <button
               type="button"
               className="work-filter__btn"
               aria-pressed={active === n}
-              disabled={!hasWork(n)}
-              title={hasWork(n) ? undefined : 'Coming soon'}
               onClick={() => setActive(n)}
             >
               {n}
-              {hasWork(n) ? '' : ' (soon)'}
             </button>
           </li>
         ))}
@@ -41,7 +38,7 @@ export default function WorkGallery() {
           {shown.map((c) => (
             <li key={c.slug}>
               <article className="card card--lift work-card">
-                <div className="work-card__thumb">Concept sample<br />photo and Reel thumbnails coming</div>
+                <div className="work-card__thumb">Concept plan<br />visuals coming</div>
                 <div className="work-card__body">
                   <div className="work-card__tags">
                     <span className="pill">{c.neighborhood}</span>
@@ -50,7 +47,7 @@ export default function WorkGallery() {
                   <h3><Link href={`/work/${c.slug}/`}>{c.name}</Link></h3>
                   <p className="small muted">{c.industry}</p>
                   <p>{c.summary}</p>
-                  <span className="work-card__more" aria-hidden="true">Read the concept →</span>
+                  <span className="work-card__more" aria-hidden="true">Read the plan →</span>
                 </div>
               </article>
             </li>

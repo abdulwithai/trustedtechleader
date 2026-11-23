@@ -11,7 +11,7 @@ export default function SiteFooter() {
             <Logo />
             <p className="site-footer__tag">{SITE.tagline}</p>
             <ul>
-              <li><a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
+              {SITE.phone ? <li><a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li> : null}
               <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
             </ul>
           </div>
