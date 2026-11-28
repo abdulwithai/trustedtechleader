@@ -25,7 +25,6 @@ export default function ContactPage() {
             Book on Calendly
             <span className="visually-hidden"> (opens in a new tab)</span>
           </a>
-          <p className="small muted cal-embed__alt">Opens Calendly in a new tab.</p>
         </div>
         <ul className="contact-links">
           <li>

@@ -13,7 +13,7 @@ export const PILLARS = SERVICE_PILLARS.map((p, i) => ({ n: `0${i + 1}`, title: p
 
 export const STEPS = [
   { title: '20-minute call.', body: 'We look at how leads reach you today and where they leak.' },
-  { title: '7-day setup.', body: 'I build and test the system in your tools. You approve every message before it goes live.' },
+  { title: '7-day setup.', body: 'I build and test the system in your tools, and you approve every message. Email and web replies are usually live within 7 days; texting follows carrier approval.' },
   { title: 'Monthly care (optional).', body: 'I monitor, tweak and report each month so it keeps working.' },
 ] as const;
 
