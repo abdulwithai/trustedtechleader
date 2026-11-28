@@ -1,20 +1,21 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import PageShell from '@/components/PageShell';
 import { Section } from '@/components/Container';
 import CTABand from '@/components/CTABand';
-import WorkGallery from '@/components/work/WorkGallery';
-import ConceptBanner from '@/components/work/ConceptBanner';
+import SampleBanner from '@/components/work/SampleBanner';
+import { SAMPLE_BUILD } from '@/lib/work/data';
 import { SITE } from '@/lib/site';
 
-const title = 'Charlotte Growth Work by Neighborhood';
+const title = 'Sample build';
 const description =
-  'Concept growth plans for Charlotte neighborhoods (NoDa, South End, Ballantyne) showing lead generation, content, CRM and AI automation. Fictional businesses, not real clients.';
+  'A fictional HVAC follow-up system: missed-call text-back, web form replies, estimate follow-up and review requests. A demonstration, not a client result.';
 
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: '/work/' },
-  openGraph: { title, description, url: '/work/' },
+  alternates: { canonical: '/work' },
+  openGraph: { title, description, url: '/work' },
 };
 
 const breadcrumb = {
@@ -29,23 +30,37 @@ const breadcrumb = {
 export default function WorkPage() {
   return (
     <PageShell>
-      <ConceptBanner />
+      <SampleBanner />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <Section>
         <p className="eyebrow">Work</p>
-        <h1>Growth plans, one Charlotte neighborhood at a time.</h1>
+        <h1>Sample build</h1>
         <p className="lead">
-          We are new, so we have no client results to show yet. Instead, here are three concept plans that show how we would connect lead
-          generation, content, CRM and AI automation for a business in each neighborhood. Each one is labeled as a concept and none is a real
-          client. Real case studies replace them as clients sign off.
+          This is a demonstration, not client work. &ldquo;Example Heating &amp; Air&rdquo; is a fictional company used to show exactly what
+          I set up and the messages it sends.
         </p>
       </Section>
       <Section tone="tint">
-        <WorkGallery />
+        <ul className="work-grid">
+          <li>
+            <article className="card card--lift work-card">
+              <div className="work-card__body">
+                <div className="work-card__tags">
+                  <span className="pill">HVAC</span>
+                  <span className="badge">Sample</span>
+                </div>
+                <h3><Link href={`/work/${SAMPLE_BUILD.slug}/`}>{SAMPLE_BUILD.name}</Link></h3>
+                <p>{SAMPLE_BUILD.summary}</p>
+                <span className="work-card__more" aria-hidden="true">Read the sample →</span>
+              </div>
+            </article>
+          </li>
+        </ul>
       </Section>
+      <SampleBanner />
       <CTABand
-        title="Want your neighborhood on this page?"
-        body="Tell us about your business in a 20-minute call. No pitch deck, no pressure."
+        title="Want a system like this for your business?"
+        body="Book a 20-minute call and I will walk through what a first week would look like for your company."
       />
     </PageShell>
   );

@@ -93,9 +93,10 @@ export default function SiteHeader() {
         </div>
       </div>
 
-      <Link href={SITE.bookHref} className={`btn btn--primary float-cta${floatVisible && !open ? ' is-visible' : ''}`} tabIndex={floatVisible ? 0 : -1} aria-hidden={!floatVisible}>
+      <a href={SITE.bookHref} target="_blank" rel="noopener noreferrer" className={`btn btn--primary float-cta${floatVisible && !open ? ' is-visible' : ''}`} tabIndex={floatVisible ? 0 : -1} aria-hidden={!floatVisible}>
         {SITE.bookLabel}
-      </Link>
+        <span className="visually-hidden"> (opens in a new tab)</span>
+      </a>
     </>
   );
 }

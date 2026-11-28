@@ -5,11 +5,11 @@ import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: `The terms that apply when you use ${SITE.name} services, our website, and our content.`,
+  description: `The terms that apply when you use TrustedTechLeader services and our website.`,
   alternates: { canonical: '/terms' },
 };
 
-const LAST_UPDATED = '2026-11-23';
+const LAST_UPDATED = 'November 28, 2026';
 
 type Block = { p: string } | { ul: string[] };
 type LegalBlockGroup = { heading: string; blocks: Block[] };
@@ -19,7 +19,7 @@ const sections: LegalBlockGroup[] = [
     heading: 'Agreement',
     blocks: [
       {
-        p: `These Terms of Service ("Terms") are an agreement between you and ${SITE.name} LLC, a US company registered in Wyoming ("we", "us"). By using ${SITE.url}, booking a call, or signing up for any of our services, you agree to these Terms. If you do not agree, please do not use the site or our services.`,
+        p: `These Terms of Service ("Terms") are an agreement between you and TrustedTechLeader ("we", "us"). By using ${SITE.url}, booking a call, or signing up for any of our services, you agree to these Terms. If you do not agree, please do not use the site or our services.`,
       },
     ],
   },
@@ -27,10 +27,10 @@ const sections: LegalBlockGroup[] = [
     heading: 'Our services',
     blocks: [
       {
-        p: 'We provide lead generation, content production, CRM and AI automation services for businesses, including short-form video, on-location photography, posting, follow-up automation and reporting. The current plans and add-ons, with their published prices and what each includes, are listed on our Services page. Where this page and a signed order differ, the signed order controls.',
+        p: 'We set up and care for follow-up systems for businesses, such as missed-call text-back, web form and after-hours replies, estimate follow-up, review requests and a simple lead pipeline. The current plans and what each includes are listed on our Services page. The scope, prices and payment terms for each engagement are set out in the written proposal or agreement for that engagement. Where this page and a signed proposal differ, the signed proposal controls.',
       },
       {
-        p: 'We perform the services with reasonable care and skill. We do not guarantee specific business results, such as sales, follower counts, reach or engagement. Social platforms change their rules and algorithms without notice, and those changes are outside our control.',
+        p: 'We perform the services with reasonable care and skill. We do not guarantee specific business results, such as booked jobs, revenue, reviews or number of leads. Platforms such as Google, Meta and mobile carriers change their rules without notice, and those changes are outside our control.',
       },
     ],
   },
@@ -38,13 +38,10 @@ const sections: LegalBlockGroup[] = [
     heading: 'Fees and billing',
     blocks: [
       {
-        p: 'Our plans are billed monthly on a month-to-month basis. There is no long-term contract. Fees for each month are charged in advance on the billing date you agree to, and are non-refundable except where required by law or where we have made an error.',
+        p: 'Payments. Setup: 50% at start, 50% at launch. Monthly care: billed monthly in advance, cancel with 30 days’ notice. Details in your proposal.',
       },
       {
-        p: 'You may cancel at any time by emailing us. Cancellation takes effect at the end of the billing month you have already paid for, and we will not charge you for later months. [TODO: confirm cancellation notice period and any refund policy with counsel]',
-      },
-      {
-        p: 'If a payment fails, we may pause work until it is resolved. Prices may change, but any change will apply only to future billing months and we will give you advance notice.',
+        p: 'Software, texting and ad spend are paid by you directly to the providers. If a payment fails, we may pause work until it is resolved. Monthly prices may change for future months with at least 30 days’ written notice.',
       },
     ],
   },
@@ -53,22 +50,20 @@ const sections: LegalBlockGroup[] = [
     blocks: [
       {
         ul: [
-          'Give us accurate information about your business, brand and goals.',
-          'Provide timely feedback and approvals. Delays in approval can delay publishing.',
-          'Make sure you have the rights to any photos, logos, music, footage or other material you give us.',
-          'Keep your login details for your social accounts secure, and tell us promptly if you think they have been compromised.',
+          'Give us accurate information about your business, customers, brand and goals.',
+          'Review and approve messages before they go live, and tell us promptly if something should change.',
+          'Make sure the messages you send to customers follow the rules that apply to your business, including opt-out requests and carrier registration for business texting.',
+          'Make sure you have the rights to any logos, photos or other material you give us.',
+          'Keep the logins to your accounts secure, and tell us promptly if you think they have been compromised.',
         ],
       },
     ],
   },
   {
-    heading: 'Content ownership',
+    heading: 'Your accounts and data',
     blocks: [
       {
-        p: 'You own your brand assets, including your logo, business name and any materials you supply. Once you have paid for a piece of content, you own the finished content we create for your business, and you may use it for your own marketing. We keep ownership of our templates, tools, processes and general know-how.',
-      },
-      {
-        p: 'Unless you tell us otherwise in writing, we may show published work for your business in our portfolio, case studies and social media, and may mention your business name. We will not share confidential business information without your permission.',
+        p: 'The accounts we set up for you, such as your CRM, texting, email and forms, are opened in your name and you own them, along with your customer data. We keep ownership of our templates, tools and processes. You receive a written how-to for the systems we set up.',
       },
     ],
   },
@@ -76,7 +71,7 @@ const sections: LegalBlockGroup[] = [
     heading: 'Website and booking',
     blocks: [
       {
-        p: 'The content on our website is for general information. You may view and share it for personal and business reference, but you may not copy, resell or modify it without our written permission. Booking a call through our calendar is subject to that provider’s own terms as well.',
+        p: 'The content on our website is for general information. You may view and share it for personal and business reference, but you may not copy, resell or modify it without our written permission. Booking a call through Calendly is also subject to Calendly’s own terms.',
       },
     ],
   },
@@ -111,15 +106,15 @@ const sections: LegalBlockGroup[] = [
     heading: 'Termination',
     blocks: [
       {
-        p: 'Either party may end an engagement by written notice, as described in the billing section above. We may suspend or end access to the site if you misuse it or violate these Terms. Sections on content ownership, fees already owed, disclaimers and liability survive termination.',
+        p: 'Either party may end an engagement by written notice, as described under Fees and billing above. We may suspend or end access to the site if you misuse it or violate these Terms. Sections on account ownership, fees already owed, disclaimers and liability survive termination.',
       },
     ],
   },
   {
-    heading: 'Governing law',
+    heading: 'Governing law and refunds',
     blocks: [
       {
-        p: 'These Terms are governed by the laws of [TODO: state] (without regard to its conflict-of-law rules). Any dispute will be resolved in the state or federal courts located in [TODO: county, state].',
+        p: 'Governing law, jurisdiction and refund terms are set out in the written proposal or agreement for each engagement.',
       },
     ],
   },
@@ -147,19 +142,6 @@ export default function TermsPage() {
       <Section narrow>
         <p className="eyebrow">Legal</p>
         <h1>Terms of Service</h1>
-        <p
-          className="small"
-          role="note"
-          style={{
-            background: 'var(--ttl-tint)',
-            border: '1px solid var(--ttl-border)',
-            borderRadius: 'var(--radius)',
-            padding: '12px 16px',
-            maxWidth: '60ch',
-          }}
-        >
-          <strong>Draft — to be reviewed by counsel before launch.</strong>
-        </p>
         <p className="muted small">Last updated: {LAST_UPDATED}</p>
 
         {sections.map((s) => (

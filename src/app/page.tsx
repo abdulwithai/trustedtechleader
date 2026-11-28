@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageShell from '@/components/PageShell';
+import Button from '@/components/Button';
 import { Section } from '@/components/Container';
 import FAQ from '@/components/FAQ';
 import CTABand from '@/components/CTABand';
 import Hero from '@/components/home/Hero';
-import { TIERS, CONCEPTS, STEPS, PILLARS, WHY, FAQS } from '@/components/home/data';
+import { TIERS, STEPS, PILLARS, WHY, FAQS } from '@/components/home/data';
 import { SITE } from '@/lib/site';
 import '@/styles/home.css';
 
@@ -23,11 +24,9 @@ const jsonLd = {
   email: SITE.email,
   slogan: SITE.tagline,
   description: SITE.defaultDescription,
-  areaServed: { '@type': 'City', name: 'Charlotte, NC' },
-  knowsAbout: ['Lead generation', 'Content', 'CRM', 'AI automation'],
+  areaServed: 'US',
+  knowsAbout: ['Missed-call text-back', 'Estimate follow-up', 'Review requests', 'CRM setup', 'HVAC', 'Plumbing'],
 };
-
-const FOR = ['Coffee shops', 'Studios & gyms', 'Salons', 'Restaurants', 'Home-service pros', 'Clinics'];
 
 export default function Home() {
   return (
@@ -35,31 +34,22 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
 
-      <section className="for" aria-label="Who we work with">
-        <div className="container for__inner">
-          <p className="for__label">Built for Charlotte independents</p>
-          <ul className="for__list">{FOR.map((f) => <li key={f}>{f}</li>)}</ul>
-        </div>
-      </section>
-
-      <Section id="problem" aria-labelledby="problem-title" className="split">
-        <div className="split__grid">
-          <div className="split__col">
-            <p className="eyebrow">The problem</p>
-            <h2 id="problem-title">Leads slip through the cracks when you&rsquo;re busy.</h2>
-            <p>Missed calls. Slow replies. A quiet feed. No follow-up after the first message. Between customers, staff and invoices, good leads go cold before anyone answers.</p>
-          </div>
-          <div className="split__col split__col--solve">
-            <p className="eyebrow">What we do</p>
-            <h2>One team runs the whole pipeline.</h2>
-            <p>We bring in the leads, make the content, run your CRM and automate the follow-up. You see every lead in one place and approve what goes out.</p>
-          </div>
-        </div>
+      <Section tone="forest" id="problem" aria-labelledby="problem-title">
+        <p className="eyebrow eyebrow--light">The problem</p>
+        <h2 id="problem-title">Where jobs leak.</h2>
+        <ul className="why">
+          {WHY.map((p) => (
+            <li key={p.title}>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section tone="tint" id="run" aria-labelledby="run-title">
-        <p className="eyebrow">What we run for you</p>
-        <h2 id="run-title">Four pillars. One pipeline.</h2>
+        <p className="eyebrow">What I set up</p>
+        <h2 id="run-title">Four pieces. One simple system.</h2>
         <ol className="run">
           {PILLARS.map((p) => (
             <li key={p.title}>
@@ -71,26 +61,9 @@ export default function Home() {
         </ol>
       </Section>
 
-      <Section id="offer" aria-labelledby="offer-title">
-        <p className="eyebrow">Pricing</p>
-        <h2 id="offer-title">Pick a monthly plan. That&rsquo;s the whole decision.</h2>
-        <div className="tiers">
-          {TIERS.map((t) => (
-            <article key={t.name} className={`tier${t.popular ? ' tier--popular' : ''}`}>
-              {t.popular ? <span className="tier__flag">Most popular</span> : null}
-              <h3>{t.name}</h3>
-              <p className="tier__price">{t.price}<span>/month</span></p>
-              <ul>{t.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
-              <Link className={`btn ${t.popular ? 'btn--primary' : 'btn--secondary'}`} href={SITE.bookHref}>{SITE.bookLabel}</Link>
-            </article>
-          ))}
-        </div>
-        <p className="note">Month-to-month. Cancel anytime. Ad spend is paid to Meta and Google separately. CRM and lead capture live in 14 days, first post in 10. <Link href="/services">Full breakdown and add-ons &rarr;</Link></p>
-      </Section>
-
       <Section id="process" aria-labelledby="process-title">
         <p className="eyebrow">How it works</p>
-        <h2 id="process-title">Three steps from first call to leads on autopilot.</h2>
+        <h2 id="process-title">Three steps from first call to a working system.</h2>
         <ol className="steps">
           {STEPS.map((s, i) => (
             <li key={s.title}>
@@ -102,43 +75,43 @@ export default function Home() {
         </ol>
       </Section>
 
-      <Section tone="forest" id="different" aria-labelledby="different-title">
-        <p className="eyebrow eyebrow--light">Why us</p>
-        <h2 id="different-title">Why Charlotte businesses pick us.</h2>
-        <ul className="why">
-          {WHY.map((p) => (
-            <li key={p.title}>
-              <h3>{p.title}</h3>
-              <p>{p.body}</p>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section id="work" aria-labelledby="work-title">
-        <p className="eyebrow">Work</p>
-        <h2 id="work-title">What it looks like for a Charlotte business.</h2>
-        <div className="cards-3">
-          {CONCEPTS.map((c) => (
-            <Link key={c.slug} href={`/work/${c.slug}`} className="card card--lift work">
-              <div className="work__thumb" role="img" aria-label={`Placeholder cover for ${c.name}, a concept ${c.kind.toLowerCase()} in ${c.hood}`}>
-                <span className="badge">Concept piece</span>
-              </div>
-              <p className="work__hood">{c.hood} &middot; {c.kind}</p>
-              <h3>{c.name}</h3>
-              <p>{c.line}</p>
-            </Link>
+      <Section id="pricing" aria-labelledby="pricing-title">
+        <p className="eyebrow">Pricing</p>
+        <h2 id="pricing-title">Fixed prices. Setup once, care monthly if you want it.</h2>
+        <div className="tiers">
+          {TIERS.map((t) => (
+            <article key={t.id} className={`tier${t.flag ? ' tier--popular' : ''}`}>
+              {t.flag ? <span className="tier__flag">{t.flag}</span> : null}
+              <h3>{t.name}</h3>
+              <p className="tier__price">{t.price}<span>{t.period === 'one-off' ? ' one-off' : t.period}</span></p>
+              <p className="tier__timeline">Founding client price (first 2 clients). Regular price {t.regular}{t.period === 'one-off' ? ' one-off' : t.period}.</p>
+              <ul>{t.includes.map((b) => <li key={b}>{b}</li>)}</ul>
+              <Button href={t.href} variant={t.flag ? 'primary' : 'secondary'}>{t.cta}</Button>
+            </article>
           ))}
         </div>
-        <p className="note">Concept pieces: fictional Charlotte businesses, created as portfolio samples. Not real clients. <Link href="/work">See all work &rarr;</Link></p>
+        <p className="note">Monthly plans run month to month, cancel with 30 days&rsquo; notice. Ad spend is paid by you to Google. <Link href="/services">Full details and what&rsquo;s not included &rarr;</Link></p>
       </Section>
 
-      <Section tone="tint" id="about" aria-labelledby="about-title">
+      <Section tone="tint" id="honest" aria-labelledby="honest-title">
+        <p className="eyebrow">Honest note</p>
+        <h2 id="honest-title">New agency, real work.</h2>
+        <p>
+          TrustedTechLeader is new, so there are no client case studies here yet, and I won&rsquo;t invent any.
+          Instead, you can inspect a sample build, and my first two clients get founding pricing in exchange for honest feedback and permission to share results.
+        </p>
+        <div style={{ marginTop: 24, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+          <Button href="/work" variant="secondary">See the sample build</Button>
+          <Button href={SITE.bookHref}>{SITE.bookLabel}</Button>
+        </div>
+      </Section>
+
+      <Section id="about" aria-labelledby="about-title">
         <div className="about">
-          <h2 id="about-title">A remote-first team. A camera crew in Charlotte.</h2>
+          <h2 id="about-title">Hi, I&rsquo;m Abdul.</h2>
           <div>
-            <p>Our strategists, editors, designers and automation builders work remotely and run your full pipeline: leads, content, CRM and AI follow-up. Our Charlotte production partner shoots on location. One Slack channel per client. No handoffs between agencies.</p>
-            <p><Link href="/about">Read our story &rarr;</Link></p>
+            <p>I started TrustedTechLeader to make sure no home-service lead goes unanswered. I build the automations myself, so when you have a question you talk to the person who made it.</p>
+            <p><Link href="/about">Read more about me &rarr;</Link></p>
           </div>
         </div>
       </Section>
@@ -150,9 +123,9 @@ export default function Home() {
       </Section>
 
       <CTABand
-        title="Ready to stop losing leads?"
+        title="Ready to stop losing jobs to missed calls?"
         primaryHref={SITE.bookHref}
-        primaryLabel="Book a 20-min call"
+        primaryLabel={SITE.bookLabel}
         body={<>Or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a></>}
       />
     </PageShell>
