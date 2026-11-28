@@ -6,7 +6,7 @@ import Button from '@/components/Button';
 export const metadata = { title: 'Page not found', robots: { index: false, follow: true } };
 
 const quickLinks = [
-  { href: '/work', label: 'See our work' },
+  { href: '/work', label: 'See the sample build' },
   { href: '/services', label: 'Services and pricing' },
   { href: '/contact', label: 'Contact us' },
 ];

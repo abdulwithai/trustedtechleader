@@ -1,11 +1,12 @@
 import Button from '@/components/Button';
 import { Container } from '@/components/Container';
+import { SITE } from '@/lib/site';
 
 const STAGES = [
-  { n: '01', name: 'Lead generation', line: 'New lead from Google' },
-  { n: '02', name: 'Content', line: 'Reel posted' },
-  { n: '03', name: 'CRM', line: 'Added to pipeline' },
-  { n: '04', name: 'AI automation', line: 'AI replied in 30s, call booked' },
+  { n: '01', name: 'Missed call', line: 'Customer calls while you’re on a job' },
+  { n: '02', name: 'Text-back', line: 'Text sent with a booking link' },
+  { n: '03', name: 'Estimate follow-up', line: 'Messages on days 2, 5 and 10' },
+  { n: '04', name: 'Review request', line: 'Asked after the job is marked done' },
 ];
 
 export default function Hero() {
@@ -14,25 +15,23 @@ export default function Hero() {
       <Container>
         <div className="hero__grid">
           <div className="hero__copy">
-            <p className="eyebrow">Growth partner for Charlotte local businesses</p>
+            <p className="eyebrow">For HVAC and plumbing companies</p>
             <h1 id="home-hero-title">
-              More leads. Faster follow-up. <span className="hl">Less busywork.</span>
+              Stop losing jobs to missed calls and <span className="hl">forgotten estimates.</span>
             </h1>
             <p className="hero__sub">
-              We bring you leads, make your content, run your CRM and automate the follow-up. One team, one flat monthly price, no contracts.
+              I set up a simple follow-up system that texts back missed calls in seconds, chases estimates that went quiet, and asks happy customers for a Google review. Built in the tools you already use, or a low-cost CRM if you have none. Live in 7 days (texting switches on once carrier registration clears).
             </p>
             <div className="hero__actions">
-              <Button href="/contact#book">Book a 20-min call</Button>
-              <Button href="#offer" variant="secondary">See pricing</Button>
+              <Button href={SITE.bookHref}>{SITE.bookLabel}</Button>
+              <Button href="#pricing" variant="secondary">See pricing</Button>
             </div>
-            <ul className="hero__proof" aria-label="Why it's easy to start">
-              <li>Month-to-month</li>
-              <li>Cancel anytime</li>
-              <li>Prices published</li>
+            <ul className="hero__proof" aria-label="Founder-led">
+              <li>Founder-led. You work directly with Abdul Rahman, the person who builds it.</li>
             </ul>
           </div>
 
-          <div className="hero__visual" role="img" aria-label="Diagram of one pipeline in four stages: lead generation, content, CRM and AI automation. Example: a new lead from Google, a Reel posted, the lead added to the pipeline, and an AI reply in 30 seconds with a call booked.">
+          <div className="hero__visual" role="img" aria-label="Diagram of one follow-up flow in four stages: a missed call, a text-back with a booking link, estimate follow-up on days 2, 5 and 10, and a review request after the job.">
             <ol className="pipe" aria-hidden="true">
               {STAGES.map((s) => (
                 <li key={s.n} className="pipe__stage">
@@ -45,8 +44,8 @@ export default function Hero() {
               ))}
             </ol>
             <div className="hero__ticket" aria-hidden="true">
-              <span className="hero__ticket-label">Every month</span>
-              <b>Leads</b><b>Content</b><b>Follow-up on autopilot</b>
+              <span className="hero__ticket-label">Every lead</span>
+              <b>Text-back</b><b>Estimates</b><b>Reviews</b>
             </div>
           </div>
         </div>

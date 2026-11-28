@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
-import Tracking from '@/components/Tracking';
 import { SITE } from '@/lib/site';
 import '@/styles/tokens.css';
 import '@/styles/global.css';
@@ -12,7 +11,7 @@ const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', 
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: SITE.defaultTitle, template: '%s | Trusted Tech Leader' },
+  title: { default: SITE.defaultTitle, template: '%s | TrustedTechLeader' },
   description: SITE.defaultDescription,
   openGraph: {
     type: 'website',
@@ -36,7 +35,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}>
       <body>
         {children}
-        <Tracking />
       </body>
     </html>
   );
