@@ -19,7 +19,7 @@ const sections: LegalBlockGroup[] = [
     heading: 'Who we are',
     blocks: [
       {
-        p: `TrustedTechLeader is a founder-led business run by Abdul Rahman. We set up follow-up systems for US HVAC and plumbing companies. This policy explains what information we collect through ${SITE.url} and how we use it.`,
+        p: `TrustedTechLeader is a founder-led business run by Abdul Rahman. We create social media content, run paid ads and set up CRM and automations for US small businesses. This policy explains what information we collect through ${SITE.url} and how we use it.`,
       },
       { p: `Questions about this policy? Email us at ${SITE.email}.` },
     ],

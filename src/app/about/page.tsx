@@ -8,14 +8,14 @@ import '@/styles/about.css';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Abdul Rahman, founder of TrustedTechLeader. I set up missed-call text-back, estimate follow-up and review requests for US HVAC and plumbing companies.',
+    'Abdul Rahman, founder of TrustedTechLeader. I create social posts and short videos, run Meta and Google ads, and set up CRM and automations for US small businesses.',
   alternates: { canonical: '/about' },
 };
 
 const values = [
   ['Honest', 'No invented results, no long contracts.'],
-  ['Simple', 'A few messages that work beat a complicated system nobody uses.'],
-  ['Yours', 'Your accounts, your data, and a written how-to so you are never stuck.'],
+  ['Simple', 'A few things done consistently beat a complicated plan nobody follows.'],
+  ['Yours', 'Your accounts, your content, your data.'],
 ];
 
 export default function AboutPage() {
@@ -27,7 +27,8 @@ export default function AboutPage() {
             <p className="eyebrow">About</p>
             <h1>Hi, I&rsquo;m Abdul.</h1>
             <p className="lead">
-              I started TrustedTechLeader to do one thing well for home-service companies: make sure no lead goes unanswered.
+              I started TrustedTechLeader to be the marketing partner small businesses actually need: someone who creates the content, runs
+              the ads, and builds the CRM and automations that turn attention into customers.
             </p>
           </div>
         </div>
@@ -36,7 +37,8 @@ export default function AboutPage() {
       <Section narrow aria-labelledby="how-i-work">
         <h2 id="how-i-work">How I work</h2>
         <p>
-          I build the automations, CRM pipelines and ads myself, so when you have a question you talk to the person who made it.
+          I do the work myself, so when you have a question you talk to the person who made it. That is true for the posts, the videos, the
+          ad campaigns and the automations that follow up with your leads.
         </p>
         <p>
           I work remotely and keep US Eastern mornings and early afternoons open for calls. Everything I build runs in accounts you own.
@@ -54,7 +56,7 @@ export default function AboutPage() {
 
       <CTABand
         title="Book a 20-minute call"
-        body="Pick a time that suits you. I will look at how leads reach you today and where they slip through. No pitch deck, no pressure."
+        body="Pick a time that suits you. I will look at your current marketing and what to fix first. No pitch deck, no pressure."
         primaryHref={SITE.bookHref}
         primaryLabel="Book a 20-min call"
         secondaryHref={`mailto:${SITE.email}`}

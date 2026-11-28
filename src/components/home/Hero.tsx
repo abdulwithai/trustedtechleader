@@ -3,10 +3,10 @@ import { Container } from '@/components/Container';
 import { SITE } from '@/lib/site';
 
 const STAGES = [
-  { n: '01', name: 'Missed call', line: 'Customer calls while you’re on a job' },
-  { n: '02', name: 'Text-back', line: 'Text sent with a booking link' },
-  { n: '03', name: 'Estimate follow-up', line: 'Messages on days 2, 5 and 10' },
-  { n: '04', name: 'Review request', line: 'Asked after the job is marked done' },
+  { n: '01', name: 'Content', line: 'Posts and short videos, planned monthly' },
+  { n: '02', name: 'Ads', line: 'Meta and Google, tuned monthly' },
+  { n: '03', name: 'CRM', line: 'Leads tracked in one pipeline' },
+  { n: '04', name: 'Automation', line: 'Instant replies and follow-up' },
 ];
 
 export default function Hero() {
@@ -15,23 +15,23 @@ export default function Hero() {
       <Container>
         <div className="hero__grid">
           <div className="hero__copy">
-            <p className="eyebrow">For HVAC and plumbing companies</p>
+            <p className="eyebrow">Done-for-you marketing for US small businesses</p>
             <h1 id="home-hero-title">
-              Stop losing jobs to missed calls and <span className="hl">forgotten estimates.</span>
+              Content, ads, CRM and automation. <span className="hl">One partner, done for you.</span>
             </h1>
             <p className="hero__sub">
-              I set up a simple follow-up system that texts back missed calls in seconds, chases estimates that went quiet, and asks happy customers for a Google review. Built in the tools you already use, or a low-cost CRM if you have none. Live in 7 days (texting switches on once carrier registration clears).
+              I create your social posts and short videos, run your ads, and set up the CRM and automations that follow up with every lead, so your marketing keeps moving while you run the business.
             </p>
             <div className="hero__actions">
               <Button href={SITE.bookHref}>{SITE.bookLabel}</Button>
               <Button href="#pricing" variant="secondary">See pricing</Button>
             </div>
             <ul className="hero__proof" aria-label="Founder-led">
-              <li>Founder-led. You work directly with Abdul Rahman, the person who builds it.</li>
+              <li>Founder-led. You work directly with Abdul Rahman, the person doing the work.</li>
             </ul>
           </div>
 
-          <div className="hero__visual" role="img" aria-label="Diagram of one follow-up flow in four stages: a missed call, a text-back with a booking link, estimate follow-up on days 2, 5 and 10, and a review request after the job.">
+          <div className="hero__visual" role="img" aria-label="Diagram of one marketing system in four stages: Content, Ads, CRM and Automation, which together keep every lead followed up.">
             <ol className="pipe" aria-hidden="true">
               {STAGES.map((s) => (
                 <li key={s.n} className="pipe__stage">
@@ -44,8 +44,8 @@ export default function Hero() {
               ))}
             </ol>
             <div className="hero__ticket" aria-hidden="true">
-              <span className="hero__ticket-label">Every lead</span>
-              <b>Text-back</b><b>Estimates</b><b>Reviews</b>
+              <span className="hero__ticket-label">One partner</span>
+              <b>Content</b><b>Ads</b><b>CRM</b><b>Automation</b>
             </div>
           </div>
         </div>

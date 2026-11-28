@@ -22,7 +22,7 @@ export default function SiteFooter() {
           <nav aria-label="Site">
             <h2>Site</h2>
             <ul>
-              <li><Link href="/work">Sample build</Link></li>
+              <li><Link href="/work">Samples</Link></li>
               <li><Link href="/services">Services</Link></li>
               <li><Link href="/about">About</Link></li>
               <li><Link href="/contact">Contact</Link></li>

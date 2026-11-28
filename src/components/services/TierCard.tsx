@@ -1,5 +1,5 @@
 import Button from '@/components/Button';
-import type { Tier } from './data';
+import type { Starter, Tier } from './data';
 
 export default function TierCard({ tier }: { tier: Tier }) {
   const h = `${tier.id}-heading`;
@@ -26,6 +26,20 @@ export default function TierCard({ tier }: { tier: Tier }) {
       <div className="tier__cta">
         <Button href={tier.href} variant={tier.flag ? 'primary' : 'secondary'}>{tier.cta}</Button>
       </div>
+    </article>
+  );
+}
+
+/** Compact one-off project card for the home page starter row. Full includes live on /services. */
+export function StarterCompact({ tier }: { tier: Starter }) {
+  return (
+    <article className="card starter">
+      <h4 className="starter__name">{tier.name}</h4>
+      <p className="starter__price">
+        <span className="mono">{tier.price}</span>
+        <span className="starter__regular">Founding client price (first 2 clients). Regular price {tier.regular} one-off.</span>
+      </p>
+      <p className="starter__summary">{tier.summary}</p>
     </article>
   );
 }

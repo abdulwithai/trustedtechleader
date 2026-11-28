@@ -4,13 +4,13 @@ import { Section } from '@/components/Container';
 import FAQ from '@/components/FAQ';
 import CTABand from '@/components/CTABand';
 import TierCard from '@/components/services/TierCard';
-import { PILLARS, TIERS, NOT_INCLUDED, TERMS, FAQS } from '@/components/services/data';
+import { PILLARS, TIERS, STARTERS, NOT_INCLUDED, TERMS, FAQS } from '@/components/services/data';
 import { SITE } from '@/lib/site';
 import '@/styles/services.css';
 
-const title = 'Services and Pricing: Missed-Call and Estimate Follow-Up for HVAC and Plumbing';
+const title = 'Services and Pricing: Social Content, Ads, CRM and Automation';
 const description =
-  'Fixed-price missed-call text-back, estimate follow-up and review requests for US HVAC and plumbing companies. Founder-led. Month to month.';
+  'Fixed monthly plans and one-off starter projects for social content, Meta and Google Search ads, CRM setup and automation. Founder-led. Month to month.';
 
 export const metadata: Metadata = {
   title,
@@ -34,12 +34,13 @@ export default function ServicesPage() {
     <PageShell>
       <Section className="services-hero">
         <p className="eyebrow">Services</p>
-        <h1>Fixed prices. One person accountable.</h1>
-        <p className="lead">Three ways to work together. Start with the setup, add monthly care if you want it kept sharp.</p>
+        <h1>Content, ads, CRM and automation. Fixed prices.</h1>
+        <p className="lead">Pick a monthly plan, or start with a one-off project to see how I work.</p>
         <nav aria-label="On this page">
           <ul className="services-nav">
-            <li><a href="#pillars">What&rsquo;s included</a></li>
-            <li><a href="#plans">Plans</a></li>
+            <li><a href="#pillars">What I do</a></li>
+            <li><a href="#plans">Monthly plans</a></li>
+            <li><a href="#starters">Starter projects</a></li>
             <li><a href="#not-included">Not included</a></li>
             <li><a href="#terms">Terms</a></li>
             <li><a href="#faq">FAQ</a></li>
@@ -49,29 +50,42 @@ export default function ServicesPage() {
 
       <Section id="pillars" aria-labelledby="pillars-heading">
         <div className="services-head">
-          <h2 id="pillars-heading">What&rsquo;s included</h2>
-          <p className="lead">Four pieces, one simple system. You approve every message before it goes live.</p>
+          <h2 id="pillars-heading">What I do</h2>
+          <p className="lead">Four pillars, one partner. You approve the content and every campaign before it goes live.</p>
         </div>
         <ul className="pillars">
           {PILLARS.map((p) => (
             <li key={p.id}>
               <article className="card card--lift pillar">
                 <h3 className="pillar__title">{p.title}</h3>
-                <p>{p.summary}</p>
+                <ul className="tier__list tier__list--check">{p.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
               </article>
             </li>
           ))}
         </ul>
       </Section>
 
-      <Section id="plans" aria-labelledby="tiers-heading" className="services-tiers">
-        <h2 id="tiers-heading" className="visually-hidden">Plans</h2>
+      <Section id="plans" aria-labelledby="plans-heading" className="services-tiers">
+        <div className="services-head">
+          <h2 id="plans-heading">Monthly plans</h2>
+          <p className="lead">Month to month. Billed monthly in advance. Cancel with 30 days&rsquo; notice.</p>
+        </div>
         <div className="tiers">
           {TIERS.map((t) => <TierCard key={t.id} tier={t} />)}
         </div>
       </Section>
 
-      <Section id="not-included" tone="tint" aria-labelledby="not-included-heading">
+      <Section id="starters" tone="tint" aria-labelledby="starters-heading" className="services-tiers">
+        <div className="services-head">
+          <h2 id="starters-heading">Starter projects</h2>
+          <p className="lead">One-off projects. 50% to start, 50% on delivery.</p>
+        </div>
+        <div className="tiers">
+          {STARTERS.map((t) => <TierCard key={t.id} tier={t} />)}
+        </div>
+      </Section>
+
+      <Section id="not-included" aria-labelledby="not-included-heading">
         <div className="services-head">
           <h2 id="not-included-heading">Not included</h2>
         </div>
@@ -80,7 +94,7 @@ export default function ServicesPage() {
         </ul>
       </Section>
 
-      <Section id="terms" aria-labelledby="terms-heading">
+      <Section id="terms" tone="tint" aria-labelledby="terms-heading">
         <div className="services-head">
           <h2 id="terms-heading">Terms</h2>
         </div>
@@ -96,7 +110,7 @@ export default function ServicesPage() {
         </ul>
       </Section>
 
-      <Section id="faq" tone="tint" aria-labelledby="faq-heading">
+      <Section id="faq" aria-labelledby="faq-heading">
         <div className="services-head">
           <h2 id="faq-heading">Questions about services</h2>
         </div>
