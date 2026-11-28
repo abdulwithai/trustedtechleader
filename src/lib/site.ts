@@ -2,7 +2,7 @@
 export const SITE = {
   name: 'TrustedTechLeader',
   url: 'https://trustedtechleader.com',
-  tagline: 'Follow-up systems for HVAC and plumbing companies.',
+  tagline: 'Content, ads, CRM and automation. Done for you.',
   email: 'abdul@trustedtechleader.com',
   phone: '', // No phone number yet. Phone links stay hidden while empty.
   phoneDisplay: '',
@@ -10,13 +10,13 @@ export const SITE = {
   linkedin: '',
   bookHref: 'https://calendly.com/meet_to_abdulrahman/ai-discovery-call',
   bookLabel: 'Book a 20-min call',
-  defaultTitle: 'Missed-Call & Estimate Follow-Up for HVAC and Plumbing Companies | TrustedTechLeader',
+  defaultTitle: 'Done-for-You Social Content, Ads, CRM & Automation | TrustedTechLeader',
   defaultDescription:
-    'TrustedTechLeader sets up missed-call text-back, estimate follow-up and review requests for US HVAC and plumbing companies. Founder-led, fixed prices, email and web replies usually live within 7 days.',
+    'TrustedTechLeader is a founder-led marketing fulfillment partner for US small businesses: social posts and short videos, Meta and Google ads, CRM setup and automations. Fixed monthly prices.',
 } as const;
 
 export const NAV = [
-  { href: '/work', label: 'Sample build' },
+  { href: '/work', label: 'Samples' },
   { href: '/services', label: 'Services' },
   { href: '/about', label: 'About' },
 ] as const;

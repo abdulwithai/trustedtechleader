@@ -15,7 +15,7 @@ type CTABandProps = {
 
 /** Full-width closing call-to-action. Defaults to the 20-min call. */
 export default function CTABand({
-  title = 'Ready to stop losing jobs to missed calls?',
+  title = 'Ready to hand off your marketing?',
   body,
   primaryHref = SITE.bookHref,
   primaryLabel = SITE.bookLabel,

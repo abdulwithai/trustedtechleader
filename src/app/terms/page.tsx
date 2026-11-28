@@ -27,7 +27,7 @@ const sections: LegalBlockGroup[] = [
     heading: 'Our services',
     blocks: [
       {
-        p: 'We set up and care for follow-up systems for businesses, such as missed-call text-back, web form and after-hours replies, estimate follow-up, review requests and a simple lead pipeline. The current plans and what each includes are listed on our Services page. The scope, prices and payment terms for each engagement are set out in the written proposal or agreement for that engagement. Where this page and a signed proposal differ, the signed proposal controls.',
+        p: 'We create social media posts and short videos, run Meta and Google Search ads, set up and manage CRM pipelines, and build lead follow-up automations for businesses. The current plans and what each includes are listed on our Services page. The scope, prices and payment terms for each engagement are set out in the written proposal or agreement for that engagement. Where this page and a signed proposal differ, the signed proposal controls.',
       },
       {
         p: 'We perform the services with reasonable care and skill. We do not guarantee specific business results, such as booked jobs, revenue, reviews or number of leads. Platforms such as Google, Meta and mobile carriers change their rules without notice, and those changes are outside our control.',
@@ -38,7 +38,7 @@ const sections: LegalBlockGroup[] = [
     heading: 'Fees and billing',
     blocks: [
       {
-        p: 'Payments. Setup: 50% at start, 50% at launch. Monthly care: billed monthly in advance, cancel with 30 days’ notice. Details in your proposal.',
+        p: 'Payments. Starter projects: 50% to start, 50% on delivery. Monthly plans: billed monthly in advance, cancel with 30 days’ notice. Details in your proposal.',
       },
       {
         p: 'Software, texting and ad spend are paid by you directly to the providers. If a payment fails, we may pause work until it is resolved. Monthly prices may change for future months with at least 30 days’ written notice.',

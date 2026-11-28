@@ -117,3 +117,17 @@ main { overflow-x: clip; }
 .run p { margin-bottom: 0; }
 @media (max-width: 1000px) { .run { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .run { grid-template-columns: 1fr; } }
+.run .run__list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; font-size: 0.9375rem; color: var(--ttl-charcoal); }
+.run .run__list li { background: none; border: 0; border-top: 0; padding: 0 0 0 16px; position: relative; }
+.run .run__list li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--ttl-terracotta); }
+
+/* Home pricing extras: best-for and note lines, and the starter projects row */
+.tier__best, .tier__note { margin: 0 0 16px; font-size: var(--fs-small); color: var(--ttl-stone-text); }
+.starters__title { margin-top: 56px; font-size: 1.375rem; }
+.starters { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 16px; }
+.starter { padding: 24px; border-top: 4px solid var(--ttl-forest); }
+.starter__name { margin: 0 0 8px; font-size: 1.125rem; color: var(--ttl-forest); }
+.starter__price { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; line-height: 1.1; margin: 0 0 8px; color: var(--ttl-near-black); }
+.starter__regular { display: block; font-family: var(--font-body); font-size: var(--fs-small); font-weight: 400; color: var(--ttl-stone-text); margin-top: 4px; }
+.starter__summary { margin: 0; color: var(--ttl-charcoal); }
+@media (max-width: 900px) { .starters { grid-template-columns: 1fr; } }
